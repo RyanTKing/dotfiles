@@ -106,9 +106,9 @@ def link_all(home_dir, dots_dir, platform):
                     start = 0
                     end = res.span()[0]
                     if darwin_res:
-                        start = darwin_res.span()[1] + 1
+                        start = darwin_res.span()[1]
                     if linux_res:
-                        start = linux_res.span()[1] + 1
+                        start = linux_res.span()[1]
                     src = path + '/' + file
                     dst = home_dir + '/.' + file[start:end]
                     link_file(src, dst)
