@@ -1,6 +1,1 @@
-.netrwhist
-configs/vim/bundle/
-
-# Mutt
-com.*
-cache
+*.local
