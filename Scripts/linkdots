@@ -28,30 +28,34 @@ def get_dots_dir(home_dir):
     return dots_dir
 
 def setup_gitconfig(home_dir, dots_dir, platform):
-    info('Setting up gitconfig')
+    info('Setting up local gitconfig')
     git_dir = dots_dir + '/git'
-    name = input('Github author name: ')
-    email = input('Github email address: ')
-    helper = 'cached'
-    if platform == 'Darwin':
-        helper = 'osxkeychain'
-    elif platform == 'Linux':
-        if os.path.exists('/usr/share/git/credential/gnome-keyring/' + \
+    if not os.path.exists(home_dir + '/.gitconfig.local'):
+        info('No local gitconfig found, generating')
+        name = input('Github author name: ')
+        email = input('Github email address: ')
+        helper = 'cached'
+        if platform == 'Darwin':
+            helper = 'osxkeychain'
+        elif platform == 'Linux':
+            if os.path.exists('/usr/share/git/credential/gnome-keyring/' + \
                               'git-credential-gnome-keyring'):
-            helper = '/usr/share/git/credential/gnome-keyring/' + \
-                     'git-credential-gnome-keyring'
-        else:
-            warning('Gnome Keyring for Git not configured, ' + \
-                    'falling back to cached helper.')
+                helper = '/usr/share/git/credential/gnome-keyring/' + \
+                         'git-credential-gnome-keyring'
+            else:
+                warning('Gnome Keyring for Git not configured, ' + \
+                        'falling back to cached helper.')
 
-    with open(home_dir + '/.gitconfig.local', 'w') as f:
-        f.write('[user]\n')
-        f.write('    name = %s\n' % name)
-        f.write('    email = %s\n' % email)
-        f.write('[credential]\n')
-        f.write('    helper = %s' % helper)
+            with open(home_dir + '/.gitconfig.local', 'w') as f:
+                f.write('[user]\n')
+                f.write('    name = %s\n' % name)
+                f.write('    email = %s\n' % email)
+                f.write('[credential]\n')
+                f.write('    helper = %s' % helper)
 
-    success('Done')
+        success('Done')
+    else:
+        success('Local gitconfig found')
 
 def link_file(src, dst):
     if os.path.exists(dst):
@@ -113,6 +117,6 @@ platform = os.uname()[0]
 home_dir = os.environ['HOME']
 dots_dir = get_dots_dir(home_dir)
 
-# setup_gitconfig(home_dir, dots_dir, platform)
+setup_gitconfig(home_dir, dots_dir, platform)
 link_all(home_dir, dots_dir, platform)
 success('All dotfiles linked')
