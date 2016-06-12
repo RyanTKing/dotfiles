@@ -1,0 +1,25 @@
+[include]
+    path = ~/.gitconfig.local
+[hub]
+    protocol = https
+[alias]
+    st = status
+    ci = commit
+    co = checkout
+    br = branch
+[color]
+    status = auto
+    diff = auto
+    branch = auto
+    ui = true
+[core]
+    editor = emacsclient -t
+    excludesfile = ~/.gitignore
+[merge]
+    tool = vimdiff
+[push]
+    default = upstream
+[pull]
+    rebase = true
+[fetch]
+    prune = true

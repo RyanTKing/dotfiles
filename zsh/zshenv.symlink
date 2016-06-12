@@ -1,0 +1,37 @@
+# General Variables
+export EDITOR="emacsclient -t"
+export TERM=xterm-256color
+export ALTERNATE_EDITOR="emacs"
+export ZSH="$HOME/.oh-my-zsh"
+export DOTS="$HOME/Projects/dotfiles"    # ZSH Configs
+export PROJECTS="$HOME/Projects"        # Projects
+export GOPATH="$HOME/Go"                # Go path
+
+# OS X Setup
+if [ `uname` = 'Darwin' ]; then
+    eval "$(rbenv init -)"              # Init Rbenv
+    GOVERSION=`brew list go | head -n 1 | cut -d '/' -f 6`
+    export GOROOT=`brew --prefix`/Cellar/go/$GOVERSION/libexec
+    PATH="$GOROOT/bin:$PATH"            # Go
+    PATH="$HOME/.pyenv/shims:$PATH"     # Rbenv
+    PATH="$HOME/.rbenv/shims:$PATH"     # Pyenv
+fi
+
+# Setup PATH
+PATH="/usr/local/bin:$PATH"
+[ -d "/usr/local/sbin" ]		            && PATH="/usr/local/sbin:$PATH"
+[ -d "/usr/lib/node_modules/npm/bin" ]	&& PATH="/usr/lib/node_modules/npm/bin:$PATH"
+[ -d "$HOME/Scripts" ]                  && PATH="$HOME/Scripts:$PATH"
+[ -d "$GOPATH/bin" ]			              && PATH="$GOPATH/bin:$PATH"
+
+# Clean PATH
+typeset -a paths result
+paths=($path)
+
+while [[ ${#paths} -gt 0 ]]; do
+    p="${paths[1]}"
+    shift paths
+    [[ -z ${paths[(r)$p]} ]] && result+="$p"
+done
+
+export PATH=${(j+:+)result}
