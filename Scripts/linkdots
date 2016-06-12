@@ -83,6 +83,8 @@ def link_file(src, dst):
     success('Created symlink from "%s" to "%s"' % (src, dst))
 
 def link_all(home_dir, dots_dir, platform):
+    darwin = re.compile('darwin.')
+    linux = re.compile('linux.')
     info('Installing Dotfiles')
     git = re.compile("/.git")
     symlink = re.compile(".symlink")
@@ -92,9 +94,19 @@ def link_all(home_dir, dots_dir, platform):
         if path != dots_dir and not git.search(path):
             for file in files:
                 res = symlink.search(file)
-                if res and file[0:2] != '.#':
+                darwin_res = darwin.search(file)
+                linux_res = linux.search(file)
+                if res and file[0:2] != '.#' and \
+                   not ((darwin_res and platform == 'Linux') or
+                        (linux_res and platform == 'Darwin')):
+                    start = 0
+                    end = res.span()[0]
+                    if darwin_res:
+                        start = darwin_res.span()[1] + 1
+                    if linux_res:
+                        start = linux_res.span()[1] + 1
                     src = path + '/' + file
-                    dst = home_dir + '/.' + file[:res.span()[0]]
+                    dst = home_dir + '/.' + file[start:end]
                     link_file(src, dst)
 
 platform = os.uname()[0]
