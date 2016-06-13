@@ -42,16 +42,16 @@ def setup_gitconfig(home_dir, dots_dir, platform):
                               'git-credential-gnome-keyring'):
                 helper = '/usr/share/git/credential/gnome-keyring/' + \
                          'git-credential-gnome-keyring'
-            else:
-                warning('Gnome Keyring for Git not configured, ' + \
-                        'falling back to cached helper.')
+        else:
+            warning('Gnome Keyring for Git not configured, ' + \
+                    'falling back to cached helper.')
 
-            with open(home_dir + '/.gitconfig.local', 'w') as f:
-                f.write('[user]\n')
-                f.write('    name = %s\n' % name)
-                f.write('    email = %s\n' % email)
-                f.write('[credential]\n')
-                f.write('    helper = %s' % helper)
+        with open(home_dir + '/.gitconfig.local', 'w') as f:
+            f.write('[user]\n')
+            f.write('    name = %s\n' % name)
+            f.write('    email = %s\n' % email)
+            f.write('[credential]\n')
+            f.write('    helper = %s' % helper)
 
         success('Done')
     else:
