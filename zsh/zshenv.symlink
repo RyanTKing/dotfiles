@@ -7,6 +7,13 @@ export DOTS="$HOME/Projects/dotfiles"    # ZSH Configs
 export PROJECTS="$HOME/Projects"        # Projects
 export GOPATH="$HOME/Go"                # Go path
 
+# Setup PATH
+PATH="/usr/local/bin:$PATH"
+[ -d "/usr/local/sbin" ]		            && PATH="/usr/local/sbin:$PATH"
+[ -d "/usr/lib/node_modules/npm/bin" ]	&& PATH="/usr/lib/node_modules/npm/bin:$PATH"
+[ -d "$HOME/Scripts" ]                  && PATH="$HOME/Scripts:$PATH"
+[ -d "$GOPATH/bin" ]			              && PATH="$GOPATH/bin:$PATH"
+
 # OS X Setup
 if [ `uname` = 'Darwin' ]; then
     eval "$(rbenv init -)"              # Init Rbenv
@@ -17,12 +24,6 @@ if [ `uname` = 'Darwin' ]; then
     PATH="$HOME/.rbenv/shims:$PATH"     # Pyenv
 fi
 
-# Setup PATH
-PATH="/usr/local/bin:$PATH"
-[ -d "/usr/local/sbin" ]		            && PATH="/usr/local/sbin:$PATH"
-[ -d "/usr/lib/node_modules/npm/bin" ]	&& PATH="/usr/lib/node_modules/npm/bin:$PATH"
-[ -d "$HOME/Scripts" ]                  && PATH="$HOME/Scripts:$PATH"
-[ -d "$GOPATH/bin" ]			              && PATH="$GOPATH/bin:$PATH"
 
 # Clean PATH
 typeset -a paths result

@@ -25,6 +25,9 @@ values."
       chrome
       colors
       deft
+      (geolocation :variables
+                   geolocation-enable-osx-location-service-support (eq system-type 'darwin)
+                   geolocation-enable-weather-forecast t)
       gtags
       ibuffer
       (org :variables
@@ -291,10 +294,15 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq system-uses-terminfo nil)
   (setq powerline-default-separator 'arrow)
   (setq deft-directory "~/Dropbox/notes")
+  (setq sunshine-location "08807,USA")
+  (setq sunshine-appid "b5651dad3d9014e0cc1728e5a602ba8f")
+  (setq sunshine-show-icons t)
   (setq slime-contribs '(slime-fancy))
+  (if (eq system-type 'darwin)
+      (setq eclim-eclipse-dirs "/Applications/Eclipse.app/Contents/Eclipse"
+            eclim-executable "/Applications/Eclipse.app/Contents/Eclipse/eclim"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
