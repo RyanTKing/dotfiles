@@ -22,12 +22,12 @@ values."
       ;; General
       auto-completion
       better-defaults
-      chrome
       colors
       deft
       (geolocation :variables
                    geolocation-enable-osx-location-service-support (eq system-type 'darwin)
-                   geolocation-enable-weather-forecast t)
+                   geolocation-enable-weather-forecast t
+                   geolocation-enable-automatic-theme-changer nil)
       gtags
       ibuffer
       (org :variables
@@ -75,6 +75,8 @@ values."
       ;; Tools
       ;; Window Management
       eyebrowse
+      ;; Vim
+      vinegar
       )
     ;; Load OS X Layer if on a Mac
     (if (eq system-type 'darwin)
@@ -139,8 +141,8 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(base16-ocean-dark
-                         ;; spacemacs-dark
                          ;; spacemacs-light
+                         ;; spacemacs-dark
                          ;; solarized-light
                          ;; solarized-dark
                          ;; leuven
@@ -151,8 +153,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   dotspacemacs-default-font '("GohuFont"
+                               :size 14
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -200,7 +202,7 @@ values."
    ;; If non nil then `ido' replaces `helm' for some commands. For now only
    ;; `find-files' (SPC f f), `find-spacemacs-file' (SPC f e s), and
    ;; `find-contrib-file' (SPC f e c) are replaced. (default nil)
-   dotspacemacs-use-ido nil
+   dotspacemacs-use-ido t
    ;; If non nil, `helm' will try to minimize the space it uses. (default nil)
    dotspacemacs-helm-resize nil
    ;; if non nil, the helm header is hidden when there is only one source.
@@ -295,8 +297,11 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq powerline-default-separator 'arrow)
+  (setq calendar-location-name "Blairstown, NJ"
+        calendar-latitude 41.0
+        calendar-longitude -75.0)
   (setq deft-directory "~/Dropbox/notes")
-  (setq sunshine-location "08807,USA")
+  (setq sunshine-location "Blairstown,NJ")
   (setq sunshine-appid "b5651dad3d9014e0cc1728e5a602ba8f")
   (setq sunshine-show-icons t)
   (setq slime-contribs '(slime-fancy))

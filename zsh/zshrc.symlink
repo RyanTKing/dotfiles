@@ -1,5 +1,5 @@
 # Oh-My-ZSH Configuration
-ZSH_THEME="agnoster"
+ZSH_THEME="sorin"
 DEFAULT_USER=`whoami`
 plugins=(git colorize themes)
 source $ZSH/oh-my-zsh.sh
