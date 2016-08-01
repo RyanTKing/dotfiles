@@ -1,47 +1,14 @@
-/*
-config defaultToCurrentScreen true
-config nudgePercentOf screenSize
-config resizePercentOf screenSize
-
-# Push with Vim keys or arrow keys
-bind h:ctrl;cmd      push left   bar-resize:screenSizeX/3
-bind l:ctrl;cmd      push right  bar-resize:screenSizeX/3
-bind k:ctrl;cmd      push up     bar-resize:screenSizeY/2
-bind j:ctrl;cmd      push down   bar-resize:screenSizeY/2
-bind left:ctrl;cmd   push left   bar-resize:screenSizeX/3
-bind right:ctrl;cmd  push right  bar-resize:screenSizeX/3
-bind up:ctrl;cmd     push up     bar-resize:screenSizeY/2
-bind down:ctrl;cmd   push down   bar-resize:screenSizeY/2
-
-bind h:ctrl;alt      push left   bar-resize:screenSizeX/2
-bind l:ctrl;alt      push right  bar-resize:screenSizeX/2
-bind left:ctrl;alt   push left   bar-resize:screenSizeX/2
-bind right:ctrl;alt  push right  bar-resize:screenSizeX/2
-
-bind k:ctrl;cmd;shift     move windowTopLeftX;0 windowSizeX;screenSizeY/2
-bind j:ctrl;cmd;shift     move windowTopLeftX;screenSizeY/2+25 windowSizeX;screenSizeY/2
-bind h:ctrl;cmd;shift     nudge -windowSizeX +0
-bind l:ctrl;cmd;shift     nudge +windowSizeX +0
-bind up:ctrl;cmd;shift    move windowTopLeftX;0 windowSizeX;screenSizeY/2
-bind down:ctrl;cmd;shift  move windowTopLeftX;screenSizeY/2+25 windowSizeX;screenSizeY/2
-bind left:ctrl;cmd;shift  nudge -windowSizeX +0
-bind right:ctrl;cmd;shift nudge +windowSizeX +0
-
-bind 1:ctrl;cmd;shift move 0;0 screenSizeX/4;screenSizeY/2
-bind right:
-bind 
-
-# Move
-bind 1:ctrl;cmd      move 0;0 screenSizeX;screenSizeY
-
-# Window Hints
-bind esc:cmd hint
- */
+// Basic Config
+slate.configAll({
+    defaultToCurrentScreen: true,
+    nudgePercentOf: 'screenSize',
+    resizePercentOf: 'screensize'
+});
 
 // Store Window States
 var windowStates = {};
 
-// Left Side Operations
+// Left Edge Operations
 var leftBarHalf = S.op("push",
                        {"direction": "left",
                         "style": "bar-resize:screenSizeX/2"});
@@ -52,7 +19,7 @@ var leftBarTwoThirds = S.op("push",
                             {"direction": "left",
                              "style": "bar-resize:screenSizeX/3*2"});
 
-// Right Side Operations
+// Right Edge Operations
 var rightBarThird = S.op("push",
                          {"direction": "right",
                           "style": "bar-resize:screenSizeX/3"});
@@ -62,6 +29,28 @@ var rightBarHalf = S.op("push",
 var rightBarTwoThirds = S.op("push",
                              {"direction": "right",
                               "style": "bar-resize:screenSizeX/3*2"});
+
+// Top Edge Operations
+var topBarThird = S.op("push",
+                       {"direction": "up",
+                        "style": "bar-resize:screenSizeY/3"});
+var topBarHalf = S.op("push",
+                      {"direction": "up",
+                       "style": "bar-resize:screenSizeY/2"});
+var topBarTwoThirds = S.op("push",
+                           {"direction": "up",
+                            "style": "bar-resize:screenSizeY/3*2"});
+
+// Bottom Edge Operations
+var botBarThird = S.op("push",
+                       {"direction": "down",
+                        "style": "bar-resize:screenSizeY/3"});
+var botBarHalf = S.op("push",
+                      {"direction": "down",
+                       "style": "bar-resize:screenSizeY/2"});
+var botBarTwoThirds = S.op("push",
+                           {"direction": "down",
+                            "style": "bar-resize:screenSizeY/3*2"});
 
 /* Return a function that will cycle through available states,
  * under the assumption that each state provided is valid.
@@ -89,10 +78,71 @@ var leftCycleOp = getCycleStates([leftBarHalf,
 var rightCycleOp = getCycleStates([rightBarHalf,
                                    rightBarThird,
                                    rightBarTwoThirds]);
+var topCycleOp = getCycleStates([topBarHalf,
+                                 topBarThird,
+                                 topBarTwoThirds]);
+var botCycleOp = getCycleStates([botBarHalf,
+                                 botBarThird,
+                                 botBarTwoThirds]);
 
 // Bind Window Cycle Functions
 S.bind('h:cmd,shift', leftCycleOp);
 S.bind('l:cmd,shift', rightCycleOp);
+S.bind('k:cmd,shift', topCycleOp);
+S.bind('j:cmd,shift', botCycleOp);
+
+// Corner Moves
+S.bind(
+    'u:cmd,shift',
+    S.op(
+        'move',
+        {
+            'x': 'screenOriginX',
+            'y': 'screenOriginY',
+            'width': 'screenSizeX/2',
+            'height': 'screenSizeY/2'
+        }
+    )
+);
+
+S.bind(
+    'i:cmd,shift',
+    S.op(
+        'move',
+        {
+            'x': 'screenSizeX/2',
+            'y': 'screenOriginY',
+            'width': 'screenSizeX/2',
+            'height': 'screenSizeY/2'
+        }
+    )
+);
+
+S.bind(
+    'n:cmd,shift',
+    S.op(
+        'move',
+        {
+            'x': 'screenOriginX',
+            'y': 'screenSizeY/2',
+            'width': 'screenSizeX/2',
+            'height': 'screenSizeY/2'
+        }
+    )
+);
+
+S.bind(
+    'm:cmd,shift',
+    S.op(
+        'move',
+        {
+            'x': 'screenSizeX/2',
+            'y': 'screenSizeY/2',
+            'width': 'screenSizeX/2',
+            'height': 'screenSizeY/2'
+        }
+    )
+);
 
 // Full Screen
 S.bind(
