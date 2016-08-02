@@ -297,6 +297,8 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq powerline-default-separator 'arrow)
+  (with-eval-after-load 'linum
+    (linum-relative-toggle))
   (setq calendar-location-name "Blairstown, NJ"
         calendar-latitude 41.0
         calendar-longitude -75.0)

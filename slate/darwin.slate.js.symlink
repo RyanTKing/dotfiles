@@ -52,6 +52,22 @@ var botBarTwoThirds = S.op("push",
                            {"direction": "down",
                             "style": "bar-resize:screenSizeY/3*2"});
 
+// Middle Operations
+var midBarHalf = S.op("move",
+                      {"x": "screenSizeX/4",
+                       "y": "screenSizeY/4",
+                       "width": "screenSizeX/2",
+                       "height": "screenSizeY/2"});
+var midBarTwoThirds = S.op("move",
+                      {"x": "screenSizeX/6",
+                       "y": "screenSizeY/6",
+                       "width": "screenSizeX/3*2",
+                       "height": "screenSizeY/3*2"});
+var midBarFull = S.op("move",
+                      {"x": "screenOriginX",
+                       "y": "screenOriginY",
+                       "width": "screenSizeX",
+                       "height": "screenSizeY"});
 /* Return a function that will cycle through available states,
  * under the assumption that each state provided is valid.
  */
@@ -84,12 +100,16 @@ var topCycleOp = getCycleStates([topBarHalf,
 var botCycleOp = getCycleStates([botBarHalf,
                                  botBarThird,
                                  botBarTwoThirds]);
+var midCycleOp = getCycleStates([midBarHalf,
+                                 midBarTwoThirds,
+                                 midBarFull]);
 
 // Bind Window Cycle Functions
 S.bind('h:cmd,shift', leftCycleOp);
 S.bind('l:cmd,shift', rightCycleOp);
 S.bind('k:cmd,shift', topCycleOp);
 S.bind('j:cmd,shift', botCycleOp);
+S.bind('f:cmd,shift', midCycleOp);
 
 // Corner Moves
 S.bind(
@@ -140,20 +160,6 @@ S.bind(
             'y': 'screenSizeY/2',
             'width': 'screenSizeX/2',
             'height': 'screenSizeY/2'
-        }
-    )
-);
-
-// Full Screen
-S.bind(
-    'f:cmd,shift',
-    S.op(
-        'move',
-        {
-            'x': 'screenOriginX',
-            'y': 'screenOriginY',
-            'width': 'screenSizeX',
-            'height': 'screenSizeY'
         }
     )
 );
