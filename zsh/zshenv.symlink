@@ -9,9 +9,9 @@ export BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 export ECLIPSE_HOME="/opt/homebrew-cask/Caskroom/eclipse-java/4.6.0/Eclipse.app/Contents/Eclipse"
 export PATSHOME="/usr/local/Cellar/ats2-postiats/0.2.6"
-export PATSHOME=/Users/RyanKing/ATS2
-export PATSHOMERELOC=/Users/RyanKing/ATS2-contrib
-export PATSHOME_contrib=/Users/RyanKing/ATS2-contrib
+export PATSHOME="$HOME/ATS2"
+export PATSHOMERELOC="$HOME/ATS2-contrib"
+export PATSHOME_contrib="$HOME/ATS2-contrib"
 
 # Setup PATH
 PATH="/usr/local/bin:$PATH"
