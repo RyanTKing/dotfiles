@@ -1,7 +1,7 @@
 ! XTerm
 XTerm*termName: xterm-256color
 XTerm*faceName: Source Code Pro
-XTerm*faceSize: 10
+XTerm*faceSize: 14
 Xterm*allowBoldFonts: false
 XTerm*eightBitInput: false
 XTerm*selectToClipboard: true
@@ -9,10 +9,12 @@ XTerm*locale: true
 *VT100*translations: #override Shift <Btn1Up>: exec-formatted("chromium '%t'", PRIMARY)
 
 ! URXVT
-URxvt*termName: rxvt-unicode
+URxvt.termName: rxvt-unicode
 URxvt.scrollBar: false
-URxvt*font: -gohu-gohufont-medium-*-*-*-14-*-*-*-*-*-iso8859-*
-URxvt.boldFont:-gohu-gohufont-medium-*-*-*-14-*-*-*-*-*-iso8859-*
+URxvt*font: -gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
+URxvt.boldFont: -gohu-gohufont-bold-r-normal--14-100-100-100-c-80-iso10646-1
+! URxvt*font: -uw-ttyp0-medium-r-normal--16-150-75-75-c-80-iso10646-1
+! URxvt.boldFont: -uw-ttyp0-bold-r-normal--16-150-75-75-c-80-iso10646-1
 URxvt.intensityStyles: false
 URXvt.clipboard.autocopy: true
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
@@ -27,6 +29,15 @@ URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
 URxvt.matcher.rend.0:       Uline fg16
+
+! YeahConsole
+yeahconsole*term: urxvtc
+yeahconsole*toggleKey: Win+e
+yeahconsole*keyBigger: winControl+e
+yeahconsole*keySmaller: WinControlAlt+e
+yeahconsole*consoleHeight: 30
+yeahconsole*handleWidth: 0
+yeahconsole*aniDelay: 10
 
 ! Color Variables
 #define base00 #2b303b
@@ -45,6 +56,16 @@ URxvt.matcher.rend.0:       Uline fg16
 #define base0D #8fa1b3
 #define base0E #b48ead
 #define base0F #ab7967
+
+! Rofi
+rofi.font: GohuFont 11
+rofi.color-normal: base00, base0C, base00, base08, base07
+rofi.color-window: base00, base00
+rofi.terminal: urxvtc
+rofi.separator-style: solid
+rofi.hide-scrollbar: true
+rofi.opacity: 99
+rofi.tokenize: false
 
 ! Color Configuration
 *.foreground:   base05

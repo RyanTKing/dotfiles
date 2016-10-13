@@ -68,6 +68,7 @@ values."
       shell-scripts
       sql
       swift
+      vimscript
       ;; Source Control
       git
       github
@@ -155,7 +156,7 @@ values."
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("GohuFont"
                                :size 14
-                               :weight normal
+                               :weight medium
                                :width normal
                                :powerline-scale 1.1)
    ;; The leader key
@@ -298,6 +299,7 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq powerline-default-separator 'arrow)
   (with-eval-after-load 'linum
+    (global-linum-mode)
     (linum-relative-toggle))
   (setq calendar-location-name "Blairstown, NJ"
         calendar-latitude 41.0
