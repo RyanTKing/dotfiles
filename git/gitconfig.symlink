@@ -14,7 +14,7 @@
     ui = true
 [core]
     editor = emacsclient -t
-    excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore_global
 [merge]
     tool = vimdiff
 [push]

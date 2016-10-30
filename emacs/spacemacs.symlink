@@ -12,7 +12,7 @@ values."
    ;; or `spacemacs'. (default 'spacemacs)
    dotspacemacs-distribution 'spacemacs
    ;; List of additional paths where to look for configuration layers.
-   ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
+   ;; Paths must have a trai / // end of [%{$]/ end of [%{$]ling slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
@@ -157,9 +157,9 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("GohuFont"
+   dotspacemacs-default-font '("Roboto Mono Light for Powerline"
                                :size 14
-                               :weight medium
+                               ; :weight medium
                                :width normal
                                :powerline-scale 1.4)
    ;; The leader key
@@ -257,7 +257,7 @@ values."
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers 'relative
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
@@ -301,24 +301,17 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq powerline-default-separator 'arrow)
-  (with-eval-after-load 'linum
-    (global-linum-mode)
-    (linum-relative-toggle))
-  (setq calendar-location-name "Blairstown, NJ"
-        calendar-latitude 41.0
-        calendar-longitude -75.0)
+  (setq calendar-location-name "Allston, MA"
+        calendar-latitude 42.354666
+        calendar-longitude 71.129989)
   (setq deft-directory "~/Dropbox/notes")
-  (setq sunshine-location "Blairstown,NJ")
+  (setq sunshine-location "Allston, MA")
   (setq sunshine-appid "b5651dad3d9014e0cc1728e5a602ba8f")
   (setq sunshine-show-icons t)
   (setq slime-contribs '(slime-fancy))
   (setq inferior-lisp-program "/usr/local/bin/clisp")
-  (if (eq system-type 'darwin)
-      (setq eclim-eclipse-dirs "/opt/homebrew-cask/Caskroom/eclipse-java/4.6.0/Eclipse.app/Contents/Eclipse"
-            eclim-executable "/opt/homebrew-cask/Caskroom/eclipse-java/4.6.0/Eclipse.app/Contents/Eclipse/eclim")))
+  (setenv "PATSHOME" "/Users/RyanKing/ATS2"))
 
-;; Do not write anything past this comment. This is where Emacs will
-;; auto-generate custom variable definitions.
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -326,7 +319,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (pug-mode swift-mode py-isort projectile-rails pip-requirements persp-mode neotree helm-projectile helm-ag fish-mode evil-mc clj-refactor auto-yasnippet smartparens undo-tree helm helm-core haskell-mode flycheck magit with-editor macrostep s yapfify xterm-color ws-butler wolfram-mode window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package typo toc-org thrift theme-changer tagedit sunshine stickyfunc-enhance stan-mode srefactor sql-indent spotify spacemacs-theme spaceline solarized-theme smeargle slime slim-mode shell-pop scss-mode scad-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe reveal-in-osx-finder restart-emacs rbenv rase rake rainbow-mode rainbow-identifiers rainbow-delimiters quelpa qml-mode pyvenv pytest pyenv-mode popwin phpunit phpcbf php-extras php-auto-yasnippets pbcopy paredit paradox ox-gfm osx-trash osx-location osx-dictionary orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file noflet mwim multi-term mu4e-maildirs-extension mu4e-alert move-text mmm-mode matlab-mode markdown-toc magit-gitflow magit-gh-pulls lua-mode lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode launchctl julia-mode json-mode js2-refactor js-doc jade-mode intero info+ inflections indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-spotify helm-pydoc helm-mode-manager helm-make helm-hoogle helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet haskell-snippets google-translate golden-ratio go-eldoc gnuplot github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md ggtags geiser flyspell-correct-helm flycheck-pos-tip flycheck-haskell flx-ido fill-column-indicator feature-mode fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help ensime emmet-mode elisp-slime-nav edn dumb-jump drupal-mode disaster diff-hl deft cython-mode company-web company-tern company-statistics company-shell company-go company-ghci company-ghc company-emacs-eclim company-cabal company-c-headers company-auctex company-anaconda common-lisp-snippets column-enforce-mode color-identifiers-mode coffee-mode cmm-mode cmake-mode clojure-snippets clean-aindent-mode clang-format cider-eval-sexp-fu cider chruby bundler base16-theme auto-highlight-symbol auto-dictionary auto-compile ats2-mode arduino-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (slime rake alert log4e gntp markdown-mode macrostep skewer-mode simple-httpd json-snatcher json-reformat js2-mode multi haml-mode flyspell-correct sbt-mode scala-mode php-mode web-completion-data dash-functional tern go-mode ghc haskell-mode eclim company inflections edn multiple-cursors paredit peg cider seq queue clojure-mode inf-ruby yasnippet packed auctex anaconda-mode pythonic auto-complete pos-tip flycheck-ats2 flycheck powerline pcre2el spinner org hydra parent-mode projectile pkg-info epl ht flx smartparens iedit anzu evil goto-chg undo-tree eval-sexp-fu highlight f dash s diminish bind-map bind-key helm avy helm-core popup async package-build smeargle orgit magit-gitflow magit-gh-pulls helm-gitignore gitignore-mode github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gist gh marshal logito pcache evil-magit magit magit-popup git-commit with-editor diff-hl yapfify xterm-color ws-butler wolfram-mode window-numbering which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package typo toc-org thrift theme-changer tagedit swift-mode sunshine stickyfunc-enhance stan-mode srefactor sql-indent spotify spacemacs-theme spaceline solarized-theme slime-company slim-mode shell-pop scss-mode scad-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe reveal-in-osx-finder restart-emacs request rbenv rase rainbow-mode rainbow-identifiers rainbow-delimiters quelpa qml-mode pyvenv pytest pyenv-mode py-isort pug-mode projectile-rails popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pbcopy paradox ox-gfm osx-trash osx-location osx-dictionary org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file noflet neotree mwim multi-term mu4e-maildirs-extension mu4e-alert move-text mmm-mode minitest matlab-mode markdown-toc lua-mode lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode launchctl julia-mode json-mode js2-refactor js-doc intero insert-shebang info+ indent-guide ido-vertical-mode ibuffer-projectile hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-spotify helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-hoogle helm-gtags helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio go-eldoc gnuplot gh-md ggtags geiser flyspell-correct-helm flycheck-pos-tip flycheck-haskell flx-ido fish-mode fill-column-indicator feature-mode fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help ensime emmet-mode elisp-slime-nav dumb-jump drupal-mode disaster deft dactyl-mode cython-mode company-web company-tern company-statistics company-shell company-go company-ghci company-ghc company-emacs-eclim company-cabal company-c-headers company-auctex company-anaconda common-lisp-snippets column-enforce-mode color-identifiers-mode coffee-mode cmm-mode cmake-mode clojure-snippets clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu chruby bundler base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile ats2-mode arduino-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
