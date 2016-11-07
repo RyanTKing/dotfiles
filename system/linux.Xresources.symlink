@@ -11,8 +11,10 @@ XTerm*locale: true
 ! URXVT
 URxvt.termName: rxvt-unicode
 URxvt.scrollBar: false
-URxvt*font: -gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
-URxvt.boldFont: -gohu-gohufont-bold-r-normal--14-100-100-100-c-80-iso10646-1
+URxvt.font: -uw-ttyp0-medium-r-normal--15-140-75-75-c-80-iso10646-1
+URxvt*boldFont: -uw-ttyp0-bold-r-normal--15-140-75-75-c-80-iso10646-1
+! URxvt*font: -gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
+! URxvt.boldFont: -gohu-gohufont-bold-r-normal--14-100-100-100-c-80-iso10646-1
 ! URxvt*font: -uw-ttyp0-medium-r-normal--16-150-75-75-c-80-iso10646-1
 ! URxvt.boldFont: -uw-ttyp0-bold-r-normal--16-150-75-75-c-80-iso10646-1
 URxvt.intensityStyles: false
