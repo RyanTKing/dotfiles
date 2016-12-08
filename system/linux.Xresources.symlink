@@ -11,10 +11,10 @@ XTerm*locale: true
 ! URXVT
 URxvt.termName: rxvt-unicode
 URxvt.scrollBar: false
-URxvt.font: -uw-ttyp0-medium-r-normal--15-140-75-75-c-80-iso10646-1
-URxvt*boldFont: -uw-ttyp0-bold-r-normal--15-140-75-75-c-80-iso10646-1
-! URxvt*font: -gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
-! URxvt.boldFont: -gohu-gohufont-bold-r-normal--14-100-100-100-c-80-iso10646-1
+! URxvt.font: -uw-ttyp0-medium-r-normal--15-140-75-75-c-80-iso10646-1
+! URxvt*boldFont: -uw-ttyp0-bold-r-normal--15-140-75-75-c-80-iso10646-1
+URxvt*font: -gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
+URxvt.boldFont: -gohu-gohufont-bold-r-normal--14-100-100-100-c-80-iso10646-1
 ! URxvt*font: -uw-ttyp0-medium-r-normal--16-150-75-75-c-80-iso10646-1
 ! URxvt.boldFont: -uw-ttyp0-bold-r-normal--16-150-75-75-c-80-iso10646-1
 URxvt.intensityStyles: false
@@ -79,22 +79,22 @@ rofi.tokenize: false
 *.color8:       base03
 ! red
 *.color1:       base08
-*.color9:       base09
+*.color9:       base08
 ! green
 *.color2:       base0B
-*.color10:      base01
+*.color10:      base0B
 ! yellow
 *.color3:       base0A
-*.color11:      base02
+*.color11:      base0A
 ! blue
 *.color4:       base0D
-*.color12:      base04
+*.color12:      base0D
 ! magenta
 *.color5:       base0E
-*.color13:      base06
+*.color13:      base0E
 ! cyan
 *.color6:       base0C
-*.color14:      base0F
+*.color14:      base0C
 ! white
 *.color7:       base05
 *.color15:      base07
@@ -103,3 +103,9 @@ rofi.tokenize: false
 *.colorBD:      base05
 *.colorUL:      base0C
 
+*.color16:      base09
+*.color17:      base0F
+*.color18:      base01
+*.color19:      base02
+*.color20:      base04
+*.color21:      base06
