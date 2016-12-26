@@ -4,8 +4,9 @@ export ALTERNATE_EDITOR="emacs"
 export ZSH="$HOME/.oh-my-zsh"
 export DOTS="$HOME/Projects/dotfiles"    # ZSH Configs
 export PROJECTS="$HOME/Projects"        # Projects
-export GOPATH="$HOME/Go"                # Go path
-# export BASE16_SHELL=$HOME/.config/base16-shell/
+export GOPATH="$HOME/Go Workspace"                # Go path
+export GOROOT=/usr/local/opt/go/libexec
+ export BASE16_SHELL=$HOME/.config/base16-shell/
 # [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 export ECLIPSE_HOME="/opt/homebrew-cask/Caskroom/eclipse-java/4.6.0/Eclipse.app/Contents/Eclipse"
 export PATSHOME="$HOME/ATS2"
@@ -21,22 +22,24 @@ PATH="/usr/local/bin:$PATH"
 [ -d "/usr/bin/vendor_perl" ]		&& PATH="/usr/bin/vendor_perl:$PATH"
 [ -d "/usr/lib/perl5/site_perl/bin" ] 	&& PATH="/usr/lib/perl5/site_perl/bin:$PATH"
 [ -d "/usr/bin/site_perl" ]		&& PATH="/usr/bin/site_perl:$PATH"
-# [ -d "/usr/lib/node_modules/npm/bin" ]	&& PATH="/usr/lib/node_modules/npm/bin:$PATH"
 [ -d "/Library/Tex/texbin" ]            && PATH="/Library/Tex/texbin:$PATH"
 [ -d "$HOME/Scripts" ]                  && PATH="$HOME/Scripts:$PATH"
-[ -d "$GOPATH/bin" ]			              && PATH="$GOPATH/bin:$PATH"
+[ -d "$GOROOT/bin" ]                    && PATH="$GOROOT/bin:$PATH"
+[ -d "$GOPATH/bin" ]			        && PATH="$GOPATH/bin:$PATH"
 [ -d "$PATSHOME/bin" ]                  && PATH="$PATSHOME/bin:$PATH"
 [ -d "$PATSHOME/bin" ]                  && PATH="$PATSHOME/bin:$PATH"
+[ -d "$HOME/.pyenv/shims" ]             && PATH="$HOME/.pyenv/shims:$PATH"     # Rbenv
+[ -d "$HOME/.rbenv/shims" ]             && PATH="$HOME/.rbenv/shims:$PATH"     # Pyenv
 [ -d "$ECLIPSE_HOME" ]			&& PATH="$ECLIPSE_HOME:$PATH"
+
+eval "$(pyenv init -)" #            Init Pyenv
+eval "$(rbenv init -)"              # Init Rbenv
 
 # OS X Setup
 if [ `uname` = 'Darwin' ]; then
-    eval "$(rbenv init -)"              # Init Rbenv
     GOVERSION=`brew list go | head -n 1 | cut -d '/' -f 6`
     export GOROOT=`brew --prefix`/Cellar/go/$GOVERSION/libexec
     PATH="$GOROOT/bin:$PATH"            # Go
-    PATH="$HOME/.pyenv/shims:$PATH"     # Rbenv
-    PATH="$HOME/.rbenv/shims:$PATH"     # Pyenv
 fi
 
 

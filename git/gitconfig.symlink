@@ -15,8 +15,10 @@
 [core]
     editor = emacsclient -t
     excludesfile = ~/.gitignore_global
+[diff]
+    tool = emacsclient -t
 [merge]
-    tool = vimdiff
+    tool = emacsclient -t
 [push]
     default = upstream
 [pull]
