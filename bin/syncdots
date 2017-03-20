@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+# Constants
+DOTS_DIR="${HOME}/Projects/dotfiles"
+PLATFORM="$(uname)"
+KR_DIR="/usr/share/git/credential/gnome-keyring"
+
+# Global Variables
+SKIP_ALL=false
+OVERWRITE_ALL=false
+BACKUP_ALL=false
+
+setup_gitconfig() {
+    status_msg "info" "Checking for local gitconfig..."
+    GIT_DIR="${DOTS_DIR}/git"
+
+    if [[ -f "${HOME}/.gitconfig.local" ]]; then
+        status_msg "success" "Local gitconfig found."
+    else
+        status_msg "warning" "No local gitconfig found, generating..."
+
+        # Prompt for author Info
+        echo -n "Author Name: "
+        read NAME
+        echo -n "Email Address: "
+        read EMAIL
+        HELPER="osxkeychain"
+
+        if [[ "${PLATFORM}" = "Linux" ]]; then
+            HELPER="${KR_DIR}/git-credential-gnome-keyring"
+
+            # Compile the Gnome Keyring Git helper if necessary
+            if [[ ! -f "${HELPER}" ]]; then
+                status_msg "info" "Setting up Gnome Keyring for git..."
+
+                cd "${KR_DIR}"
+                sudo make
+                cd "${DOTS_DIR}"
+            fi
+        fi
+
+        # Write to the local gitconfig
+        echo "[user]" >> "${HOME}/.gitconfig.local"
+        echo "    name = ${NAME}" >> "${HOME}/.gitconfig.local"
+        echo "    email = ${EMAIL}" >> "${HOME}/.gitconfig.local"
+        echo "[credential]" >> "${HOME}/.gitconfig.local"
+        echo "    helper = ${HELPER}" >> "${HOME}/.gitconfig.local"
+
+        status_msg "success" "Local gitconfig created."
+    fi
+
+}
+
+link_all() {
+    status_msg "info" "Linking dotfiles"
+
+    for DOT in $(find "${DOTS_DIR}" -mindepth 2 -maxdepth 2); do
+        if [[ ! "${DOT}" =~ (".git/"|"bin/"|".#") ]]; then
+            [[ "${DOT}" =~ ".symlink" ]] && SYMLINK="true" || SYMLINK="false"
+
+            if [[ "${SYMLINK}" = "true" ]]; then
+               echo "SYMLINK: ${DOT}"
+            fi
+        fi
+    done
+}
+
+cd "${DOTS_DIR}"
+setup_gitconfig
+link_all
+
+
+# End of [syncdots]

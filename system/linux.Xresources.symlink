@@ -31,6 +31,10 @@ URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
 URxvt.matcher.rend.0:       Uline fg16
+! URxvt*depth: 32
+! URxvt*background: #2b303b
+! URxvt*transparent: true
+! URxvt*shading: 30
 
 ! YeahConsole
 yeahconsole*term: urxvtc
@@ -69,43 +73,72 @@ rofi.hide-scrollbar: true
 rofi.opacity: 99
 rofi.tokenize: false
 
+! hard contrast: *background: #1d2021
+*background: #282828
+! ! soft contrast: *background: #32302f
+*foreground: #ebdbb2
+! ! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! ! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! ! DarkGreen + Green
+*color2:  #98971a
+*color10: #b8bb26
+! ! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! ! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! ! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! ! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! ! LightGrey + White
+*color7:  #a89984
+*color15: #ebdbb2
+
 ! Color Configuration
-*.foreground:   base05
-*.background:   base00
-*.cursorColor:  base05
+! *.foreground:   base05
+! *.background:   base00
+! *.cursorColor:  base05
 
 ! black
-*.color0:       base00
-*.color8:       base03
+! *.color0:       base00
+! *.color8:       base03
 ! red
-*.color1:       base08
-*.color9:       base08
+! *.color1:       base08
+! *.color9:       base08
 ! green
-*.color2:       base0B
-*.color10:      base0B
+! *.color2:       base0B
+! *.color10:      base0B
 ! yellow
-*.color3:       base0A
-*.color11:      base0A
+! *.color3:       base0A
+! *.color11:      base0A
 ! blue
-*.color4:       base0D
-*.color12:      base0D
+! *.color4:       base0D
+! *.color12:      base0D
 ! magenta
-*.color5:       base0E
-*.color13:      base0E
+! *.color5:       base0E
+! *.color13:      base0E
 ! cyan
-*.color6:       base0C
-*.color14:      base0C
+! *.color6:       base0C
+! *.color14:      base0C
 ! white
-*.color7:       base05
-*.color15:      base07
+! *.color7:       base05
+! *.color15:      base07
 ! stylized
-*.colorIT:      base0B
-*.colorBD:      base05
-*.colorUL:      base0C
+! *.colorIT:      base0B
+! *.colorBD:      base05
+! *.colorUL:      base0C
 
-*.color16:      base09
-*.color17:      base0F
-*.color18:      base01
-*.color19:      base02
-*.color20:      base04
-*.color21:      base06
+! *.color16:      base09
+! *.color17:      base0F
+! *.color18:      base01
+! *.color19:      base02
+! *.color20:      base04
+! *.color21:      base06
