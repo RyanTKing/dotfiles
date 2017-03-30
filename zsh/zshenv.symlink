@@ -32,8 +32,8 @@ if [ `uname` = 'Darwin' ]; then
     export GOROOT=`brew --prefix`/Cellar/go/$GOVERSION/libexec
     PATH="$GOROOT/bin:$PATH"            # Go
 
-    eval "$(pyenv init -)" #            Init Pyenv
-    eval "$(rbenv init -)"              # Init Rbenv
+    eval "$(pyenv init -)" # Init pyenv
+    eval "$(rbenv init -)" # Init rbenv
 fi
 
 
