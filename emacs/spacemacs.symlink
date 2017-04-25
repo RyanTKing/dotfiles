@@ -344,5 +344,5 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq powerline-default-separator 'arrow)
   (setq silme-contribs '(slime-fancy))
-  (setenv "PATSHOME" "/Users/RyanKing/Projects/ATS2")
+  (setenv "PATSHOME" "/home/ryan/Projects/ATS2")
   (setq x86-lookup-pdf "~/x86.pdf"))

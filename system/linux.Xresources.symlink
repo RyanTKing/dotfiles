@@ -11,12 +11,13 @@ XTerm*locale: true
 ! URXVT
 URxvt.termName: rxvt-unicode
 URxvt.scrollBar: false
-URxvt*font: xft:Gohu GohuFont:size=14
-URxvt*boldFont: xft:Gohu GohuFont:style=Bold:size=14
+! URxvt*font: xft:Gohu GohuFont:size=14
+! URxvt*boldFont: xft:Gohu GohuFont:style=Bold:size=14
 ! URxvt.font: -uw-ttyp0-medium-r-normal--15-140-75-75-c-80-iso10646-1
 ! URxvt*boldFont: -uw-ttyp0-bold-r-normal--15-140-75-75-c-80-iso10646-1
-! URxvt*font: -gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
-! URxvt.boldFont: -gohu-gohufont-bold-r-normal--14-100-100-100-c-80-iso10646-1
+URxvt*font: -gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
+URxvt.boldFont: -gohu-gohufont-bold-r-normal--14-100-100-100-c-80-iso10646-1
+URxvt.internalBorder: 12
 URxvt.intensityStyles: false
 URXvt.clipboard.autocopy: true
 URxvt.keysym.Shift-Control-V: perl:clipboard:paste
@@ -64,9 +65,9 @@ yeahconsole*aniDelay: 10
 #define base0F #ab7967
 
 ! Rofi
-rofi.font: GohuFont 11
-rofi.color-normal: base00, base0C, base00, base08, base07
-rofi.color-window: base00, base00
+rofi.font: Gohu GohuFont 11
+rofi.color-normal: #282828, #ebdbb2, #282828, #458588, #ebdbb2
+rofi.color-window: #282828, #282828
 rofi.terminal: urxvtc
 rofi.separator-style: solid
 rofi.hide-scrollbar: true
