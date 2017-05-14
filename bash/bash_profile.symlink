@@ -6,4 +6,4 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 # OPAM configuration
-. /home/ryan/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+# . /home/ryan/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true

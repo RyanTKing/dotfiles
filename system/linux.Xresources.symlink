@@ -11,12 +11,8 @@ XTerm*locale: true
 ! URXVT
 URxvt.termName: rxvt-unicode
 URxvt.scrollBar: false
-! URxvt*font: xft:Gohu GohuFont:size=14
-! URxvt*boldFont: xft:Gohu GohuFont:style=Bold:size=14
-! URxvt.font: -uw-ttyp0-medium-r-normal--15-140-75-75-c-80-iso10646-1
-! URxvt*boldFont: -uw-ttyp0-bold-r-normal--15-140-75-75-c-80-iso10646-1
-URxvt*font: -gohu-gohufont-medium-r-normal--14-100-100-100-c-80-iso10646-1
-URxvt.boldFont: -gohu-gohufont-bold-r-normal--14-100-100-100-c-80-iso10646-1
+URxvt*font: xft:Gohu GohuFont:size=14
+URxvt*boldFont: xft:Gohu GohuFont:style=Bold:size=14
 URxvt.internalBorder: 12
 URxvt.intensityStyles: false
 URXvt.clipboard.autocopy: true
@@ -32,10 +28,10 @@ URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
 URxvt.matcher.rend.0:       Uline fg16
-! URxvt*depth: 32
-! URxvt*background: #2b303b
+URxvt*depth: 32
+URxvt*background: rgba:2800/2800/2800/cccc
 ! URxvt*transparent: true
-! URxvt*shading: 30
+! URxvt*shading: 60
 
 ! YeahConsole
 yeahconsole*term: urxvtc
@@ -75,7 +71,7 @@ rofi.opacity: 99
 rofi.tokenize: false
 
 ! hard contrast: *background: #1d2021
-*background: #282828
+! *background: #282828
 ! ! soft contrast: *background: #32302f
 *foreground: #ebdbb2
 ! ! Black + DarkGrey

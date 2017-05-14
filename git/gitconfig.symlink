@@ -13,12 +13,12 @@
     branch = auto
     ui = true
 [core]
-    editor = emacsclient -t
+    editor = emacsclient -t -s "$HOME/.emacs.d/server/server" -a emacs -nw
     excludesfile = ~/.gitignore_global
 [diff]
-    tool = emacsclient -t
+    tool = emacsclient -t -s "$HOME/.emacs.d/server/server" -a emacs -nw
 [merge]
-    tool = emacsclient -t
+    tool = emacsclient -t -s "$HOME/.emacs.d/server/server" -a emacs -nw
 [push]
     default = upstream
 [pull]
@@ -26,4 +26,4 @@
 [fetch]
     prune = true
 [credential]
-	helper = /usr/share/git/credential/gnome-keyring/git-credential-gnome-keyring
+	helper = cache

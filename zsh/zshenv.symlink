@@ -7,10 +7,12 @@ export ZSH="$HOME/.oh-my-zsh"
 export DOTS="$HOME/Projects/dotfiles"    # ZSH Configs
 export PROJECTS="$HOME/Projects"        # Projects
 export PATSHOME="$HOME/Projects/ATS2"
-export PATSCONTRIB="$HOME/Project/ATS2"
+export PATSCONTRIB="$HOME/Projects/ATS2-contrib"
 export PATSHOMELOCS=./node_modules:./../../node_modules:./../../../../node_modules
-export GOPATH="$HOME/Go Workspace"                # Go path
+export GOPATH="$HOME/Go:$PROJECTS/Boston-University-CS/CS562/Project"
 export NODE_PATH="/usr/lib/node_modules"
+export TEXMFCNF=$HOME/texmf/web2c
+export EMACSD_SOCKET="${HOME}/.emacs.d/server"
 
 # Setup PATH
 PATH="/usr/local/bin:$PATH"
@@ -22,7 +24,7 @@ PATH="/usr/local/bin:$PATH"
 [ -d "/usr/bin/site_perl" ]		          && PATH="/usr/bin/site_perl:$PATH"
 [ -d "/Library/Tex/texbin" ]            && PATH="/Library/Tex/texbin:$PATH"
 [ -d "${HOME}/Projects/dotfiles/bin" ]  && PATH="${HOME}/Projects/dotfiles/bin:${PATH}"
-[ -d "$GOPATH/bin" ]                    && PATH="$GOPATH/bin:$PATH"
+[ -d "$Home/Go/bin" ]                   && PATH="$Home/Go/bin:$PATH"
 [ -d "$PATSHOME/bin" ]                  && PATH="$PATSHOME/bin:$PATH"
 [ -d "$HOME/.pyenv/shims" ]             && PATH="$HOME/.pyenv/shims:$PATH"     # Rbenv
 [ -d "$HOME/.rbenv/shims" ]             && PATH="$HOME/.rbenv/shims:$PATH"     # Pyenv

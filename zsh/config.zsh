@@ -10,6 +10,7 @@ setopt histignoredups
 setopt listtypes
 setopt nolistbeep
 setopt complete_aliases
+setopt extendedglob
 
 # Enable Vim Keys
 bindkey -v

@@ -25,9 +25,9 @@ if [[ "${CMD}" = "up" || "${CMD}" = "down" ]]; then
 fi
 
 case "${CMD}" in
-    "up")   amixer -q sset Master "${AMT}"+ & ;;
-    "down") amixer -q sset Master "${AMT}"- & ;;
-    "mute") amixer -q sset Master toggle & ;;
+    "up")   amixer -q -D pulse set Master "${AMT}"+ & ;;
+    "down") amixer -q -D pulse set Master "${AMT}"- & ;;
+    "mute") amixer -q -D pulse sset Master toggle & ;;
     "help") usage 0 ;;
     *) status_msg "error" "vol" "unknown command: ${CMD}"; usage 1 ;;
 esac

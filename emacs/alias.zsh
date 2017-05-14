@@ -1,4 +1,8 @@
+# Start an independent Emacs Process in terminal
 alias e="emacs -nw"
-alias ed="emacs --eval \"(setq server-socket-dir \\\"~/.emacs.d/server\\\")\" --daemon"
-alias ec="emacsclient -t -s \"$HOME/.emacs.d/server/server\" -a e"
-alias ecv="emacsclient -s \"$HOME/.emacs.d/server/server\" -a emacs"
+
+# Connect to the emacs daemon
+alias ec="emacsclient -t -s \"${EMACSD_SOCKET}/server\" -a e"
+
+# Connect to the emacs daemon (visual)
+alias ecv="emacsclient -s \"${EMACSD_SOCKET}/server\" -a emacs"

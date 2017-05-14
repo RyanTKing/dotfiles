@@ -55,6 +55,7 @@ values."
        ;; Programming Languages
        asm
        ats2
+       bibtex
        c-c++
        ; (clojure :variables
                 ; clojure-enable-fancify-symbols t)
@@ -67,7 +68,9 @@ values."
        html
        java
        javascript
+       lex
        latex
+       ;(latex :variables latex-build-command "LaTeX")
        ; lua
        markdown
        ; php
@@ -326,6 +329,13 @@ values."
    dotspacemacs-whitespace-cleanup 'trailing
    ))
 
+(defun on-frame-open (frame)
+  (progn (select-frame frame)
+         (unless (display-graphic-p frame)
+           (set-face-background 'default "unspecified" frame))))
+
+(defun on-after-init () (on-frame-open (selected-frame)))
+
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init', before layer configuration
@@ -333,7 +343,12 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  )
+  (on-frame-open (selected-frame))
+  (add-hook 'after-make-frame-functions 'on-frame-open)
+  (add-hook 'window-setup-hook 'on-after-init)
+  (add-hook 'c-mode-hook
+            (lambda () (setq flycheck-clang-include-path
+                             (list (expand-file-name "~/Projects/Boston-University-CS/CS552/DiscOS/discos/libc/include"))))))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -343,6 +358,27 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq powerline-default-separator 'arrow)
+  (setq read-quoted-char-radix 16)
   (setq silme-contribs '(slime-fancy))
-  (setenv "PATSHOME" "/home/ryan/Projects/ATS2")
-  (setq x86-lookup-pdf "~/x86.pdf"))
+  ; (setenv "PATSHOME" "/home/ryan/Projects/ATS2")
+  ; (setenv "PATH" (concat (getenv "PATH") ":/home/ryan/Projects/ATS2/bin"))
+  ; (setenv "PATH" (concat (getenv "PATH") ":/home/ryan/Go/bin"))
+  ; (setq exex-path (append exec-path '("/home/ryan/Go/bin")))
+  ; (setq exec-path (append exec-path '("/home/ryan/Projects/ATS2/bin")))
+  (setq x86-lookup-pdf "~/x86.pdf")
+  )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(evil-want-Y-yank-to-eol nil)
+ '(package-selected-packages
+   (quote
+    (bison-mode flycheck-gometalinter org-ref key-chord ivy helm-bibtex parsebib biblio biblio-core diminish anaconda-mode auctex eclim json-mode smartparens evil flycheck helm helm-core yasnippet avy magit magit-popup with-editor async alert log4e projectile f js2-mode company slime s autothemer yapfify yaml-mode xterm-color x86-lookup ws-butler winum which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill typo toc-org tagedit swift-mode stickyfunc-enhance srefactor sql-indent spaceline smeargle slime-company slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rake rainbow-mode rainbow-identifiers rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nlinum-relative neotree nasm-mode mwim multi-term move-text mmm-mode minitest markdown-toc magit-gitflow magit-gh-pulls lua-mode lorem-ipsum livid-mode live-py-mode link-hint less-css-mode js2-refactor js-doc intero insert-shebang info+ indent-guide ibuffer-projectile hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-hoogle helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets gruvbox-theme google-translate golden-ratio go-guru go-eldoc gnuplot github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md ggtags geiser fuzzy flyspell-correct-helm flycheck-pos-tip flycheck-haskell flycheck-ats2 flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode dockerfile-mode docker disaster diff-hl define-word dactyl-mode cython-mode csv-mode company-web company-tern company-statistics company-shell company-go company-ghci company-ghc company-emacs-eclim company-cabal company-c-headers company-auctex company-anaconda common-lisp-snippets column-enforce-mode color-identifiers-mode coffee-mode cmm-mode cmake-mode clojure-snippets clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu chruby bundler base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:background "#282828" :foreground "#fdf4c1")))))
