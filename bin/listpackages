@@ -1,9 +1,0 @@
-#!/usr/bin/bash
-
-# Prints out all files installed on the system, sorted by size
-# Usage: listpackage [-d]
-#    flags:
-#      -d    sort in descending order
-
-[[ "${1}" == "-d" ]] && SORT="sort -nr " || SORT="sort -n "
-expac -Q -H M "%n (%m) - %d" | eval "${SORT} -k2.3,2" | less
