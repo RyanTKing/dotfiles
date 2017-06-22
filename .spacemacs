@@ -345,9 +345,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (on-frame-open (selected-frame))
   (add-hook 'after-make-frame-functions 'on-frame-open)
   (add-hook 'window-setup-hook 'on-after-init)
-  (add-hook 'c-mode-hook
-            (lambda () (setq flycheck-clang-include-path
-                             (list (expand-file-name "~/Projects/Boston-University-CS/CS552/DiscOS/discos/libc/include"))))))
+  (load-file "~/.emacs.d/elpa/dash-20170613.151/dash.el")
+  (load-file "~/.emacs.d/elpa/autothemer-20170112.1324/autothemer.el"))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
