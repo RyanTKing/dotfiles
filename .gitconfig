@@ -14,7 +14,12 @@
 	branch = auto
 	ui = true
 [core]
-	excludesfile = ~/.gitignore_global
+    editor = emacsclient -t -s "$HOME/.emacs.d/server/server" -a emacs -nw
+    excludesfile = ~/.gitignore_global
+[diff]
+    tool = emacsclient -t -s "$HOME/.emacs.d/server/server" -a emacs -nw
+[merge]
+    tool = emacsclient -t -s "$HOME/.emacs.d/server/server" -a emacs -nw
 [push]
 	default = upstream
 [pull]
