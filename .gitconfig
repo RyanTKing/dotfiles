@@ -1,0 +1,25 @@
+[user]
+	name = Ryan King
+	email = hello@ryanking.com
+[hub]
+	protocol = https
+[alias]
+	st = status
+	ci = comit
+	co = checkout
+	br = branch
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+	ui = true
+[core]
+	excludesfile = ~/.gitignore_global
+[push]
+	default = upstream
+[pull]
+	rebase = true
+[fetch]
+	prune = true
+[include]
+	path = ~/.gitconfig.local
