@@ -40,6 +40,3 @@ while [[ ${#paths} -gt 0 ]]; do
 done
 
 export PATH=${(j+:+)result}
-
-# Stop the $PATH from being reordered
-setopt no_global_rcs

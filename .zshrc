@@ -21,7 +21,7 @@ setopt listtypes
 setopt nolistbeep
 setopt complete_aliases
 setopt extendedglob
-setopt EXTENDED_GLOB
+setopt no_global_rcs
 
 # Aliases
 alias sudo='sudo '         # Make sudo work with aliases
