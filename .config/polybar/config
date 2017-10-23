@@ -1,0 +1,341 @@
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[colors]
+foreground = #ebdbb2
+
+background = #88282828
+background-dark = #CC282828
+foreground-alt = #7c6f64
+background-alt = #458588
+background-mid = #3C3836
+background-light = #504945
+alert = #cc241d
+
+; foreground = #eff1f5
+; background = #5a2b303b
+; foreground-alt = #eff1f5
+; background-alt = #882b303b
+; primary = #96b5b4
+; secondary = #b48ead
+; alert = #bf616a
+; urgent = #88bf616a
+
+[bar/top]
+bottom = false
+monitor = "DVI-I-1"
+override-redirect = false
+enable-ipc = true
+
+width = 100%
+height = 32
+
+offset-x = 0
+offset-y = -1
+
+foreground = ${colors.foreground}
+background = ${colors.background}
+
+underline-size = 2
+underline-color = ${colors.foreground}
+
+padding = 0
+module-margin = 0
+
+font-0 = Gohu GohuFont:size=11;2
+font-1 = GohuFontMedium Nerd Font:size=10;3
+
+modules-left = i3 xwindow
+modules-center = mpd
+modules-right = github updates cpu memory vpn network volume date powermenu
+
+spacing = 1
+
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
+
+[bar/bot]
+bottom = true
+monitor = "DVI-I-1"
+override-redirect = false
+enable-ipc = true
+
+width = 100%
+height = 32
+
+offset-x = 0
+offset-y = -1
+
+foreground = ${colors.foreground}
+background = ${colors.background}
+
+underline-size = 0
+underline-color = ${colors.foreground}
+
+padding = 0
+module-margin = 0
+
+;font-0 = Gohu GohuFont:size=11;2
+font-0 = SauceCodePro Nerd Font:style=Regular:size=18;2
+font-1 = Unifont:size=11;2
+;font-2 = GohuFontMedium Nerd Font:size=18;4
+
+modules-left = mpd
+modules-right = memory cpu
+
+spacing = 1
+
+tray-position = right
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:120:...%
+format-padding = 3
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+
+label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+[module/i3]
+type = internal/i3
+underline-size = 1
+
+ws-icon-0 = 1work;
+ws-icon-1 = 2web;
+ws-icon-2 = 3term;
+ws-icon-3 = 4music;
+ws-icon-4 = 5mail;
+ws-icon-default = 
+
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = true
+
+; focused = Active workspace on focused monitor
+label-focused = %icon%
+label-focused-underline = ${colors.foreground}
+label-focused-padding = 3
+label-focused-background = ${colors.background-dark}
+
+; unfocused = Inactive workspace on any monitor
+label-unfocused = %icon%
+label-unfocused-padding = 3
+
+; visible = Active workspace on unfocused monitor
+label-visible = %icon%
+label-visible-background = ${colors.background}
+; label-visible-underline = ${colors.foreground}
+label-visible-padding = 3
+
+; urgent = Workspace with urgency hint set
+label-urgent = %icon%
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 6
+
+[module/mpd]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+
+interval = 1
+
+; format-online = <icon-prev> <toggle> <icon-next> <label-song> <bar-progress> <label-time>
+format-online = <icon-prev> <toggle> <icon-next> <label-song> <label-time>
+
+; label-song =  %artist% - %title%
+label-song = "%artist:0:20% - %title:0:60%"
+label-time = "[%elapsed% / %total%]"
+format-online-padding = 3
+
+format-offline =  no current track
+format-offline-padding = 3
+
+icon-play = 
+icon-pause = 
+icon-prev = 
+icon-next = 
+
+bar-progress-width = bar
+bar-progress-indicator = |
+bar-progress-fill = ─
+bar-progress-empty = ─
+
+[module/network]
+type = internal/network
+interface = eno1
+interval = 3.0
+
+format-connected = <label-connected>
+
+format-disconnected = <label-disconnected>
+
+format-packetloss = <animation-packetloss> <label-connected>
+
+; label-connected =  %local_ip%   %downspeed:5%   %upspeed:5%
+label-connected =  %local_ip%
+label-connected-foreground = ${colors.foreground}
+
+;label-disconnected =  not connected
+label-disconnected =  no connection
+; label-disconnected-foreground = ${colors.alert}
+
+animation-packetloss-0 = 
+; animation-packetloss-0-foreground = ${colors.alert}
+animation-packetloss-1 = 
+; animation-packetloss-1-foreground = ${colors.alert}
+animation-packetloss-framerate = 500
+
+[module/date]
+type = internal/date
+interval = 1
+
+date = "%a %b %d, "
+
+time = "%H:%M"
+
+date-alt = "%A, %d %B %Y"
+time-alt = "%H:%M:%S"
+
+label = "%date% %time%"
+
+format =  <label>
+format-padding = 3
+format-background = ${colors.background-dark}
+
+[module/volume]
+type = internal/volume
+
+format-volume = <ramp-volume> <label-volume>
+format-muted = <label-muted>
+label-volume = %percentage%
+label-muted =  muted
+format-volume-padding = 3
+format-muted-padding = 3
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-headphones-0 = 
+
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+
+; label-open = ""
+label-open = ""
+label-close = ""
+label-open-padding = 3
+label-close-padding = 3
+
+menu-0-0 = " Logout"
+menu-0-0-exec = menu-open-1
+menu-0-1 = " Reboot"
+menu-0-1-exec = menu-open-2
+menu-0-2 = " Poweroff"
+menu-0-2-exec = menu-open-3
+menu-0-0-padding = 3
+menu-0-1-padding = 3
+menu-0-2-padding = 3
+
+menu-1-0 = Okay
+menu-1-0-exec = i3-msg exit
+menu-1-0-padding = 3
+menu-1-1 = Back
+menu-1-1-exec = menu-open-0
+menu-1-1-padding = 3
+
+menu-2-0 = Okay
+menu-2-0-exec = sudo reboot
+menu-2-0-padding = 3
+menu-2-1 = Back
+menu-2-1-exec = menu-open-0
+menu-2-1-padding = 3
+
+menu-3-0 = Okay
+menu-3-0-exec = sudo poweroff
+menu-3-0-padding = 3
+menu-3-1 = Back
+menu-3-1-exec = menu-open-0
+menu-3-1-padding = 3
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+
+; format = <label> <ramp-coreload>
+format = <label>
+format-padding = 0
+label =  %percentage%%
+
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+[module/memory]
+type = internal/memory
+format = <label>
+format-padding = 3
+label =  %gb_used%
+
+bar-used-indicator =
+bar-used-width = 20
+bar-used-foreground-1 = ${colors.foreground}
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = ${colors.foreground-alt}
+
+
+[module/github]
+type = internal/github
+token = ${file:/home/ryan/.config/polybar/github_token}
+empty-notifications = fals<
+format = <label>
+label =  %notifications%
+format-padding = 3
+
+[module/updates]
+type = custom/script
+interval = 1200
+format = <label>
+format-padding = 3
+label = "%output:0:60%"
+exec = .config/polybar/updates.sh
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+
+[module/vpn]
+type = custom/script
+exec = pgrep openvpn
+interval = 5
+label = vpn
+format-prefix = " "
+format-padding = 3
+
+[module/weather]
+type = custom/script
+interval = 10
+format = <label>
+format-prefix = " "
+exec = ~/.config/polybar/weather.py
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+
+; vim:ft=dosini

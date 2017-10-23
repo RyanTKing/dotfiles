@@ -17,17 +17,20 @@ export EMACSD_SOCKET="${HOME}/.emacs.d/server"
 
 # Setup PATH
 PATH="/usr/local/bin:$PATH"
-[ -d "/usr/local/sbin" ]		            && PATH="/usr/local/sbin:$PATH"
-[ -d "/usr/bin/core_perl" ] 		        && PATH="/usr/bin/core_perl:$PATH"
-[ -d "/usr/lib/perl5/vendor_perl/bin" ] && PATH="/usr/lib/perl5/vendor_perl/bin:$PATH"
-[ -d "/usr/bin/vendor_perl" ]		        && PATH="/usr/bin/vendor_perl:$PATH"
-[ -d "/usr/lib/perl5/site_perl/bin" ]   && PATH="/usr/lib/perl5/site_perl/bin:$PATH"
-[ -d "/usr/bin/site_perl" ]		          && PATH="/usr/bin/site_perl:$PATH"
-[ -d "/Library/Tex/texbin" ]            && PATH="/Library/Tex/texbin:$PATH"
-[ -d "${HOME}/bin"]                     && PATH="${HOME}/bin"
-[ -d "$Home/Go/bin" ]                   && PATH="$Home/Go/bin:$PATH"
-[ -d "$PATSHOME/bin" ]                  && PATH="$PATSHOME/bin:$PATH"
-[ -d "/usr/local/anaconda3/bin" ]       && PATH="/usr/local/anaconda3/bin:$PATH"
+[ -d "/usr/local/sbin" ]		            && PATH="/usr/local/sbin:${PATH}"
+[ -d "/usr/bin/core_perl" ] 		        && PATH="/usr/bin/core_perl:${PATH}"
+[ -d "/usr/lib/perl5/vendor_perl/bin" ] && PATH="/usr/lib/perl5/vendor_perl/bin:${PATH}"
+[ -d "/usr/bin/vendor_perl" ]		        && PATH="/usr/bin/vendor_perl:${PATH}"
+[ -d "/usr/lib/perl5/site_perl/bin" ]   && PATH="/usr/lib/perl5/site_perl/bin:${PATH}"
+[ -d "/usr/bin/site_perl" ]		          && PATH="/usr/bin/site_perl:${PATH}"
+[ -d "/Library/Tex/texbin" ]            && PATH="/Library/Tex/texbin:${PATH}"
+[ -d "${HOME}/bin" ]                    && PATH="${HOME}/bin:${PATH}"
+[ -d "$Home/Go/bin" ]                   && PATH="$Home/Go/bin:${PATH}"
+[ -d "$PATSHOME/bin" ]                  && PATH="$PATSHOME/bin:${PATH}"
+[ -d "/usr/local/anaconda3/bin" ]       && PATH="/usr/local/anaconda3/bin:${PATH}"
+
+# OPAM configuration
+. ${HOME}/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
 # Clean PATH
 typeset -a paths result
