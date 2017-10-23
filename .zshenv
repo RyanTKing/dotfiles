@@ -40,3 +40,5 @@ while [[ ${#paths} -gt 0 ]]; do
 done
 
 export PATH=${(j+:+)result}
+
+setopt no_global_rcs

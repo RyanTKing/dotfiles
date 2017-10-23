@@ -78,7 +78,7 @@ values."
        ; scheme
        shell-scripts
        sql
-       ; swift
+       swift
        ; vimscript
        yaml
        ;; Tools
