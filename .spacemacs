@@ -74,6 +74,7 @@ values."
        markdown
        ; php
        python
+       ipython-notebook
        ; ruby
        ; scheme
        shell-scripts
