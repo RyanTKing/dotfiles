@@ -1,0 +1,97 @@
+" Skip init for vim-tiny or vim-small
+if 0 | endif
+
+" Don't be compatible with Vi
+if &compatible
+    set nocompatible
+endif
+
+" Disable filetypes
+filetype off
+
+" Setup MinPac
+packadd minpac
+call minpac#init()
+
+command! PackUpdate call minpac#update()
+command! PackClean call minpac#clean()
+command! -nargs=* PackAdd call minpac#add(<args>)
+
+PackAdd 'k-takata/minpac', {'type': 'opt'}
+
+" GUI
+PackAdd 'chriskempson/base16-vim'
+PackAdd 'vim-airline/vim-airline'
+PackAdd 'vim-airline/vim-airline-themes'
+PackAdd 'majutsushi/tagbar'
+PackAdd 'valloric/youcompleteme'
+PackAdd 'airblade/vim-gitgutter'
+
+" Language Support files
+PackAdd 'sheerun/vim-polyglot'
+PackAdd 'scrooloose/syntastic'
+PackAdd 'mileszs/ack.vim'
+PackAdd 'rking/ag.vim'
+PackAdd 'lervag/vimtex'
+PackAdd 'dag/vim2hs'
+PackAdd 'shirk/vim-gas'
+PackAdd 'fatih/vim-go'
+PackAdd 'klen/python-mode'
+PackAdd 'bakpakin/ats2.vim'
+
+" Tim Pope plugins
+PackAdd 'tpope/vim-fugitive'
+PackAdd 'tpope/vim-surround'
+PackAdd 'tpope/vim-repeat'
+PackAdd 'tpope/vim-unimpaired'
+PackAdd 'tpope/vim-vinegar'
+PackAdd 'tpope/vim-obsession'
+PackAdd 'tpope/vim-markdown'
+PackAdd 'tpope/vim-eunuch'
+PackAdd 'tpope/vim-scriptease'
+
+" Navigation
+PackAdd 'christoomey/vim-tmux-navigator'
+PackAdd 'kien/ctrlp.vim'
+PackAdd 'tacahiroy/ctrlp-funky'
+PackAdd 'Lokaltog/vim-easymotion'
+PackAdd 'terryma/vim-multiple-cursors'
+PackAdd 'gcmt/wildfire.vim'
+
+" Text Entry
+PackAdd 'jiangmiao/auto-pairs'
+PackAdd 'junegunn/vim-easy-align'
+PackAdd 'mattn/emmet-vim'
+PackAdd 'ervandew/supertab'
+
+" Snippets
+PackAdd 'SirVer/ultisnips'
+PackAdd 'honza/vim-snippets'
+
+" Other Plugins
+PackAdd 'jeetsukumaran/vim-gazetteer'
+PackAdd 'Keithbsmiley/investigate.vim'
+
+if &termencoding == ""
+        let &termencoding = &encoding
+endif
+set encoding=utf-8
+
+" Enable Syntax Highlighting
+syntax on
+
+" Enable filetype handling
+filetype plugin indent on
+
+" Turn off polyglot
+let g:polyglot_disabled = ['latex', 'golang', 'python']
+
+let g:pymode_python = 'python3'
+
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
+
+" Process all of the configuration files
+for filename in sort(split(glob('~/.vim/config/*.vim'), '\n'))
+        execute 'source '.filename
+endfor

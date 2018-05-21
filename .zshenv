@@ -32,6 +32,10 @@ PATH="/usr/local/bin:$PATH"
 # OPAM configuration
 . ${HOME}/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
 
+# Ruby configuration
+PATH="$(ruby -e 'print Gem.user_dir')/bin:${PATH}"
+export GEM_HOME="${HOME}/.gem"
+
 # Clean PATH
 typeset -a paths result
 paths=($path)

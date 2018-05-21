@@ -52,6 +52,11 @@ alias e="emacs -nw"
 alias ec="emacsclient -t -s \"${EMACSD_SOCKET}/server\" -a e"
 alias ecv="emacsclient -s \"${EMACSD_SOCKET}/server\" -a emacs"
 
+# Base16 Config
+BASE16_SHELL_SET_BACKGROUND=false
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
 # Boston University CS folder aliases
 CS=${PROJECTS}/Boston-University-CS
 alias BUCS="cd ${CS}"
@@ -60,5 +65,4 @@ for CLASS in ${CS}/*/; do
 done
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
 zstyle ':completion:*' insert-tab pending

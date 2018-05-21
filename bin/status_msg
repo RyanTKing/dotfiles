@@ -10,18 +10,18 @@ if [[ "$1" = "help" ]]; then
     exit
 fi
 
-TYPE="$1"
-MSG="$2"
-ICON=""
+TYPE="${1}"
+PROG="${2}"
+MSG="${3}"
 
 case "${TYPE}" in
-    "info")    ICON="[\033[00;34m .. \033[0m]" ;;
-    "success") ICON="[\033[00;32m OK \033[0m]" ;;
-    "warning") ICON="[\033[00;33m ?? \033[0m]" ;;
-    "error")   ICON="[\033[00;31mFAIL\033[0m]" ;;
-    *) printf "[\033m0;31mFAIL\033[0m] %s\n" "invalid status message type: ${TYPE}"; exit 1 ;;
+    "info")    printf "\033[00;34m" ;;
+    "success") printf "\033[00;32m" ;;
+    "warning") printf "\033[00;33m" ;;
+    "error")   printf "\033[00;31m" ;;
+    *) status_msg "error" "status_msg" "unknown error type: ${TYPE}"; exit 1 ;;
 esac
 
-printf "${ICON} %s\n" "${MSG}"
+printf "%s:\033[0m %s\n" "${PROG}" "${MSG}"
 
 # End of [status_msg]

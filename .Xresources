@@ -11,8 +11,10 @@ XTerm*locale: true
 ! URXVT
 URxvt.termName: rxvt-unicode
 URxvt.scrollBar: false
-URxvt*font: xft:Gohu GohuFont:size=14,xft:xso4\ Terminess\ for\ Powerline:size=14
-URxvt*boldFont: xft:Gohu GohuFont:style=Bold:size=14
+! URxvt*font: xft:Gohu GohuFont:size=14,xft:xso4\ Terminess\ for\ Powerline:size=14
+URxvt*font: xft:Envy Code R for Powerline:style=Regular:size=12
+URxvt*boldFont: xft:Envy Code R for Powerline:style=Bold:size=12
+! URxvt*boldFont: xft:Gohu GohuFont:style=Bold:size=14
 URxvt.internalBorder: 12
 URxvt.intensityStyles: false
 URXvt.clipboard.autocopy: true
@@ -29,9 +31,6 @@ URxvt.keysym.M-Escape:      perl:keyboard-select:activate
 URxvt.keysym.M-s:           perl:keyboard-select:search
 URxvt.matcher.rend.0:       Uline fg16
 URxvt*depth: 32
-URxvt*background: rgba:2800/2800/2800/cccc
-! URxvt*transparent: true
-! URxvt*shading: 60
 
 ! YeahConsole
 yeahconsole*term: urxvtc
@@ -73,69 +72,43 @@ rofi.tokenize: false
 ! hard contrast: *background: #1d2021
 ! *background: #282828
 ! ! soft contrast: *background: #32302f
-*foreground: #ebdbb2
+#define background_opacity 80
+*foreground: base05
+#ifdef background_opacity
+URxvt.background: [background_opacity]base00
+#else
+URxvt.background: base00
+#endif
+*cursorColor: base05
+
 ! ! Black + DarkGrey
-*color0:  #282828
-*color8:  #928374
+*color0:  base00
+*color8:  base03
 ! ! DarkRed + Red
-*color1:  #cc241d
-*color9:  #fb4934
+*color1:  base08
+*color9:  base08
 ! ! DarkGreen + Green
-*color2:  #98971a
-*color10: #b8bb26
+*color2:  base0B
+*color10: base0B
 ! ! DarkYellow + Yellow
-*color3:  #d79921
-*color11: #fabd2f
+*color3:  base0A
+*color11: base0A
 ! ! DarkBlue + Blue
-*color4:  #458588
-*color12: #83a598
+*color4:  base0D
+*color12: base0D
 ! ! DarkMagenta + Magenta
-*color5:  #b16286
-*color13: #d3869b
+*color5:  base0E
+*color13: base0E
 ! ! DarkCyan + Cyan
-*color6:  #689d6a
-*color14: #8ec07c
+*color6:  base0C
+*color14: base0C
 ! ! LightGrey + White
-*color7:  #a89984
-*color15: #ebdbb2
+*color7:  base05
+*color15: base07
 
-! Color Configuration
-! *.foreground:   base05
-! *.background:   base00
-! *.cursorColor:  base05
-
-! black
-! *.color0:       base00
-! *.color8:       base03
-! red
-! *.color1:       base08
-! *.color9:       base08
-! green
-! *.color2:       base0B
-! *.color10:      base0B
-! yellow
-! *.color3:       base0A
-! *.color11:      base0A
-! blue
-! *.color4:       base0D
-! *.color12:      base0D
-! magenta
-! *.color5:       base0E
-! *.color13:      base0E
-! cyan
-! *.color6:       base0C
-! *.color14:      base0C
-! white
-! *.color7:       base05
-! *.color15:      base07
-! stylized
-! *.colorIT:      base0B
-! *.colorBD:      base05
-! *.colorUL:      base0C
-
-! *.color16:      base09
-! *.color17:      base0F
-! *.color18:      base01
-! *.color19:      base02
-! *.color20:      base04
-! *.color21:      base06
+*.color16:      base09
+*.color17:      base0F
+*.color18:      base01
+*.color19:      base02
+*.color20:      base04
+*.color21:      base06

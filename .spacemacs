@@ -52,6 +52,8 @@ values."
        colors
        gtags
        shell
+       ;; Frameworks
+       django
        ;; Programming Languages
        asm
        ats2
@@ -61,10 +63,14 @@ values."
                 ; clojure-enable-fancify-symbols t)
        common-lisp
        emacs-lisp
+       flex-bison
        (go :variables
            gofmt-command "goimports")
        ; (haskell :variables
                 ; haskell-enable-hident-style "johan-tibell")
+       (haskell :variables
+                haskell-completion-backend 'intero
+                haskell-enable-hindent-style "johan-tibell")
        html
        java
        javascript
@@ -170,8 +176,8 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(gruvbox
-                         base16-ocean
+   dotspacemacs-themes '(base16-ocean
+                         gruvbox
                          spacemacs-dark
                          spacemacs-light)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -346,8 +352,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (on-frame-open (selected-frame))
   (add-hook 'after-make-frame-functions 'on-frame-open)
   (add-hook 'window-setup-hook 'on-after-init)
-  (load-file "~/.emacs.d/elpa/dash-20170613.151/dash.el")
-  (load-file "~/.emacs.d/elpa/autothemer-20170112.1324/autothemer.el"))
+  (load-file "~/.emacs.d/dash.el")
+  (load-file "~/.emacs.d/autothemer.el"))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -365,16 +371,19 @@ you should place your code here."
   ; (setq exex-path (append exec-path '("/home/ryan/Go/bin")))
   ; (setq exec-path (append exec-path '("/home/ryan/Projects/ATS2/bin")))
   (setq x86-lookup-pdf "~/x86.pdf")
+  (setq TeX-engine 'xetex)
   )
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (powerline reveal-in-osx-finder pcre2el pbcopy spinner osx-trash osx-dictionary pdf-tools gntp nlinum markdown-mode macrostep skewer-mode simple-httpd launchctl multiple-cursors hydra parent-mode request haml-mode gitignore-mode fringe-helper git-gutter+ git-gutter gh marshal logito pcache ht flyspell-correct pos-tip pkg-info epl flx git-commit iedit anzu goto-chg undo-tree eval-sexp-fu highlight tablist docker-tramp json-snatcher json-reformat web-completion-data dash-functional tern go-mode bind-map bind-key packed pythonic auto-complete popup bison-mode flycheck-gometalinter org-ref key-chord ivy helm-bibtex parsebib biblio biblio-core diminish anaconda-mode auctex eclim json-mode smartparens evil flycheck helm helm-core yasnippet avy magit magit-popup with-editor async alert log4e projectile f js2-mode company slime s yapfify yaml-mode xterm-color x86-lookup ws-butler winum which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill typo toc-org tagedit swift-mode stickyfunc-enhance srefactor sql-indent spaceline smeargle slime-company slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rake rainbow-mode rainbow-identifiers rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nlinum-relative neotree nasm-mode mwim multi-term move-text mmm-mode minitest markdown-toc magit-gitflow magit-gh-pulls lua-mode lorem-ipsum livid-mode live-py-mode link-hint less-css-mode js2-refactor js-doc intero insert-shebang info+ indent-guide ibuffer-projectile hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-hoogle helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets gruvbox-theme google-translate golden-ratio go-guru go-eldoc gnuplot github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md ggtags geiser fuzzy flyspell-correct-helm flycheck-pos-tip flycheck-haskell flycheck-ats2 flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode dockerfile-mode docker disaster diff-hl define-word dactyl-mode cython-mode csv-mode company-web company-tern company-statistics company-shell company-go company-ghci company-ghc company-emacs-eclim company-cabal company-c-headers company-auctex company-anaconda common-lisp-snippets column-enforce-mode color-identifiers-mode coffee-mode cmm-mode cmake-mode clojure-snippets clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu chruby bundler base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (org-mime django-mode pony-mode org-category-capture ein request-deferred websocket deferred ghc haskell-mode powerline reveal-in-osx-finder pcre2el pbcopy spinner osx-trash osx-dictionary pdf-tools gntp nlinum markdown-mode macrostep skewer-mode simple-httpd launchctl multiple-cursors hydra parent-mode request haml-mode gitignore-mode fringe-helper git-gutter+ git-gutter gh marshal logito pcache ht flyspell-correct pos-tip pkg-info epl flx git-commit iedit anzu goto-chg undo-tree eval-sexp-fu highlight tablist docker-tramp json-snatcher json-reformat web-completion-data dash-functional tern go-mode bind-map bind-key packed pythonic auto-complete popup bison-mode flycheck-gometalinter org-ref key-chord ivy helm-bibtex parsebib biblio biblio-core diminish anaconda-mode auctex eclim json-mode smartparens evil flycheck helm helm-core yasnippet avy magit magit-popup with-editor async alert log4e projectile f js2-mode company slime s yapfify yaml-mode xterm-color x86-lookup ws-butler winum which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package unfill typo toc-org tagedit swift-mode stickyfunc-enhance srefactor sql-indent spaceline smeargle slime-company slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rake rainbow-mode rainbow-identifiers rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nlinum-relative neotree nasm-mode mwim multi-term move-text mmm-mode minitest markdown-toc magit-gitflow magit-gh-pulls lua-mode lorem-ipsum livid-mode live-py-mode link-hint less-css-mode js2-refactor js-doc intero insert-shebang info+ indent-guide ibuffer-projectile hy-mode hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-hoogle helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets gruvbox-theme google-translate golden-ratio go-guru go-eldoc gnuplot github-search github-clone github-browse-file gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md ggtags geiser fuzzy flyspell-correct-helm flycheck-pos-tip flycheck-haskell flycheck-ats2 flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav dumb-jump drupal-mode dockerfile-mode docker disaster diff-hl define-word dactyl-mode cython-mode csv-mode company-web company-tern company-statistics company-shell company-go company-ghci company-ghc company-emacs-eclim company-cabal company-c-headers company-auctex company-anaconda common-lisp-snippets column-enforce-mode color-identifiers-mode coffee-mode cmm-mode cmake-mode clojure-snippets clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu chruby bundler base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

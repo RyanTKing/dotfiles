@@ -25,3 +25,4 @@ zstyle ':prezto:load' pmodule \
 
 # Prezto Theme
 zstyle ':prezto:module:prompt' theme 'kylewest'
+zstyle ':prezto:module:utility' safe-ops 'no'
