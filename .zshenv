@@ -11,9 +11,10 @@ export PROJECTS="$HOME/Projects"        # Projects
 export PATSHOME="$HOME/Projects/ATS2"
 export PATSCONTRIB="$HOME/Projects/ATS2-contrib"
 export PATSHOMELOCS=./node_modules:./../../node_modules:./../../../../node_modules
-export GOPATH="$HOME/Go:$PROJECTS/Boston-University-CS/CS562/Project"
+export GOPATH="$HOME/go"
 export NODE_PATH="/usr/lib/node_modules"
 export EMACSD_SOCKET="${HOME}/.emacs.d/server"
+export CODE_SETTINGS="${HOME}/Library/Application Support/Code/User/settings.json"
 
 # Setup PATH
 PATH="/usr/local/bin:$PATH"
@@ -25,7 +26,7 @@ PATH="/usr/local/bin:$PATH"
 [ -d "/usr/bin/site_perl" ]		          && PATH="/usr/bin/site_perl:${PATH}"
 [ -d "/Library/Tex/texbin" ]            && PATH="/Library/Tex/texbin:${PATH}"
 [ -d "${HOME}/bin" ]                    && PATH="${HOME}/bin:${PATH}"
-[ -d "$Home/Go/bin" ]                   && PATH="$Home/Go/bin:${PATH}"
+[ -d "$GOPATH/bin" ]                   && PATH="$GOPATH/bin:${PATH}"
 [ -d "$PATSHOME/bin" ]                  && PATH="$PATSHOME/bin:${PATH}"
 [ -d "/usr/local/anaconda3/bin" ]       && PATH="/usr/local/anaconda3/bin:${PATH}"
 

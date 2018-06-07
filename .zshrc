@@ -27,13 +27,6 @@ setopt no_global_rcs
 alias sudo='sudo '         # Make sudo work with aliases
 alias reload!='. ~/.zshrc' # Reload the zsh config
 
-if $(gls &>/dev/null); then
-    alias ls="gls -F --color"
-    alias l="gls -lAh --color"
-    alias ll="gls -l --color"
-    alias la='gls -A --color'
-fi
-
 # Git Aliases
 alias gl='git pull --prune'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
@@ -53,16 +46,16 @@ alias ec="emacsclient -t -s \"${EMACSD_SOCKET}/server\" -a e"
 alias ecv="emacsclient -s \"${EMACSD_SOCKET}/server\" -a emacs"
 
 # Base16 Config
-BASE16_SHELL_SET_BACKGROUND=false
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
-# Boston University CS folder aliases
-CS=${PROJECTS}/Boston-University-CS
-alias BUCS="cd ${CS}"
-for CLASS in ${CS}/*/; do
-    alias ${CLASS:t}="cd ${CLASS}"
-done
+# BASE16_SHELL_SET_BACKGROUND=false
+# BASE16_SHELL=$HOME/.config/base16-shell/
+# [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' insert-tab pending
+
+eval "$(pyenv init -)"
+
+if [[ -a "${HOME}/.config/Code/settings.json" && ! -h "$CODE_SETTINGS" ]]; then
+    rm -f "${CODE_SETTINGS}"
+    ln -s "${HOME}/.config/Code/settings.json" "${CODE_SETTINGS}"
+fi
