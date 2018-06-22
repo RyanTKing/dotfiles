@@ -26,6 +26,8 @@ PackAdd 'vim-airline/vim-airline-themes'
 PackAdd 'majutsushi/tagbar'
 PackAdd 'valloric/youcompleteme'
 PackAdd 'airblade/vim-gitgutter'
+PackAdd 'christoomey/vim-tmux-navigator'
+PackAdd 'edkolev/tmuxline.vim'
 
 " Language Support files
 PackAdd 'sheerun/vim-polyglot'

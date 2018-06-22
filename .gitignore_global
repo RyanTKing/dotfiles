@@ -174,3 +174,5 @@ fabric.properties
 .ropeproject/
 q.log
 flycheck_*
+*.swp
+.python-version

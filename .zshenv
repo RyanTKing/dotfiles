@@ -15,6 +15,7 @@ export GOPATH="$HOME/go"
 export NODE_PATH="/usr/lib/node_modules"
 export EMACSD_SOCKET="${HOME}/.emacs.d/server"
 export CODE_SETTINGS="${HOME}/Library/Application Support/Code/User/settings.json"
+export JAVA_HOME=`/usr/libexec/java_home`
 
 # Setup PATH
 PATH="/usr/local/bin:$PATH"

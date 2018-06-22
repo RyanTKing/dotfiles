@@ -105,6 +105,7 @@ let g:ctrlp_custom_ignore = {
 " Snippets
 let g:snips_author = 'Ryan King <hello@ryanking.com>'
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "ultisnips"]
+let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsDontReverseSearchPath = "0"
 
 " Syntastic

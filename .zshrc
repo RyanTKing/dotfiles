@@ -54,8 +54,22 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' insert-tab pending
 
 eval "$(pyenv init -)"
+export WORKON_HOME="$HOME/virtualenv"
+eval "$(pyenv virtualenvwrapper)"
 
-if [[ -a "${HOME}/.config/Code/settings.json" && ! -h "$CODE_SETTINGS" ]]; then
-    rm -f "${CODE_SETTINGS}"
-    ln -s "${HOME}/.config/Code/settings.json" "${CODE_SETTINGS}"
+# Setup ls_extended if available
+if [[ ! -z `which ls_extended` ]]; then
+    alias ls="ls_extended"
 fi
+
+# Command for quickly moving around the go path
+goto () {
+    TARGET=${1}
+
+    for PROJ in "${GOPATH}/src/"*/*/*; do
+        BNAME=${PROJ##*/}
+        if [[ "${BNAME}" = ${TARGET} || "${BNAME}" = "${TARGET}.git" ]]; then
+            cd ${PROJ}
+        fi
+    done
+}

@@ -1,8 +1,6 @@
 [user]
 	name = Ryan King
-	email = hello@ryanking.com
-[hub]
-	protocol = https
+	email = rking@cogolabs.com
 [alias]
 	st = status
 	ci = comit
@@ -14,12 +12,12 @@
 	branch = auto
 	ui = true
 [core]
-    editor = emacsclient -t -s "$HOME/.emacs.d/server/server" -a emacs -nw
+    editor = vim
     excludesfile = ~/.gitignore_global
 [diff]
-    tool = emacsclient -t -s "$HOME/.emacs.d/server/server" -a emacs -nw
+    tool = vim
 [merge]
-    tool = emacsclient -t -s "$HOME/.emacs.d/server/server" -a emacs -nw
+    tool = vim
 [push]
 	default = upstream
 [pull]
@@ -28,3 +26,5 @@
 	prune = true
 [include]
 	path = ~/.gitconfig.local
+[url "ssh://git@git.cogolo.net"]
+	insteadOf = https://git.cogolo.net
