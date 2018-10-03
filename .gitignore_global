@@ -176,3 +176,4 @@ q.log
 flycheck_*
 *.swp
 .python-version
+.vscode/

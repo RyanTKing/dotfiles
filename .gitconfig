@@ -1,6 +1,8 @@
 [user]
 	name = Ryan King
 	email = rking@cogolabs.com
+    signingkey = 3B7C6043E2D6EB20
+    gpgsign = true
 [alias]
 	st = status
 	ci = comit
@@ -14,6 +16,8 @@
 [core]
     editor = vim
     excludesfile = ~/.gitignore_global
+[commit]
+    gpgsign = true
 [diff]
     tool = vim
 [merge]

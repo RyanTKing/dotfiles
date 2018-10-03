@@ -40,36 +40,70 @@ alias gb='git branch'
 alias gs='git status -sb'
 alias gac='git add -A && git commit -m'
 
+# Docker Aliases
+alias dcr='docker-compose run'
+alias dcu='docker-compose up'
+alias dcd='docker-compose down'
+alias dcdu='docker-compose -f docker-compose.dev.yml up'
+alias dcdd='docker-compose -f docker-compose.dev.yml down'
+
 # Emacs Aliases
 alias e="emacs -nw"
 alias ec="emacsclient -t -s \"${EMACSD_SOCKET}/server\" -a e"
 alias ecv="emacsclient -s \"${EMACSD_SOCKET}/server\" -a emacs"
 
+# Fleet Aliases
+# ssh-add ${HOME}/.ssh/fleet_rsa
+alias au="export FLEETCTL_ENDPOINT=http://au.cogolo.net"
+alias hm="export FLEETCTL_ENDPOINT=http://hmetal.cogolo.net"
+alias qm="export FLEETCTL_ENDPOINT=http://qmetal.cogolo.net"
+
+alias querydb="mysql -u rking -h 172.16.17.121 -p"
+
 # Base16 Config
-# BASE16_SHELL_SET_BACKGROUND=false
-# BASE16_SHELL=$HOME/.config/base16-shell/
-# [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+BASE16_SHELL_SET_BACKGROUND=false
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' insert-tab pending
 
 eval "$(pyenv init -)"
-export WORKON_HOME="$HOME/virtualenv"
-eval "$(pyenv virtualenvwrapper)"
+# export WORKON_HOME="$HOME/virtualenv"
+# eval "$(pyenv virtualenvwrapper)"
+
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # Setup ls_extended if available
 if [[ ! -z `which ls_extended` ]]; then
     alias ls="ls_extended"
 fi
 
-# Command for quickly moving around the go path
-goto () {
-    TARGET=${1}
+if [[ ! -z `which pwd_extended` ]]; then
+    alias pwd="pwd_extended"
+fi
 
-    for PROJ in "${GOPATH}/src/"*/*/*; do
-        BNAME=${PROJ##*/}
-        if [[ "${BNAME}" = ${TARGET} || "${BNAME}" = "${TARGET}.git" ]]; then
-            cd ${PROJ}
+# Kube PS1
+source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+PS1='$(kube_ps1)'$PS1
+
+# Command for quickly moving around the go path
+cogo() {
+    CMD=${1}
+    ARG=${2}
+
+    if [[ "${CMD}" = "cd" ]]; then
+        DEST=`cogopath local ${ARG}`
+        if [[ "${DEST}" != "ERROR" ]]; then
+            cd "${DEST}"
         fi
-    done
+        unset DEST
+    fi
+    if [[ "${CMD}" = "get" ]]; then
+        go get -d `cogopath remote ${ARG}`
+    fi
 }
+
+
+# added by travis gem
+[ -f /Users/rking/.travis/travis.sh ] && source /Users/rking/.travis/travis.sh

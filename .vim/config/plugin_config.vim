@@ -1,84 +1,9 @@
-" ------------------------------- Basic Config Settings ----------------------
-set autoindent
-set backspace=2
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline_theme = 'base16_ocean'
+let g:airline_powerline_fonts = 1
 
-set foldcolumn=4
-
-set foldmethod=marker
-set formatoptions=tqnw
-
-set ignorecase smartcase
-
-set laststatus=2
-set textwidth=0
-
-set linebreak wrap
-
-set mouse=a
-set number
-set tabstop=4
-set expandtab
-set shiftwidth=4
-
-set showcmd
-set whichwrap=h,l,~,[,]
-
-set wildmenu
-
-set winminheight=0
-set scrolloff=5
-
-" set modeline
-let mapleader=","
-
-set incsearch
-set hidden
-
-set fileformats=unix,dos
-
-set tags=./tags;/
-
-set sessionoptions=blank,buffers,curdir,folds,help,tabpages,unix
-
-set clipboard=unnamed
-if has('unnamedplus')
-        set clipboard=unnamedplus
-endif
-
-" Set colorscheme
-set t_Co=256
-let base16colorspace=256
-colorscheme base16-ocean
-hi Normal ctermbg=none
-hi NonText ctermbg=none
-hi clear LineNr
-hi clear SignColumn
-hi clear FoldColumn
-hi clear CursorLineNr
-hi clear CursorLine
-hi CursorLine gui=underline cterm=underline
-
-set backupskip=/tmp/*,/private/tmp/*
-
-set nolist listchars=tab:›\ ,trail:-,extends:>,precedes:<,eol:¬
-
-let g:html_wrong_comments = 1
-
-let IspellLang = 'english'
-
-if v:version > 702
-        set undofile
-        set undolevels=1000
-        set undoreload=10000
-        au BufWritePre /tmp/* setlocal noundofile
-        au BufWritePre /private/tmp/* setlocal noundofile
-endif
-
-if v:version >= 704
-        set number relativenumber
-endif
-
-"---------------------------- Plugin Specific Settings -----------------------
 " Tagbar
 let g:tagbar_autoclose = 1
 nmap <Leader>t :TagbarToggle<CR>
@@ -101,11 +26,18 @@ let g:ctrlp_custom_ignore = {
                         \ 'dir': '\.git$|\.svn$',
                         \ 'file': '\.so$|\.dat$|\.DS_Store$|Thumbs.db|\.pdf$|\.jpg$|\.png$|\.ttf$|\.gif$'
                         \ }
+" YouCompleteMe
+let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+let g:ycm_complete_in_comments = 1 " Completion in comments
+let g:ycm_complete_in_strings = 1 " Completion in string
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
 
 " Snippets
 let g:snips_author = 'Ryan King <hello@ryanking.com>'
 let g:UltiSnipsSnippetDirectories = ["UltiSnips", "ultisnips"]
-let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnipsDontReverseSearchPath = "0"
 
 " Syntastic
@@ -127,6 +59,12 @@ let g:signify_disable_by_default = 1
 let g:wildfire_fuel_map = "\\"
 let g:wildfire_water_map = "<BS>"
 
+" NERDTree
+nmap <F7> :NERDTreeToggle<CR>
+
+" The NERDCommentor
+nmap <C-a> <Leader>c<space>
+
 " TagBar
 nmap <F8> :TagbarToggle<CR>
 
@@ -136,3 +74,10 @@ let g:SuperTabDefaultCompletionType = "context"
 " EasyMotion
 nmap s <Plug>(easymotion-s)
 let g:EasyMotion_smartcase = 1
+
+" Polyglot
+let g:polyglot_disabled = ['latex', 'golang', 'python']
+
+" Pymode
+let g:pymode_python = 'python3'
+
