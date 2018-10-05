@@ -49,7 +49,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/vim-easy-align'
 Plug 'mattn/emmet-vim'
 Plug 'ervandew/supertab'
-Plug 'scrooloose/nerdcommenter'
+Plug 'tomtom/tcomment_vim'
 
 " Snippets
 Plug 'SirVer/ultisnips'

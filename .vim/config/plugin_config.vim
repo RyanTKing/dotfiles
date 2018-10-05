@@ -1,7 +1,24 @@
 " Airline
+set laststatus=2
+
+	" Bottom row
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+let g:airline_symbols.linenr = '≣'
+let g:airline#extensions#keymap#enabled = 0
+let g:airline_detect_spelllang = 0
+set noshowmode
+
+	" Tabs
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+
+    " Theme
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline_theme = 'base16_ocean'
+" let g:airline_theme = 'base16_ocean'
 let g:airline_powerline_fonts = 1
 
 " Tagbar
@@ -45,6 +62,13 @@ let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc=1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='⚠'
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_go_checkers = ['go', 'golint']
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
 " LaTeX Suite
 let g:Tex_DefaultTargetFormat = 'pdf'
@@ -60,10 +84,8 @@ let g:wildfire_fuel_map = "\\"
 let g:wildfire_water_map = "<BS>"
 
 " NERDTree
+let NERDTreeShowHidden=1
 nmap <F7> :NERDTreeToggle<CR>
-
-" The NERDCommentor
-nmap <C-a> <Leader>c<space>
 
 " TagBar
 nmap <F8> :TagbarToggle<CR>
@@ -74,6 +96,9 @@ let g:SuperTabDefaultCompletionType = "context"
 " EasyMotion
 nmap s <Plug>(easymotion-s)
 let g:EasyMotion_smartcase = 1
+
+" vim-go
+" let g:go_metalinter_autosave = 1
 
 " Polyglot
 let g:polyglot_disabled = ['latex', 'golang', 'python']

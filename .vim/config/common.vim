@@ -4,6 +4,8 @@ set backspace=2
 
 set foldcolumn=4
 
+set colorcolumn=120
+
 set foldmethod=marker
 set formatoptions=tqnw
 
@@ -56,6 +58,7 @@ colorscheme base16-gruvbox-dark-medium
 " hi clear FoldColumn
 " hi clear CursorLineNr
 " hi clear CursorLine
+set cursorline
 hi CursorLine gui=underline cterm=underline
 
 set backupskip=/tmp/*,/private/tmp/*
