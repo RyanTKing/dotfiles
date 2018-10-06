@@ -79,10 +79,6 @@ if [[ ! -z `which ls_extended` ]]; then
     alias ls="ls_extended"
 fi
 
-if [[ ! -z `which pwd_extended` ]]; then
-    alias pwd="pwd_extended"
-fi
-
 # Kube PS1
 source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
 PS1='$(kube_ps1)'$PS1
