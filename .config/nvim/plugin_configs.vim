@@ -17,7 +17,12 @@ let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+let g:airline#extensions#tmuxline#enabled = 0
 let g:airline_powerline_fonts = 1
+
+" tmuxline
+let g:tmuxline_theme = 'vim_statusline_3'
+let g:tmuxline_preset = 'tmux'
 
 " DelimitMate
 let delimitMate_expand_cr = 1
@@ -141,3 +146,10 @@ let g:go_auto_type_info=1
 let g:go_list_type="quickfix"
 let g:go_addtags_transform="snakecase"
 
+" TComment
+let g:tcomment_maps = 0
+nnoremap <silent><C-_> :TComment<Cr>
+inoremap <silent><C-_> <Esc>:TComment<Cr>a
+vnoremap <silent><C-_> :'<,'>TComment<Cr>
+
+call tcomment#type#Define('c', '// %s')

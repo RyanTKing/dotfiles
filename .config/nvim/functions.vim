@@ -16,7 +16,7 @@ function! TermToggle(height)
 			exec "buffer ".s:term_buf
 			exec "bd terminal"
 		catch
-			call termopen($SHELL, {"detach": 0})
+			call termopen('/usr/local/bin/zsh', {"detach": 0})
 			let s:term_buf = bufnr("")
 			setlocal nonumber
 			setlocal norelativenumber
