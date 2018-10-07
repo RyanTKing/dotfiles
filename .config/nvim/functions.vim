@@ -54,3 +54,4 @@ function! RenameCWord(cword)
 	endif
 	call cursor(l:cursor_pos[1], l:cursor_pos[2])
 endfunction<Paste>
+

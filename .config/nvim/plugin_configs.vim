@@ -17,7 +17,7 @@ let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
 
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-let g:airline#extensions#tmuxline#enabled = 0
+let g:airline#extensions#tmuxline#enabled = 1
 let g:airline_powerline_fonts = 1
 
 " tmuxline
@@ -153,3 +153,4 @@ inoremap <silent><C-_> <Esc>:TComment<Cr>a
 vnoremap <silent><C-_> :'<,'>TComment<Cr>
 
 call tcomment#type#Define('c', '// %s')
+

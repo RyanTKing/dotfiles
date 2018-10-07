@@ -9,7 +9,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 " GUI
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'ryantking/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-vinegar'
@@ -57,4 +57,3 @@ Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh
 
 call plug#end()
 
-filetype plugin indent on
