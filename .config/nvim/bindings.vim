@@ -12,15 +12,14 @@ nnoremap <silent><F4> :call RenameCWord("cWORD")<Cr>
 inoremap <silent><F4> <Esc>:call RenameCWord("cWORD")<Cr>
 
 " Toggle Terminal
-nnoremap <silent><A-t> :call TermToggle(12)<CR>
-inoremap <silent><A-t> <Esc>:call TermToggle(12)<CR>
-tnoremap <silent><A-t> <C-\><C-n>:call TermToggle(12)<CR>
+nnoremap <silent><A-b> :call TermToggle(12)<CR>
+inoremap <silent><A-b> <Esc>:call TermToggle(12)<CR>
+tnoremap <silent><A-b> <C-\><C-n>:call TermToggle(12)<CR>
 tnoremap <silent><Esc> <C-\><C-n>
 
 " Denite
 noremap <silent><C-p> :Denite file/rec<CR>
 nnoremap <C-d> :Denite <tab>
-nnoremap <C-b> :Denite buffer<CR>
 
 " NERDTree
 noremap <silent><A-m> <Esc>:NERDTreeToggle<CR>

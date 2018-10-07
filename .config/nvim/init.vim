@@ -10,6 +10,7 @@ let s:config_path = $HOME.'/.config/nvim/'
 let s:config_files = [
 			\'functions.vim',
 			\'plugins.vim',
+			\'languages.vim',
 			\'common.vim',
 			\'bindings.vim',
 			\'plugin_configs.vim',

@@ -108,6 +108,7 @@ call denite#custom#map('insert', '<C-p>', '<denite:quit>', 'noremap')
 " Deoplete.nvim
 set completeopt-=preview
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/7.0.0/lib/libclang.dylib'
 
 " NERDTree
 let NERDTreeMinimalUI = 1
