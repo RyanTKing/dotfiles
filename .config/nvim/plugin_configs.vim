@@ -19,6 +19,7 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tmuxline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#ale#enabled = 1
 
 " tmuxline
 let g:tmuxline_theme = 'vim_statusline_3'
@@ -109,6 +110,8 @@ call denite#custom#map('insert', '<C-p>', '<denite:quit>', 'noremap')
 set completeopt-=preview
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/7.0.0/lib/libclang.dylib'
+let g:deoplete#sources#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 
 " NERDTree
 let NERDTreeMinimalUI = 1
@@ -150,7 +153,7 @@ let g:go_addtags_transform="snakecase"
 " TComment
 let g:tcomment_maps = 0
 nnoremap <silent><C-_> :TComment<Cr>
-inoremap <silent><C-_> <Esc>:TComment<Cr>a
+inoremap <silent><C-_> <Esc>:TComment<Cr>
 vnoremap <silent><C-_> :'<,'>TComment<Cr>
 
 call tcomment#type#Define('c', '// %s')

@@ -36,7 +36,6 @@ Plug 'raimondi/delimitmate'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'bfrg/vim-cpp-modern'
-Plug 'klen/python-mode'
 Plug 'fatih/vim-go'
 Plug 'jodosha/vim-godebug'
 Plug 'ekalinin/dockerfile.vim'
@@ -44,6 +43,7 @@ Plug 'bakpakin/ats2.vim'
 Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
 Plug 'tomtom/tcomment_vim'
+Plug 'mattn/emmet-vim'
 
 " Autocompletion
 Plug 'shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}

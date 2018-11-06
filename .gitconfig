@@ -14,14 +14,14 @@
 	branch = auto
 	ui = true
 [core]
-    editor = vim
+    editor = nvim
     excludesfile = ~/.gitignore_global
 [commit]
     gpgsign = true
 [diff]
-    tool = vim
+    tool = nvim
 [merge]
-    tool = vim
+    tool = nvim
 [push]
 	default = upstream
 [pull]

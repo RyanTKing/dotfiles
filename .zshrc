@@ -41,9 +41,12 @@ alias gs='git status -sb'
 alias gac='git add -A && git commit -m'
 
 # Docker Aliases
+alias dbl='docker-blitz'
 alias dcr='docker-compose run'
+alias dcb="docker-compose build"
 alias dcu='docker-compose up'
 alias dcd='docker-compose down'
+alias dcdb="docker-compose -f docker-compose.dev.yml build"
 alias dcdu='docker-compose -f docker-compose.dev.yml up'
 alias dcdd='docker-compose -f docker-compose.dev.yml down'
 
@@ -69,6 +72,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' insert-tab pending
 
 eval "$(pyenv init -)"
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 # export WORKON_HOME="$HOME/virtualenv"
 # eval "$(pyenv virtualenvwrapper)"
 

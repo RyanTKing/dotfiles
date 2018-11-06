@@ -18,6 +18,7 @@ set termguicolors
 colorscheme base16-gruvbox-dark-medium
 set updatetime=350
 set signcolumn=yes
+set colorcolumn=120
 set wrap
 set linebreak
 set scrolloff=5
@@ -48,14 +49,18 @@ set shiftwidth=4
 set smartindent
 
 " Autocmds
-" augroup Trailing
-" 	autocmd!
-" 	autocmd BufWritePre *.* :call RemoveTrailingSpaces()
-" augroup end
+augroup Trailing
+	autocmd!
+	autocmd BufWritePre *.* :call RemoveTrailingSpaces()
+augroup end
 
 augroup Term
 	autocmd!
 	autocmd TermOpen * setlocal nonu nornu signcolumn=no
 	autocmd TermOpen * startinsert
 augroup end
+
+" Python Hosts
+let g:python_host_prog = '/Users/rking/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/rking/.pyenv/versions/neovim3/bin/python'
 
