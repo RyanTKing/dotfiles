@@ -1,4 +1,4 @@
 .kube/config
 .gitconfig*.local*
-.zshrc_cogo
+.*_cogo
 .ssh/config

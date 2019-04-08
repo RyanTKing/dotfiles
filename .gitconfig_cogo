@@ -1,5 +1,0 @@
-[user]
-	email = rking@cogolabs.com
-[core]
-	include = "~/.gitconfig_cogo.local"
-

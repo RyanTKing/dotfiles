@@ -103,6 +103,10 @@ if [ -f "/usr/local/opt/kube-ps1/share/kube-ps1.sh" ]; then
 	fi
 fi
 
+# Ensure ssh is running
+if [ -z "${SSH_AUTH_SOCK}" ]; then
+	eval `ssh-agent -s`
+fi
 
 [ -f '${HOME}/.zshrc_cogo' ] && source '${HOME}/.zshrc_cogo'
 
