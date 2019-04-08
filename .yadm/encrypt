@@ -1,4 +1,4 @@
-.config/polybar/github_token
-.config/mopidy/mopidy.conf
 .kube/config
 .gitconfig*.local*
+.zshrc_cogo
+.ssh/config
