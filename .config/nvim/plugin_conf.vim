@@ -111,3 +111,6 @@ vnoremap <silent><C-_> :'<,'>TComment<Cr>
 
 call tcomment#type#Define('c', '// %s')
 
+" vimtex
+let g:vimtex_compiler_progname = 'nvr'
+
