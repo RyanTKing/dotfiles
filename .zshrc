@@ -95,14 +95,6 @@ alias gg=_gg
 alias godir=_godir
 alias gocover="go test -v -coverprofile=c.out && go tool cover -html=c.out"
 
-# Kubes
-if [ -f "/usr/local/opt/kube-ps1/share/kube-ps1.sh" ]; then
-	source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-	if [[ $PS1 != *"\$(kube_ps1)"* ]]; then
-		PS1='$(kube_ps1)'$PS1
-	fi
-fi
-
 # Ensure ssh is running
 if [ -z "${SSH_AUTH_SOCK}" ]; then
 	eval `ssh-agent -s`

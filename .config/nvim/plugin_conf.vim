@@ -15,10 +15,20 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
 let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
-let g:airline#extensions#tmuxline#enabled = 1
-let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
-
 let g:airline_powerline_fonts = 1
+
+" Tmuxline
+let g:airline#extensions#tmuxline#enabled = 1
+let g:tmuxline_preset = {
+		\ 'a': ['#S'],
+		\'cwin' : ['#I', '#W'],
+		\'win'  : ['#I', '#W'],
+		\ 'y': '#(/bin/bash $HOME/.tmux/plugins/kube-tmux/kube.tmux blue red white)',
+		\ 'z': '#h',
+		\ 'options': {
+			\'status-justify': 'left',
+		\}
+\}
 
 " DelimitMate
 let delimitMate_expand_cr = 1
