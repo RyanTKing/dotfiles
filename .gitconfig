@@ -26,7 +26,7 @@
 	path = ~/.gitconfig_cogo
 [includeIf "gitdir:~/Work/**/*"]
 	path = ~/.gitconfig_cogo
-[url "git@github.com:"]
-	insteadOf = https://github.com/
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
 [url "ssh://git@git.cogolo.net"]
 	insteadOf = https://git.cogolo.net
