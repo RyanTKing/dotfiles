@@ -56,6 +56,9 @@ alias dck='docker-compose kill'
 eval "$(pyenv init -)"
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
+# Startup rbenv
+eval "$(rbenv init -)"
+
 # Golang setup
 # Go anywhere in gopath
 function _godir() {

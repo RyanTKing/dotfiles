@@ -72,6 +72,7 @@ augroup end
 
 " Python hosts for remote plugins
 if has('nvim')
-	let g:python_host_prog = '/Users/rking/.pyenv/versions/neovim3/bin/python'
-	let g:python3_host_prog = '/Users/rking/.pyenv/versions/neovim3/bin/python'
+	let g:python_host_prog = $HOME.'/.pyenv/versions/neovim2/bin/python'
+	let g:python3_host_prog = $HOME.'/.pyenv/versions/neovim3/bin/python'
+	let g:ruby_host_prog = $HOME.'/.rbenv/versions/2.6.2/bin/neovim-ruby-host'
 endif
