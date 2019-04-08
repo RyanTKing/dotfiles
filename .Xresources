@@ -1,114 +1,54 @@
-! XTerm
-XTerm*termName: xterm-256color
-XTerm*faceName: Source Code Pro
-XTerm*faceSize: 14
-Xterm*allowBoldFonts: false
-XTerm*eightBitInput: false
-XTerm*selectToClipboard: true
-XTerm*locale: true
-*VT100*translations: #override Shift <Btn1Up>: exec-formatted("chromium '%t'", PRIMARY)
+! Base16 Gruvbox dark, soft
+! Scheme: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
 
-! URXVT
-URxvt.termName: rxvt-unicode
-URxvt.scrollBar: false
-! URxvt*font: xft:Gohu GohuFont:size=14,xft:xso4\ Terminess\ for\ Powerline:size=14
-URxvt*font: xft:Envy Code R for Powerline:style=Regular:size=12
-URxvt*boldFont: xft:Envy Code R for Powerline:style=Bold:size=12
-! URxvt*boldFont: xft:Gohu GohuFont:style=Bold:size=14
-URxvt.internalBorder: 12
-URxvt.intensityStyles: false
-URXvt.clipboard.autocopy: true
-URxvt.keysym.Shift-Control-V: perl:clipboard:paste
-URxvt.keysym.Shift-Control-C: perl:clipboard:copy
-URxvt.keysym.M-c: perl:clipboard:copy
-URxvt.keysym.M-v: perl:clipboard:paste
-URxvt.iso14755: False
-URxvt.perl-ext-common:      default,matcher,clipboard,url-select,keyboard-select
-URxvt.url-select.launcher:  chromium
-URxvt.url-select.underline: true
-URxvt.keysym.M-u:           perl:url-select:select_next
-URxvt.keysym.M-Escape:      perl:keyboard-select:activate
-URxvt.keysym.M-s:           perl:keyboard-select:search
-URxvt.matcher.rend.0:       Uline fg16
-URxvt*depth: 32
+#define base00 #32302f
+#define base01 #3c3836
+#define base02 #504945
+#define base03 #665c54
+#define base04 #bdae93
+#define base05 #d5c4a1
+#define base06 #ebdbb2
+#define base07 #fbf1c7
+#define base08 #fb4934
+#define base09 #fe8019
+#define base0A #fabd2f
+#define base0B #b8bb26
+#define base0C #8ec07c
+#define base0D #83a598
+#define base0E #d3869b
+#define base0F #d65d0e
 
-! YeahConsole
-yeahconsole*term: urxvtc
-yeahconsole*toggleKey: Win+e
-yeahconsole*keyBigger: winControl+e
-yeahconsole*keySmaller: WinControlAlt+e
-yeahconsole*consoleHeight: 30
-yeahconsole*handleWidth: 0
-yeahconsole*aniDelay: 10
-
-! Color Variables
-#define base00 #2b303b
-#define base01 #343d46
-#define base02 #4f5b66
-#define base03 #65737e
-#define base04 #a7adba
-#define base05 #c0c5ce
-#define base06 #dfe1e8
-#define base07 #eff1f5
-#define base08 #bf616a
-#define base09 #d08770
-#define base0A #ebcb8b
-#define base0B #a3be8c
-#define base0C #96b5b4
-#define base0D #8fa1b3
-#define base0E #b48ead
-#define base0F #ab7967
-
-! Rofi
-rofi.font: Gohu GohuFont 11
-rofi.color-normal: #282828, #ebdbb2, #282828, #458588, #ebdbb2
-rofi.color-window: #282828, #282828
-rofi.terminal: urxvtc
-rofi.separator-style: solid
-rofi.hide-scrollbar: true
-rofi.opacity: 99
-rofi.tokenize: false
-
-! hard contrast: *background: #1d2021
-! *background: #282828
-! ! soft contrast: *background: #32302f
-#define background_opacity 80
-*foreground: base05
+*foreground:   base05
 #ifdef background_opacity
-URxvt.background: [background_opacity]base00
+*background:   [background_opacity]base00
 #else
-URxvt.background: base00
+*background:   base00
 #endif
-*cursorColor: base05
+*cursorColor:  base05
 
-! ! Black + DarkGrey
-*color0:  base00
-*color8:  base03
-! ! DarkRed + Red
-*color1:  base08
-*color9:  base08
-! ! DarkGreen + Green
-*color2:  base0B
-*color10: base0B
-! ! DarkYellow + Yellow
-*color3:  base0A
-*color11: base0A
-! ! DarkBlue + Blue
-*color4:  base0D
-*color12: base0D
-! ! DarkMagenta + Magenta
-*color5:  base0E
-*color13: base0E
-! ! DarkCyan + Cyan
-*color6:  base0C
-*color14: base0C
-! ! LightGrey + White
-*color7:  base05
-*color15: base07
+*color0:       base00
+*color1:       base08
+*color2:       base0B
+*color3:       base0A
+*color4:       base0D
+*color5:       base0E
+*color6:       base0C
+*color7:       base05
 
-*.color16:      base09
-*.color17:      base0F
-*.color18:      base01
-*.color19:      base02
-*.color20:      base04
-*.color21:      base06
+*color8:       base03
+*color9:       base08
+*color10:      base0B
+*color11:      base0A
+*color12:      base0D
+*color13:      base0E
+*color14:      base0C
+*color15:      base07
+
+! Note: colors beyond 15 might not be loaded (e.g., xterm, urxvt),
+! use 'shell' template to set these if necessary
+*color16:      base09
+*color17:      base0F
+*color18:      base01
+*color19:      base02
+*color20:      base04
+*color21: base06

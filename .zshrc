@@ -56,8 +56,10 @@ alias dck='docker-compose kill'
 eval "$(pyenv init -)"
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
-# Startup rbenv
-eval "$(rbenv init -)"
+# Startup rbenv if on macOS
+if [[ `uname` == 'Darwin' ]]; then
+	eval "$(rbenv init -)"
+fi
 
 # Golang setup
 # Go anywhere in gopath
@@ -94,9 +96,11 @@ alias godir=_godir
 alias gocover="go test -v -coverprofile=c.out && go tool cover -html=c.out"
 
 # Kubes
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-if [[ $PS1 != *"\$(kube_ps1)"* ]]; then
-	PS1='$(kube_ps1)'$PS1
+if [ -f "/usr/local/opt/kube-ps1/share/kube-ps1.sh" ]; then
+	source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
+	if [[ $PS1 != *"\$(kube_ps1)"* ]]; then
+		PS1='$(kube_ps1)'$PS1
+	fi
 fi
 
 
