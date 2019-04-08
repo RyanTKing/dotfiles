@@ -1,0 +1,25 @@
+{
+	"languageserver": {
+		"golang": {
+			"command": "gopls",
+			"args": [],
+			"rootPatterns": ["go.mod", ".vim/", ".git/", "Gopkg.lock"],
+			"filetypes": ["go"]
+		},
+		"bash": {
+			"command": "bash-language-server",
+			"args": ["start"],
+			"filetypes": ["sh"],
+			"ignoredRootPaths": ["~"]
+		},
+		"efm": {
+			"command": "efm-langserver",
+			"args": [],
+			"filetypes": ["vim"]
+		}
+	},
+	"diagnostic.errorSign": "◆",
+	"diagnostic.warningSign": "◆",
+	"diagnostic.infoSign": "◆",
+	"diagnostic.hintSign": "◆"
+}

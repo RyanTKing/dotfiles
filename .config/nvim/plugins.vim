@@ -1,7 +1,3 @@
-" plugins.vim
-" ===========
-" List of plugins to install
-
 filetype off
 
 call plug#begin('~/.local/share/nvim/plugged')
@@ -9,15 +5,17 @@ call plug#begin('~/.local/share/nvim/plugged')
 " GUI
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
-Plug 'ryantking/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-vinegar'
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'majutsushi/tagbar'
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'edkolev/tmuxline.vim'
+Plug 'christoomey/vim-tmux-navigator'
+
+" Autocomplete
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 " Tools
 Plug 'tpope/vim-eunuch'
@@ -32,28 +30,14 @@ Plug 'easymotion/vim-easymotion'
 
 " Code Editing
 Plug 'tpope/vim-surround'
-Plug 'raimondi/delimitmate'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'justinmk/vim-syntax-extra'
-Plug 'bfrg/vim-cpp-modern'
+Plug 'raimondi/delimitmate'
 Plug 'fatih/vim-go'
 Plug 'jodosha/vim-godebug'
-Plug 'ekalinin/dockerfile.vim'
 Plug 'bakpakin/ats2.vim'
-Plug 'w0rp/ale'
 Plug 'lervag/vimtex'
 Plug 'tomtom/tcomment_vim'
 Plug 'mattn/emmet-vim'
-
-" Autocompletion
-Plug 'shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'zchee/deoplete-jedi'
-Plug 'zchee/deoplete-docker'
-Plug 'zchee/deoplete-clang'
-Plug 'zchee/deoplete-zsh'
-Plug 'poppyschmo/deoplete-latex'
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+Plug 'fatih/vim-go'
 
 call plug#end()
-

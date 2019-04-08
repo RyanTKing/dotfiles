@@ -1,35 +1,4 @@
-" functions.vim
-" =============
-" Custom functions for neovim
-
-let s:term_buf = 0
-let s:term_win = 0
-
-" TermToggle shows/hides the terminal at the bottom of the screen
-function! TermToggle(height)
-	if win_gotoid(s:term_win)
-		hide
-	else
-		new terminal
-		exec "resize ".a:height
-		try
-			exec "buffer ".s:term_buf
-			exec "bd terminal"
-		catch
-			call termopen('/usr/local/bin/zsh', {"detach": 0})
-			let s:term_buf = bufnr("")
-			setlocal nonumber
-			setlocal norelativenumber
-			setlocal signcolumn=no
-			setlocal nocursorline
-		endtry
-		startinsert!
-		let s:term_win = win_getid()
-	endif
-endfunction
-
-
-" RemoveTrailingSpaces removes all spaces at end of lines
+" Delete all trailing spaces
 function! RemoveTrailingSpaces()
 	let l:win_view = winsaveview()
 	let l:save_slash = getreg('/')
@@ -39,7 +8,30 @@ function! RemoveTrailingSpaces()
 	call setreg('/', l:save_slash)
 endfunction
 
-" RenameCWord renames a word under the cursor in an entire file
+" Toggle Terminal
+let s:term_buf = 0
+let s:term_win = 0
+
+function! TermToggle(height)
+    if win_gotoid(s:term_win)
+         hide
+    else
+		new terminal
+		exec "resize ".a:height
+		try
+			exec "buffer ".s:term_buf
+			exec "bd terminal"
+		catch
+			call termopen($SHELL, {"detach": 0})
+			let s:term_buf = bufnr("")
+			setlocal nonu nornu scl=no nocul
+		endtry
+		startinsert!
+		let s:term_win = win_getid()
+	endif
+endfunction
+
+" Rename all occurrences of a word
 function! RenameCWord(cword)
 	let l:cursor_pos = getpos(".")
 	let l:word = expand("<".a:cword.">")
@@ -53,5 +45,30 @@ function! RenameCWord(cword)
 		endif
 	endif
 	call cursor(l:cursor_pos[1], l:cursor_pos[2])
-endfunction<Paste>
+endfunction
+
+" Execute a macro over a visual range
+function! ExecuteMacroOverVisualRange()
+	echo "@".getcmdline()
+	execute ":'<,'>normal @"nr2char(getchar())
+endfunction
+
+" Find the root of a project
+function! FindProjectByRootFile(filename)
+	let l:path = getcwd()
+	while l:path != $HOME
+		let l:red = findfile(a:filename, l:path.'/**')
+		if l:res != ''
+			let l:res = substitute(l:res, '\v(.*)\/.*', '\l', &gd ? 'gg' : 'g')
+			if match(l:res, l:path) == 0
+				return fnameescape(l:res)
+			else
+				return fnameescape(l:path.'/'.l:res)
+			endif
+		else
+			let l:path = substitute(l:path, '\v(.*)\/.*', '\l', &gd ? 'gg' : 'g')
+		endif
+	endwhile
+	return -1
+endfunction
 

@@ -1,78 +1,58 @@
-" plugin_configs.vim
-" ==================
-" Configurations for specific plugins
-
-" vim-airline
+" Airline
 set laststatus=2
 if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
+let g:airline_symbols.linenr = '≣'
 let g:airline#extensions#keymap#enabled = 0
-let g:airline_detect_spellang = 0
+let g:airline_detect_spelllang = 0
 set noshowmode
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
 
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 let g:airline#extensions#tmuxline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#ale#enabled = 1
+let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
 
-" tmuxline
-let g:tmuxline_theme = 'vim_statusline_3'
-let g:tmuxline_preset = 'tmux'
+let g:airline_powerline_fonts = 1
 
 " DelimitMate
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 0
-let delimitMate_nesting_quotes = ['`']
+let delimitMate_nesting_quotes = ['``']
 
-" ALE
-highlight ALEErrorSign guibg=#3b3836 guifg=#fb4934
+" Deoplete.nvim
+set completeopt-=preview
+let g:deoplete#enable_at_startup = 1
 
-let g:airline#extensions#ale#enabled = 1
-let g:ale_lint_delay = 350
+" coc.nvim
+hi CocErrorSign ctermfg=01 ctermbg=18 guifg=#fb4934 guibg=#3c3836
+hi CocErrorHighlight ctermfg=01 cterm=underline gui=undercurl guisp=#fb4934
+hi CocWarningSign ctermfg=03 ctermbg=18 guifg=#fabd2f guibg=#3c3836
+hi CocWarningHighlight ctermfg=03 cterm=underline gui=undercurl guisp=#fabd2f
+hi CocInfoSign ctermfg=04 ctermbg=18 guifg=#83a598 guibg=#3c3836
+hi CocInfoHighlight ctermfg=04 cterm=underline gui=undercurl guisp=#83a598
+hi CocHintSign ctermfg=02 ctermbg=18 guifg=#b8bb26 guibg=#3c3836
+hi CocHintHighlight ctermfg=02 cterm=underline gui=undercurl guisp=#b8bb26
 
-let g:ale_sign_error = '⬥ '
-let g:ale_sign_warning = '⬥ '
+" NERDTree
+let NERDTreeMinimalUI = 1
+let NERDTreeShowHidden = 1
+let g:NERDTreeHighlightFolders = 1
+let g:NERDTreeHighlightFoldersFullName = 1
 
-let g:ale_linters = {
-	\ 'c': ['clang'],
-	\ 'cpp': ['clang'],
-\}
+augroup NERDTree
+	autocmd!
+	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+augroup end
 
-let g:airline#extensions#ale#enabled=1
-
-" LanguageClient-neovim
-let g:LanguageClient_serverCommands = {
-			\ 'go': ['go-langserver', '-gocodecompletion'],
-			\}
-
-let g:LanguageClient_diagnosticsDisplay = {
-			\	1: {
-			\		"name": "Error",
-			\		"signText": "⬥ ",
-			\		"signTexthl": "ErrorSign",
-			\	},
-			\	2: {
-			\		"name": "Warning",
-			\		"signText": "⬥ ",
-			\		"signTexthl": "WarningSign",
-			\	},
-			\	3: {
-			\		"name": "Information",
-			\		"signText": "⬥ ",
-			\		"signTexthl": "InfoSign",
-			\	},
-			\	4: {
-			\		"name": "Hint",
-			\		"signText": "⬥ ",
-			\		"signTexthl": "InfoSign",
-			\	},
-			\}
+" Tagbar
+let g:tagbar_sort = 0
+let g:tagbar_compact = 1
 
 " Denite.nvim
 call denite#custom#option('_', 'highlight_mode_normal', 'CursorLine')
@@ -105,33 +85,6 @@ call denite#custom#map('normal', 'i', '<denite:enter_mode:insert>', 'noremap')
 call denite#custom#map('normal', '<Esc>', '<denite:quit>', 'noremap')
 call denite#custom#map('normal', '<C-p>', '<denite:quit>', 'noremap')
 call denite#custom#map('insert', '<C-p>', '<denite:quit>', 'noremap')
-
-" Deoplete.nvim
-set completeopt-=preview
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/7.0.0/lib/libclang.dylib'
-let g:deoplete#sources#gocode_binary = $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-
-" NERDTree
-let NERDTreeMinimalUI = 1
-let NERDTreeShowHidden=1
-let g:NERDTreeHighlightFolders = 1
-let g:NERDTreeHighlightFoldersFullName = 1
-
-augroup NERDTree
-	autocmd!
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-augroup end
-
-" Tagbar
-let g:tagbar_sort = 0
-let g:tagbar_compact = 1
-
-augroup Tagbar
-	autocmd!
-	autocmd FileType c,cpp nested :TagbarOpen
-augroup end
 
 " vim-go
 let g:go_highlight_build_constraints=1

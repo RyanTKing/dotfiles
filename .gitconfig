@@ -1,34 +1,32 @@
 [user]
 	name = Ryan King
-	email = rking@cogolabs.com
-    signingkey = 3B7C6043E2D6EB20
-    gpgsign = true
-[alias]
-	st = status
-	ci = comit
-	co = checkout
-	br = branch
+	email = hello@ryanking.com
+[core]
+    editor = nvim
+    excludesfile = ~/.gitignore_global
+	include = "~/.gitconfig.local"
 [color]
 	status = auto
 	diff = auto
 	branch = auto
 	ui = true
-[core]
-    editor = nvim
-    excludesfile = ~/.gitignore_global
 [commit]
-    gpgsign = true
+	gpgsign = true
 [diff]
     tool = nvim
 [merge]
     tool = nvim
 [push]
-	default = upstream
+	default = simple
 [pull]
 	rebase = true
 [fetch]
 	prune = true
-[include]
-	path = ~/.gitconfig.local
+[includeIf "gitdir:~/go/src/git.cogolo.net/**/*"]
+	path = ~/.gitconfig_cogo
+[includeIf "gitdir:~/Work/**/*"]
+	path = ~/.gitconfig_cogo
+[url "git@github.com:"]
+	insteadOf = https://github.com/
 [url "ssh://git@git.cogolo.net"]
 	insteadOf = https://git.cogolo.net
