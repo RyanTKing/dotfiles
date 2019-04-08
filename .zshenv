@@ -2,7 +2,6 @@
 # Zsh Environment Variables
 #
 
-#export TERM="xterm-256color"
 export EDITOR="nvim"
 export VISUAL="code"
 export ALTERNATE_EDITOR="vim"
