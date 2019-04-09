@@ -21,12 +21,16 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tmuxline#enabled = 1
 let g:tmuxline_preset = {
 		\ 'a': ['#S'],
+		\ 'b': [
+			\ '#(/bin/bash $HOME/bin/kubes_status context white)',
+			\ '#(/bin/bash $HOME/bin/kubes_status namespace white)',
+			\],
 		\'cwin' : ['#I', '#W'],
 		\'win'  : ['#I', '#W'],
-		\ 'y': '#(/bin/bash $HOME/.tmux/plugins/kube-tmux/kube.tmux blue red white)',
+		\ 'y': ['%l:%M %p', '%a, %B %d, %Y'],
 		\ 'z': '#h',
 		\ 'options': {
-			\'status-justify': 'left',
+			\ 'status-justify': 'left',
 		\}
 \}
 

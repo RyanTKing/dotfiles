@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+SHIP_WHEEL=$'\xE2\x8E\x88 '
+
+UNAME=$(uname)
+KUBECONFIG_CACHE="${KUBECONFIG}"
+LAST_REFRESH=0
+
+_check_binary() {
+	command -v ${1} >/dev/null
+}
+
+_kube_symbol() {
+	echo "${SHIP_WHEEL}"
+}
+
+_split_file() {
+	type setopt >/dev/null 2>&1 && setopt SH_WORD_SPLIT
+	local IFS=$1
+	echo $2
+}
+
+_file_newer_than() {
+	local mtime
+	local file=$1
+	local check_time=$2
+
+	if [[ "${UNAME}" == "Linux" ]]; then
+		mtime=$(stat -c %Y "${file}")
+	elif [[ "${UNAME}" == "Darwin" ]]; then
+		mtime=$(/usr/bin/stat -f %m "$file")
+	fi
+
+	[[ "${mtime}" -gt "${check_time}" ]]
+}
+
+_get_ctx_namespace() {
+	LAST_REFRESH=$(printf '%(%s)T')
+	CONTEXT=$(kubectl config current-context 2>/dev/null)
+	if [[ -z "${CONTEXT}" ]]; then
+		CONTEXT="n/a"
+		NAMESPACE="n/a"
+		return
+	fi
+
+	NAMESPACE="$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)"
+	NAMESPACE="${NAMESPACE:-default}"
+}
+
+_update_cache() {
+	if ! _check_binary kubectl; then	
+		ERROR_MSG='no cluster info'
+		return
+	fi
+
+	if [[ "${KUBECONFIG}" != "${KUBECONFIG_CACHE}" ]]; then
+		KUBECONFIG_CACHE=${KUBECONFIG}
+		_get_ctx_namespace
+	fi
+
+	local conf
+	for conf in $(_split_file : "${KUBECONFIG:-${HOME}/.kube/config}"); do
+		[[ -r "${conf}" ]] || continue
+		if _file_newer_than "${conf}" "${LAST_REFRESH}"; then
+			_get_ctx_namespace
+			return
+		fi
+	done
+}
+
+kube_status() {
+	_update_cache
+
+	if [[ "${1}" == "context" ]]; then
+		echo "#[fg=blue]$(_kube_symbol)#[fg=${2}]${CONTEXT}#[fg=white]"
+	fi
+	if [[ "${1}" == "namespace" ]]; then
+		echo "#[fg=${2}]${NAMESPACE}"
+	fi
+}
+
+kube_status "$@"
