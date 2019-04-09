@@ -9,8 +9,6 @@ syntax on
 set path+=**
 set wildmenu
 set termguicolors
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 colorscheme base16-gruvbox-dark-soft
 set updatetime=350
 set signcolumn=yes
@@ -21,6 +19,7 @@ set shortmess+=c
 set lazyredraw
 set hidden
 set inccommand=nosplit
+set colorcolumn=120
 
 " Folds
 set foldmethod=indent

@@ -34,6 +34,11 @@ let g:tmuxline_preset = {
 		\}
 \}
 
+if has('macunix')
+	let g:tmuxline_preset.x = '#(/bin/bash $HOME/.tmux/plugins/tmux-spotify/scripts/spotify_status.sh) '.
+				\'#(/bin/bash $HOME/.tmux/plugins/tmux-spotify/scripts/spotify_track.sh)'
+endif
+
 " DelimitMate
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 0
@@ -116,6 +121,8 @@ let g:go_fmt_autosave=1
 let g:go_auto_type_info=1
 let g:go_list_type="quickfix"
 let g:go_addtags_transform="snakecase"
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_command = "golangci-lint run --fast -exclude=vendor/... --enable-all=true --disable=gochecknoglobals"
 
 " TComment
 let g:tcomment_maps = 0
