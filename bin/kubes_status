@@ -72,10 +72,10 @@ kube_status() {
 	_update_cache
 
 	if [[ "${1}" == "context" ]]; then
-		echo "#[fg=blue]$(_kube_symbol)#[fg=${2}]${CONTEXT}#[fg=white]"
+		echo "#[fg=blue]$(_kube_symbol)#[fg=${2}]${CONTEXT:-no cluster}#[fg=white]"
 	fi
 	if [[ "${1}" == "namespace" ]]; then
-		echo "#[fg=${2}]${NAMESPACE}"
+		echo "#[fg=${2}]${NAMESPACE:-default}"
 	fi
 }
 
