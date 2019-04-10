@@ -100,10 +100,16 @@ if [ -z "${SSH_AUTH_SOCK}" ]; then
 	eval `ssh-agent -s`
 fi
 
-[ -f '${HOME}/.zshrc_cogo' ] && source '${HOME}/.zshrc_cogo'
+# Ensure gpg is running
+if [ -z "${GPG_TTY}" ]; then
+	export GPG_TTY=$(tty)
+fi
+
+# Cogo specific configs
+[ -f ${HOME}/.zshrc_cogo ] && source ${HOME}/.zshrc_cogo
 
 # Travis
-[ -f '${HOME}/.travis/travis.sh' ] && source '${HOME}/.travis/travis.sh'
+[ -f ${HOME}/.travis/travis.sh ] && source ${HOME}/.travis/travis.sh
 
 # Startup tmux
 alias tmux='tmux -u'
