@@ -20,6 +20,7 @@ PATH="/usr/local/bin:$PATH"
 [ -d "${HOME}/bin" ]					&& PATH="${HOME}/bin:${PATH}"
 [ -d "$GOPATH/bin" ]					&& PATH="$GOPATH/bin:${PATH}"
 [ -d "${HOME}/.node_modules/bin" ]		&& PATH="${HOME}/.node_modules/bin:${PATH}"
+[ -d "${HOME}/.roswell/bin" ]			&& PATH="${HOME}/.roswell/bin:${PATH}"
 
 # Clean PATH
 typeset -a paths result
