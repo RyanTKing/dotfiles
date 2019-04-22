@@ -1,0 +1,63 @@
+# open iTerm window
+cmd - return : osascript -e 'tell application "iTerm" to activate' -e 'tell application "System Events" to tell process "iTerm" to keystroke "t" using command down
+
+# reload chunkwm
+cmd + shift - r : brew services restart chunkwm
+
+# change focus
+alt - h : chunkc tiling::window --focus west
+alt - j : chunkc tiling::window --focus south
+alt - k : chunkc tiling::window --focus north
+alt - l : chunkc tiling::window --focus east
+
+# swap window
+shift + cmd - h : chunkc tiling::window --swap west
+shift + cmd - j : chunkc tiling::window --swap south
+shift + cmd - k : chunkc tiling::window --swap north
+shift + cmd - l : chunkc tiling::window --swap east
+
+# move window
+shift + alt - h : chunkc tiling::window --warp west
+shift + alt - j : chunkc tiling::window --warp south
+shift + alt - k : chunkc tiling::window --warp north
+shift + alt - l : chunkc tiling::window --warp east
+
+# equalize size of windows
+shift + alt - 0 : chunkc tiling::desktop --equalize
+
+# enter fullscreen mode for the focused container
+alt - f : chunkc tiling::window --toggle fullscreen
+
+# change focus between tiling / floating windows
+shift + alt - space : chunkc tiling::window --toggle float
+
+# change layout of desktop
+alt - e : chunkc tiling::desktop --layout bsp
+alt - s : chunkc tiling::desktop --layout monocle
+
+# kill focused window
+shift + alt - q : chunkc tiling::window --close
+
+alt - r : chunkc tiling::desktop --rotate 90
+
+# desktop focus
+alt - p : chunkc tiling::desktop -f next
+alt - n : chunkc tiling::desktop -f prev
+alt - 1 : chunkc tiling::desktop -f 1
+alt - 2 : chunkc tiling::desktop -f 2
+alt - 3 : chunkc tiling::desktop -f 3
+alt - 4 : chunkc tiling::desktop -f 4
+alt - 5 : chunkc tiling::desktop -f 5
+alt - 6 : chunkc tiling::desktop -f 6
+
+# move focused container to workspace
+shift + alt - m : chunkc tiling::window --send-to-desktop $(chunkc get _last_active_desktop)
+shift + alt - p : chunkc tiling::window --send-to-desktop prev
+shift + alt - n : chunkc tiling::window --send-to-desktop next
+shift + alt - 1 : chunkc tiling::window --send-to-desktop 1
+shift + alt - 2 : chunkc tiling::window --send-to-desktop 2
+shift + alt - 3 : chunkc tiling::window --send-to-desktop 3
+shift + alt - 4 : chunkc tiling::window --send-to-desktop 4
+shift + alt - 5 : chunkc tiling::window --send-to-desktop 5
+shift + alt - 6 : chunkc tiling::window --send-to-desktop 6
+
