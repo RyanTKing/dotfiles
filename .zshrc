@@ -52,6 +52,10 @@ alias dcd='docker-compose down'
 alias dcs='docker-compose stop'
 alias dck='docker-compose kill'
 
+if [[ `uname` == 'Linux' ]]; then
+	alias open='xdg-open'
+fi
+
 # Startup pyenv
 eval "$(pyenv init -)"
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi

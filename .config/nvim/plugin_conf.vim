@@ -124,6 +124,11 @@ let g:go_addtags_transform="snakecase"
 let g:go_metalinter_autosave = 0
 let g:go_metalinter_command = "golangci-lint run --fast -exclude=vendor/... --enable-all=true --disable=gochecknoglobals"
 
+" slimv
+let g:slimv_swank_cmd = "!ros -e '(ql:quickload :swank) (swank:create-server)' wait &"
+let g:slimv_lisp = 'ros run'
+let g:slimv_impl = 'sbcl'
+
 " TComment
 let g:tcomment_maps = 0
 nnoremap <silent><C-_> :TComment<Cr>

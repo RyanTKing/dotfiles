@@ -39,5 +39,6 @@ Plug 'lervag/vimtex'
 Plug 'tomtom/tcomment_vim'
 Plug 'mattn/emmet-vim'
 Plug 'fatih/vim-go'
+Plug 'kovisoft/slimv'
 
 call plug#end()
