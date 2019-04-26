@@ -50,13 +50,13 @@ let g:deoplete#enable_at_startup = 1
 
 " coc.nvim
 hi CocErrorSign ctermfg=01 ctermbg=18 guifg=#fb4934 guibg=#3c3836
-hi CocErrorHighlight ctermfg=01 cterm=underline gui=undercurl guisp=#fb4934
+hi CocErrorHighlight ctermfg=01 cterm=underline gui=underline guifg=#fb4934
 hi CocWarningSign ctermfg=03 ctermbg=18 guifg=#fabd2f guibg=#3c3836
-hi CocWarningHighlight ctermfg=03 cterm=underline gui=undercurl guisp=#fabd2f
+hi CocWarningHighlight ctermfg=03 cterm=underline gui=underline guifg=#fabd2f
 hi CocInfoSign ctermfg=04 ctermbg=18 guifg=#83a598 guibg=#3c3836
-hi CocInfoHighlight ctermfg=04 cterm=underline gui=undercurl guisp=#83a598
+hi CocInfoHighlight ctermfg=04 cterm=underline gui=underline guifg=#83a598
 hi CocHintSign ctermfg=02 ctermbg=18 guifg=#b8bb26 guibg=#3c3836
-hi CocHintHighlight ctermfg=02 cterm=underline gui=undercurl guisp=#b8bb26
+hi CocHintHighlight ctermfg=02 cterm=underline gui=underline guifg=#b8bb26
 
 " NERDTree
 let NERDTreeMinimalUI = 1
