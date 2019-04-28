@@ -2,8 +2,8 @@
 	name = Ryan King
 	email = hello@ryanking.com
 [core]
-    editor = nvim
-    excludesfile = ~/.gitignore_global
+	editor = nvim
+	excludesfile = ~/.gitignore_global
 	include = "~/.gitconfig.local"
 [color]
 	status = auto
@@ -13,9 +13,9 @@
 [commit]
 	gpgsign = true
 [diff]
-    tool = nvim
+	tool = nvim
 [merge]
-    tool = nvim
+	tool = nvim
 [push]
 	default = simple
 [pull]
