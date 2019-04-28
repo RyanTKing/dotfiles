@@ -8,21 +8,29 @@ zstyle ':prezto:*:*' color 'yes'
 # Prezto Modules
 zstyle ':prezto:load' pmodule \
        'environment' \
-       'terminal' \
-       'editor' \
-       'history' \
-       'directory' \
-       'spectrum' \
        'utility' \
-       'ssh' \
+       'syntax-highlighting' \
+       'archive' \
+       'autosuggestions' \
+       'command-not-found' \
        'completion' \
+       'directory' \
+       'docker' \
+       'editor' \
+       'git' \
+       'gpg' \
+       'history-substring-search' \
+       'history' \
        'homebrew' \
        'osx' \
-       'git' \
-       'syntax-highlighting' \
-       'history-substring-search' \
-       'prompt'
+       'pacman' \
+       'prompt' \
+       'rsync' \
+       'ssh' \
+       'spectrum' \
+       'terminal' \
 
 # Prezto Theme
 zstyle ':prezto:module:prompt' theme 'kylewest'
 zstyle ':prezto:module:utility' safe-ops 'no'
+zstyle ':prezto:module:ssh:load' identities 'id_rsa' 'id_cogo'

@@ -26,31 +26,8 @@ zstyle ':completion:*' insert-tab pending
 set -o vi
 
 # General Aliases
-alias sudo='sudo '         # Make sudo work with aliases
 alias reload!='. ~/.zshrc' # Reload the zsh config
 if which ls_extended > /dev/null; then alias ls=ls_extended; fi
-
-# Git Aliases
-alias gl='git pull --prune'
-alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-alias gp='git push origin HEAD'
-alias gd='git diff'
-alias gc='git commit'
-alias gca='git commit -a'
-alias gco='git checkout'
-alias gcb='git copy-branch-name'
-alias gb='git branch'
-alias gs='git status -sb'
-alias gac='git add -A && git commit -m'
-
-# Docker Aliases
-alias dbl='docker-blitz'
-alias dcr='docker-compose run'
-alias dcb='docker-compose build'
-alias dcu='docker-compose up'
-alias dcd='docker-compose down'
-alias dcs='docker-compose stop'
-alias dck='docker-compose kill'
 
 if [[ `uname` == 'Linux' ]]; then
 	alias open='xdg-open'
