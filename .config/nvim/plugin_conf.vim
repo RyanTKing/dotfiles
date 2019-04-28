@@ -19,6 +19,7 @@ let g:airline_powerline_fonts = 1
 
 " Tmuxline
 let g:airline#extensions#tmuxline#enabled = 1
+let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
 let g:tmuxline_preset = {
 		\ 'a': ['#S'],
 		\ 'b': [
