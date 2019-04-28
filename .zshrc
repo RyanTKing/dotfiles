@@ -33,6 +33,12 @@ if [[ `uname` == 'Linux' ]]; then
 	alias open='xdg-open'
 fi
 
+if [[ `uname` == 'Darwin' ]]; then
+	alias copy='pbcopy'
+else
+	alias copy='xclip -selection clipboard'
+fi
+
 # Startup pyenv
 eval "$(pyenv init -)"
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
