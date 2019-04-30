@@ -4,7 +4,8 @@
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore_global
-	include = "~/.gitconfig.local"
+[include]
+	path = ~/.gitconfig.local
 [color]
 	status = auto
 	diff = auto
@@ -22,6 +23,10 @@
 	rebase = true
 [fetch]
 	prune = true
+[includeIf "gitdir:~/go/src/git.cogolo.net/**/*"]
+	path = ~/.gitconfig_cogo
+[includeIf "gitdir:~/Work/**/*"]
+	path = ~/.gitconfig_cogo
 [url "ssh://git@github.com/"]
     insteadOf = https://github.com/
 [url "ssh://git@git.cogolo.net"]

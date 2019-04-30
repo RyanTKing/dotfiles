@@ -82,8 +82,13 @@ alias gocover="go test -v -coverprofile=c.out && go tool cover -html=c.out"
 
 # Ensure gpg is running
 export GPG_TTY="$(tty)"
-export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-gpg-connect-agent updatestartuptty /bye
+if [[ `uname` == 'Darwin' ]]; then
+	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+	gpgconf --launch gpg-agent
+else
+	export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+	gpg-connect-agent updatestartuptty /bye
+fi
 
 # Cogo specific configs
 [ -f ${HOME}/.zshrc_cogo ] && source ${HOME}/.zshrc_cogo
