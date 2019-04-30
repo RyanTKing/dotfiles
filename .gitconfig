@@ -1,6 +1,7 @@
 [user]
 	name = Ryan King
 	email = hello@ryanking.com
+	signingkey = 0xFD3894645D8BE1A4
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore_global
