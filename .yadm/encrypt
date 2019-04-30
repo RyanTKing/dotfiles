@@ -1,5 +1,5 @@
 .kube/config
-.gitconfig*.local*
+.gitconfig.local
 .*_cogo
 .ssh/config
 .shpotify.cfg

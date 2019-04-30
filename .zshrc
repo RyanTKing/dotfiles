@@ -43,10 +43,8 @@ fi
 eval "$(pyenv init -)"
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
-# Startup rbenv if on macOS
-if [[ `uname` == 'Darwin' ]]; then
-	eval "$(rbenv init -)"
-fi
+# Startup rbenv
+eval "$(rbenv init -)"
 
 # Golang setup
 # Go anywhere in gopath
@@ -82,15 +80,10 @@ alias gg=_gg
 alias godir=_godir
 alias gocover="go test -v -coverprofile=c.out && go tool cover -html=c.out"
 
-# Ensure ssh is running
-if [ -z "${SSH_AUTH_SOCK}" ]; then
-	eval `ssh-agent -s`
-fi
-
 # Ensure gpg is running
-if [ -z "${GPG_TTY}" ]; then
-	export GPG_TTY=$(tty)
-fi
+export GPG_TTY="$(tty)"
+export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+gpg-connect-agent updatestartuptty /bye
 
 # Cogo specific configs
 [ -f ${HOME}/.zshrc_cogo ] && source ${HOME}/.zshrc_cogo

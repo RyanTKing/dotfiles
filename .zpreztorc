@@ -18,7 +18,6 @@ zstyle ':prezto:load' pmodule \
        'docker' \
        'editor' \
        'git' \
-       'gpg' \
        'history-substring-search' \
        'history' \
        'homebrew' \
@@ -26,7 +25,6 @@ zstyle ':prezto:load' pmodule \
        'pacman' \
        'prompt' \
        'rsync' \
-       'ssh' \
        'spectrum' \
        'terminal' \
 
