@@ -40,8 +40,13 @@ else
 fi
 
 # Fzf
-source "/usr/share/fzf/key-bindings.zsh"
-source "/usr/share/fzf/completion.zsh"
+if [[ `uname` == 'Darwin' ]]; then
+	source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+	source "/usr/local/opt/fzf/shell/completion.zsh"
+else
+	source "/usr/share/fzf/key-bindings.zsh"
+	source "/usr/share/fzf/completion.zsh"
+fi
 
 # Startup pyenv
 eval "$(pyenv init -)"
@@ -100,12 +105,15 @@ alias gg=_gg
 alias godir=_godir
 alias gocover="go test -v -coverprofile=c.out && go tool cover -html=c.out"
 alias gst=_gst
+alias modon='export GO111MODULE=on'
+alias modoff='export GO111MODULE=auto'
 
 # Ensure gpg is running
-export GPG_TTY="$(tty)"
 if [[ `uname` == 'Darwin' ]]; then
+	export PINENTRY_USER_DATA="USE_CURSES=0"
 	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 	gpgconf --launch gpg-agent
+	gpg-connect-agent updatestartuptty /bye
 else
 	export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 	&>/dev/null gpg-connect-agent updatestartuptty /bye
