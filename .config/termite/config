@@ -1,6 +1,6 @@
 [options]
 allow_bold = true
-font = Hack Nerd Font 9
+font = Hack Nerd Font 12
 icon_name = utilities-terminal
 mouse_autohide = false
 scroll_on_keystroke = true

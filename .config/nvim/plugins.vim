@@ -40,5 +40,6 @@ Plug 'tomtom/tcomment_vim'
 Plug 'mattn/emmet-vim'
 Plug 'fatih/vim-go'
 Plug 'kovisoft/slimv'
+Plug 'jparise/vim-graphql'
 
 call plug#end()

@@ -7,6 +7,7 @@ let s:config_files = [
 	\'common.vim',
 	\'mappings.vim',
 	\'plugin_conf.vim',
+	\'languages.vim',
 	\]
 
 for file in s:config_files
