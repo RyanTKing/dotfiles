@@ -56,22 +56,25 @@ let g:ctrlp_custom_ignore = {
 	\ }
 
 " Completor
-inoremap <expr> <Tab> pumvisible() ?  "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ?  "\<C-p>" : "\<S-Tab>"
-let g:completor_auto_trigger = 0
-inoremap <expr> <Tab> TabOrComplete()
-noremap <silent> <leader>d :call completor#do('definition')<CR>
-noremap <silent> <leader>c :call completor#do('doc')<CR>
-noremap <silent> <leader>f :call completor#do('format')<CR>
-noremap <silent> <leader>s :call completor#do('hover')<CR>
-let g:completor_filetype_map = {
-      \ 'go':   {'ft': 'lsp', 'cmd': 'gopls'},
-      \ }
+" inoremap <expr> <Tab> pumvisible() ?  "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ?  "\<C-p>" : "\<S-Tab>"
+" let g:completor_auto_trigger = 0
+" inoremap <expr> <Tab> TabOrComplete()
+" noremap <silent> <leader>d :call completor#do('definition')<CR>
+" noremap <silent> <leader>c :call completor#do('doc')<CR>
+" noremap <silent> <leader>f :call completor#do('format')<CR>
+" noremap <silent> <leader>s :call completor#do('hover')<CR>
+" let g:completor_filetype_map = {
+"       \ 'go':   {'ft': 'lsp', 'cmd': 'gopls'},
+"       \ }
 
 " Ultisnips
-let g:UltiSnipsExpandTrigger="<c-q>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+" let g:UltiSnipsExpandTrigger = "<nop>"
+inoremap <expr> <CR> pumvisible() ? "<C-R>=UltiSnips#ExpandSnippetOrJump()<CR>" : "\<CR>"
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetDirectories = ['$HOME/.vim/UltiSnips']
+
 
 " coc.nvim
 hi CocErrorSign ctermfg=01 ctermbg=18 guifg=#fb4934 guibg=#3c3836

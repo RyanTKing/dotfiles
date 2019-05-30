@@ -13,13 +13,11 @@ Plug 'majutsushi/tagbar'
 Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
-" Autocomplete
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
-
 " Autocompletion
-Plug 'maralla/completor.vim'
-Plug 'ferreum/completor-tmux'
-Plug 'kyouryuukunn/completor-necovim'
+Plug 'neoclide/coc.nvim', {'do': './install.sh nightly'}
+" Plug 'maralla/completor.vim'
+" Plug 'ferreum/completor-tmux'
+" Plug 'kyouryuukunn/completor-necovim'
 
 " Tools
 Plug 'sirver/ultisnips'
@@ -29,6 +27,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
+
 
 " General Text Editing
 Plug 'gcmt/wildfire.vim'

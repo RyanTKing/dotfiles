@@ -8,6 +8,7 @@ set cursorline
 syntax on
 set path+=**
 set wildmenu
+set backspace=indent,eol,start
 if filereadable(expand("~/.vimrc_background"))
 	let base16colorspace=256
 	source ~/.vimrc_background
@@ -58,6 +59,11 @@ highlight Search guifg=#282a2e
 highlight IncSearch guifg=#282a2e
 highlight Child guifg=#fb4934 guibg=NONE cterm=bold gui=bold
 highlight Sneak guifg=black guibg=orange
+
+" Swap, backup, and undo files
+set backupdir=.backup/,~/.backup/,/tmp//
+set directory=.swp/,~/.swp/,/tmp//
+set undodir=.undo/,~/.undo/,/tmp//
 
 " Autocmds
 augroup Trailing
