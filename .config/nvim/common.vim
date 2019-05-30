@@ -8,8 +8,6 @@ set cursorline
 syntax on
 set path+=**
 set wildmenu
-set termguicolors
-colorscheme base16-gruvbox-dark-soft
 set updatetime=350
 set signcolumn=yes
 set wrap
@@ -20,6 +18,17 @@ set lazyredraw
 set hidden
 set inccommand=nosplit
 set colorcolumn=120
+set cmdheight=2
+
+" Color scheme
+if has('termgui')
+	set termguicolors
+endif
+if filereadable(expand("~/.vimrc_background"))
+	let base16colorspace=256
+	source ~/.vimrc_background
+endif
+
 
 " Folds
 set foldmethod=indent

@@ -6,18 +6,19 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'majutsushi/tagbar'
-Plug 'shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-Plug 'edkolev/tmuxline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 
 " Autocomplete
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 " Tools
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'tpope/vim-eunuch'
 Plug 'shougo/denite.nvim', {'do': ':UpdateRemotePlugins'}
 Plug 'tpope/vim-fugitive'

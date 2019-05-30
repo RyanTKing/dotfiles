@@ -8,14 +8,13 @@ let g:airline#extensions#keymap#enabled = 0
 let g:airline_detect_spelllang = 0
 set noshowmode
 
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-
-let g:airline_powerline_fonts = 1
 
 " Tmuxline
 let g:airline#extensions#tmuxline#enabled = 1
@@ -45,10 +44,6 @@ let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 0
 let delimitMate_nesting_quotes = ['``']
 
-" Deoplete.nvim
-set completeopt-=preview
-let g:deoplete#enable_at_startup = 1
-
 " coc.nvim
 hi CocErrorSign ctermfg=01 ctermbg=18 guifg=#fb4934 guibg=#3c3836
 hi CocErrorHighlight ctermfg=01 cterm=underline gui=underline guifg=#fb4934
@@ -58,6 +53,12 @@ hi CocInfoSign ctermfg=04 ctermbg=18 guifg=#83a598 guibg=#3c3836
 hi CocInfoHighlight ctermfg=04 cterm=underline gui=underline guifg=#83a598
 hi CocHintSign ctermfg=02 ctermbg=18 guifg=#b8bb26 guibg=#3c3836
 hi CocHintHighlight ctermfg=02 cterm=underline gui=underline guifg=#b8bb26
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger = "<nop>"
+inoremap <expr> <CR> pumvisible() ? "<C-R>=UltiSnips#ExpandSnippetOrJump()<CR>" : "\<CR>"
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips"
 
 " NERDTree
 let NERDTreeMinimalUI = 1
