@@ -35,6 +35,7 @@ Plug 'bakpakin/ats2.vim'
 Plug 'lervag/vimtex'
 Plug 'kovisoft/slimv'
 Plug 'jparise/vim-graphql'
+Plug 'plasticboy/vim-markdown'
 
 " Code Editing
 Plug 'raimondi/delimitmate'

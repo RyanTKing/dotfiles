@@ -108,17 +108,6 @@ alias gst=_gst
 alias modon='export GO111MODULE=on'
 alias modoff='export GO111MODULE=auto'
 
-# Ensure gpg is running
-if [[ `uname` == 'Darwin' ]]; then
-	export PINENTRY_USER_DATA="USE_CURSES=0"
-	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-	gpgconf --launch gpg-agent
-	gpg-connect-agent updatestartuptty /bye
-else
-	export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
-	&>/dev/null gpg-connect-agent updatestartuptty /bye
-fi
-
 # Cogo specific configs
 [ -f ${HOME}/.zshrc_cogo ] && source ${HOME}/.zshrc_cogo
 
@@ -132,6 +121,10 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 # Startup tmux
 alias tmux='tmux -u'
 if [ -z "$TMUX" ]; then
+	export PINENTRY_USER_DATA="USE_CURSES=1"
+	export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+	gpgconf --launch gpg-agent
+	&>/dev/null gpg-connect-agent updatestartuptty /bye
 	tmux
 fi
 

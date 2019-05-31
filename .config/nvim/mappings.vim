@@ -34,7 +34,6 @@ endif
 
 " FZF
 nnoremap <silent><C-p> :call FZFIcons()<CR>
-au FileType fzf tunmap <Esc>
 
 " Tagbar
 noremap <silent><A-n> <Esc>:TagbarToggle<CR>
