@@ -39,6 +39,10 @@ else
 	alias copy='xclip -selection clipboard'
 fi
 
+# Fzf
+source "/usr/share/fzf/key-bindings.zsh"
+source "/usr/share/fzf/completion.zsh"
+
 # Startup pyenv
 eval "$(pyenv init -)"
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
@@ -76,9 +80,26 @@ function _gg() {
     done
 }
 
+# Function to run pacakge in suite
+function _gst() {
+	for file in $(find . -type f -name \*_test.go); do
+		suite=$(grep -oP '(?<=func ).*(?=\(t)' $file)
+		if [ ! -z $suite ]; then
+			break
+		fi
+	done
+	if [ -z $suite ]; then
+		echo "no test suite found"
+		exit 1
+	fi
+
+	go test -run $suite . -testify.m $1
+}
+
 alias gg=_gg
 alias godir=_godir
 alias gocover="go test -v -coverprofile=c.out && go tool cover -html=c.out"
+alias gst=_gst
 
 # Ensure gpg is running
 export GPG_TTY="$(tty)"

@@ -44,6 +44,13 @@ let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 0
 let delimitMate_nesting_quotes = ['``']
 
+" FZF
+if executable('rg')
+	let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+	set grepprg=rg\ --vimgrep
+	command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+endif
+
 " coc.nvim
 hi CocErrorSign ctermfg=01 ctermbg=18 guifg=#fb4934 guibg=#3c3836
 hi CocErrorHighlight ctermfg=01 cterm=underline gui=underline guifg=#fb4934
@@ -55,8 +62,6 @@ hi CocHintSign ctermfg=02 ctermbg=18 guifg=#b8bb26 guibg=#3c3836
 hi CocHintHighlight ctermfg=02 cterm=underline gui=underline guifg=#b8bb26
 
 " UltiSnips
-let g:UltiSnipsExpandTrigger = "<nop>"
-inoremap <expr> <CR> pumvisible() ? "<C-R>=UltiSnips#ExpandSnippetOrJump()<CR>" : "\<CR>"
 let g:UltiSnipsEditSplit="vertical"
 let g:UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips"
 
@@ -74,38 +79,6 @@ augroup end
 " Tagbar
 let g:tagbar_sort = 0
 let g:tagbar_compact = 1
-
-" Denite.nvim
-call denite#custom#option('_', 'highlight_mode_normal', 'CursorLine')
-call denite#custom#option('_', 'highlight_mode_insert', 'CursorLine')
-call denite#custom#option('_', 'highlight_matched_range', 'None')
-call denite#custom#option('_', 'highlight_matched_char', 'Child')
-if executable('rg')
-	call denite#custom#var('file/rec', 'command',
-				\ ['rg', '--color', 'never', '--files', '-L', '--no-messages'])
-	call denite#custom#var('grep', 'command', ['rg'])
-	call denite#custom#var('grep', 'default_opts',
-				\ ['--vimgrep', '--no-heading'])
-	call denite#custom#var('grep', 'recursive_opts', [])
-	call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-	call denite#custom#var('grep', 'separator', ['--'])
-	call denite#custom#var('grep', 'final_opts', [])
-elseif executable('ag')
-	call denite#custom#var('file/rec', 'command',
-				\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-	call denite#custom#var('grep', 'command', ['ag'])
-	call denite#custom#var('grep', 'default_opts',
-				\ ['-i', '--vimgrep'])
-	call denite#custom#var('grep', 'recursive_opts', [])
-	call denite#custom#var('grep', 'pattern_opt', [])
-	call denite#custom#var('grep', 'separator', ['--'])
-	call denite#custom#var('grep', 'final_opts', [])
-endif
-call denite#custom#map('insert', '<Esc>', '<denite:enter_mode:normal>', 'noremap')
-call denite#custom#map('normal', 'i', '<denite:enter_mode:insert>', 'noremap')
-call denite#custom#map('normal', '<Esc>', '<denite:quit>', 'noremap')
-call denite#custom#map('normal', '<C-p>', '<denite:quit>', 'noremap')
-call denite#custom#map('insert', '<C-p>', '<denite:quit>', 'noremap')
 
 " vim-go
 let g:go_highlight_build_constraints=1

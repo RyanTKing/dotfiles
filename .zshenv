@@ -8,6 +8,12 @@ export ALTERNATE_EDITOR="vim"
 export GOPATH="$HOME/go"
 export npm_config_prefix="${HOME}/.node_modules"
 
+# FZF Variables
+FD_OPTIONS="--follow --hidden --exclude .git"
+export FZF_DEFAULT_COMMAND="git ls-files --cached --others --exclude-standard | fd --type f --type 1 $FD_OPTIONS"
+export FZF_CTRL_T_COMMAND="fd $FD_OPTIONS"
+export FZF_ALT_C_COMMAND="fd --type d $FD_OPTIONS"
+
 # Setup PATH
 PATH="/usr/local/bin:$PATH"
 [ -d "/usr/local/sbin" ]				&& PATH="/usr/local/sbin:${PATH}"

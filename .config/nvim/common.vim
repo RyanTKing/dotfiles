@@ -8,7 +8,7 @@ set cursorline
 syntax on
 set path+=**
 set wildmenu
-set updatetime=350
+set updatetime=300
 set signcolumn=yes
 set wrap
 set linebreak
@@ -18,7 +18,6 @@ set lazyredraw
 set hidden
 set inccommand=nosplit
 set colorcolumn=120
-set cmdheight=2
 
 " Color scheme
 if has('termgui')
@@ -28,7 +27,6 @@ if filereadable(expand("~/.vimrc_background"))
 	let base16colorspace=256
 	source ~/.vimrc_background
 endif
-
 
 " Folds
 set foldmethod=indent

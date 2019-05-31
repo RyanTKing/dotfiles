@@ -32,9 +32,9 @@ if has('nvim')
 endif
 
 
-"Denite
-nnoremap <silent><C-p> :Denite file/rec<Cr>
-nnoremap <C-d> :Denite <Tab>
+" FZF
+nnoremap <silent><C-p> :call FZFIcons()<CR>
+au FileType fzf tunmap <Esc>
 
 " Tagbar
 noremap <silent><A-n> <Esc>:TagbarToggle<CR>
