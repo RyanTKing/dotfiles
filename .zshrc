@@ -95,7 +95,7 @@ function _gst() {
 	done
 	if [ -z $suite ]; then
 		echo "no test suite found"
-		exit 1
+		return
 	fi
 
 	go test -run $suite . -testify.m $1

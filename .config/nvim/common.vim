@@ -48,6 +48,7 @@ set noexpandtab
 set tabstop=4
 set shiftwidth=4
 set smartindent
+set autoindent
 
 " Keymap fixes
 set iminsert=0

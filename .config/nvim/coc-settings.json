@@ -1,11 +1,5 @@
 {
 	"languageserver": {
-		"golang": {
-			"command": "gopls",
-			"args": [],
-			"rootPatterns": ["go.mod", ".vim/", ".git/", "Gopkg.lock"],
-			"filetypes": ["go"]
-		},
 		"bash": {
 			"command": "bash-language-server",
 			"args": ["start"],

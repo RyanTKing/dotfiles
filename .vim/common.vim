@@ -3,18 +3,12 @@ filetype plugin indent on
 set encoding=utf-8
 set mouse=a
 set number
-set relativenumber
 set cursorline
 syntax on
 set path+=**
 set wildmenu
 set backspace=indent,eol,start
-if filereadable(expand("~/.vimrc_background"))
-	let base16colorspace=256
-	source ~/.vimrc_background
-endif
-
-set updatetime=350
+set updatetime=250
 set signcolumn=yes
 set wrap
 set linebreak
@@ -23,6 +17,21 @@ set shortmess+=c
 set lazyredraw
 set hidden
 set colorcolumn=120
+set nobackup
+set nowritebackup
+set noswapfile
+set balloondelay=250
+set hlsearch
+set incsearch
+set ttymouse=sgr
+
+if has('termgui')
+	set termguicolors
+endif
+if filereadable(expand("~/.vimrc_background"))
+	let base16colorspace=256
+	source ~/.vimrc_background
+endif
 
 " Folds
 set foldmethod=indent

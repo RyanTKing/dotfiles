@@ -8,14 +8,16 @@ let g:airline#extensions#keymap#enabled = 0
 let g:airline_detect_spelllang = 0
 set noshowmode
 
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+let g:airline_powerline_fonts = 1
+let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
+let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#left_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline_section_error = '%{airline#util#wrap(airline#extensions#coc#get_error(),0)}'
-let g:airline_section_warning = '%{airline#util#wrap(airline#extensions#coc#get_warning(),0)}'
-
-let g:airline_powerline_fonts = 1
 
 " Tmuxline
 let g:airline#extensions#tmuxline#enabled = 1
@@ -42,49 +44,29 @@ endif
 
 " DelimitMate
 let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 0
+let delimitMate_expand_space = 1
 let delimitMate_nesting_quotes = ['``']
 
-" Ctrl-P
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_custom_ignore = {
-	\ 'dir':  '\v[\/]\.(git|hg|svn)$',
-	\ 'file': '\v\.(exe|so|dll)$',
-	\ 'link': 'some_bad_symbolic_links',
-	\ }
-
-" Completor
-" inoremap <expr> <Tab> pumvisible() ?  "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ?  "\<C-p>" : "\<S-Tab>"
-" let g:completor_auto_trigger = 0
-" inoremap <expr> <Tab> TabOrComplete()
-" noremap <silent> <leader>d :call completor#do('definition')<CR>
-" noremap <silent> <leader>c :call completor#do('doc')<CR>
-" noremap <silent> <leader>f :call completor#do('format')<CR>
-" noremap <silent> <leader>s :call completor#do('hover')<CR>
-" let g:completor_filetype_map = {
-"       \ 'go':   {'ft': 'lsp', 'cmd': 'gopls'},
-"       \ }
-
-" Ultisnips
-let g:UltiSnipsExpandTrigger="<c-j>"
-" let g:UltiSnipsExpandTrigger = "<nop>"
-inoremap <expr> <CR> pumvisible() ? "<C-R>=UltiSnips#ExpandSnippetOrJump()<CR>" : "\<CR>"
-let g:UltiSnipsEditSplit="vertical"
-let g:UltiSnipsSnippetDirectories = ['$HOME/.vim/UltiSnips']
-
+" FZF
+if executable('rg')
+	let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+	set grepprg=rg\ --vimgrep
+	command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+endif
 
 " coc.nvim
-hi CocErrorSign ctermfg=01 ctermbg=18 guifg=#fb4934 guibg=#3c3836
-hi CocErrorHighlight ctermfg=01 cterm=underline gui=underline guifg=#fb4934
-hi CocWarningSign ctermfg=03 ctermbg=18 guifg=#fabd2f guibg=#3c3836
-hi CocWarningHighlight ctermfg=03 cterm=underline gui=underline guifg=#fabd2f
-hi CocInfoSign ctermfg=04 ctermbg=18 guifg=#83a598 guibg=#3c3836
-hi CocInfoHighlight ctermfg=04 cterm=underline gui=underline guifg=#83a598
-hi CocHintSign ctermfg=02 ctermbg=18 guifg=#b8bb26 guibg=#3c3836
-hi CocHintHighlight ctermfg=02 cterm=underline gui=underline guifg=#b8bb26
+" hi CocErrorSign ctermfg=01 ctermbg=18 guifg=#fb4934 guibg=#3c3836
+" hi CocErrorHighlight ctermfg=01 cterm=underline gui=underline guifg=#fb4934
+" hi CocWarningSign ctermfg=03 ctermbg=18 guifg=#fabd2f guibg=#3c3836
+" hi CocWarningHighlight ctermfg=03 cterm=underline gui=underline guifg=#fabd2f
+" hi CocInfoSign ctermfg=04 ctermbg=18 guifg=#83a598 guibg=#3c3836
+" hi CocInfoHighlight ctermfg=04 cterm=underline gui=underline guifg=#83a598
+" hi CocHintSign ctermfg=02 ctermbg=18 guifg=#b8bb26 guibg=#3c3836
+" hi CocHintHighlight ctermfg=02 cterm=underline gui=underline guifg=#b8bb26
+
+" UltiSnips
+let g:UltiSnipsEditSplit="vertical"
+let g:UltiSnipsSnippetsDir = "~/.config/nvim/UltiSnips"
 
 " NERDTree
 let NERDTreeMinimalUI = 1
@@ -102,23 +84,23 @@ let g:tagbar_sort = 0
 let g:tagbar_compact = 1
 
 " vim-go
-let g:go_highlight_build_constraints=1
-let g:go_highlight_extra_types=1
-let g:go_highlight_fields=1
-let g:go_highlight_functions=1
-let g:go_highlight_interfaces=1
-let g:go_highlight_methods=1
-let g:go_highlight_operators=1
-let g:go_highlight_structs=1
-let g:go_highlight_types=1
-let g:go_auto_sameids=1
-let g:go_fmt_command='goimports'
-let g:go_fmt_autosave=1
-let g:go_auto_type_info=1
-let g:go_list_type="quickfix"
-let g:go_addtags_transform="snakecase"
-let g:go_metalinter_autosave = 0
-let g:go_metalinter_command = "golangci-lint run --fast -exclude=vendor/... --enable-all=true --disable=gochecknoglobals"
+" let g:go_highlight_build_constraints=1
+" let g:go_highlight_extra_types=1
+" let g:go_highlight_fields=1
+" let g:go_highlight_functions=1
+" let g:go_highlight_interfaces=1
+" let g:go_highlight_methods=1
+" let g:go_highlight_operators=1
+" let g:go_highlight_structs=1
+" let g:go_highlight_types=1
+" let g:go_auto_sameids=1
+" let g:go_fmt_command='goimports'
+" let g:go_fmt_autosave=1
+" let g:go_auto_type_info=1
+" let g:go_list_type="quickfix"
+" let g:go_addtags_transform="snakecase"
+" let g:go_metalinter_autosave = 0
+" let g:go_metalinter_command = "golangci-lint run --fast -exclude=vendor/... --enable-all=true --disable=gochecknoglobals"
 
 " slimv
 let g:slimv_swank_cmd = "!ros -e '(ql:quickload :swank) (swank:create-server)' wait &"

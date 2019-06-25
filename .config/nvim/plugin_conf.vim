@@ -42,7 +42,7 @@ endif
 
 " DelimitMate
 let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 0
+let delimitMate_expand_space = 1
 let delimitMate_nesting_quotes = ['``']
 
 " FZF
@@ -82,23 +82,30 @@ let g:tagbar_sort = 0
 let g:tagbar_compact = 1
 
 " vim-go
-let g:go_highlight_build_constraints=1
+let g:go_code_completion_enabled = 0
+let g:go_test_show_name = 1
+let g:go_fmt_autosave=1
+let g:go_fmt_command='goimports'
+let g:go_fmt_options = {
+			\ 'goimports': '-local git.cogolo.net'
+			\}
+let g:go_snippet_engine = 'ultisnips'
+let g:go_metalinter_command = "golangci-lint run --fast -exclude=vendor/... --enable-all=true --disable=gochecknoglobals"
 let g:go_highlight_extra_types=1
-let g:go_highlight_fields=1
+let g:go_highlight_operators=1
 let g:go_highlight_functions=1
+let g:go_highlight_function_parameters=0
+let g:go_highlight_function_calls=0
+let g:go_highlight_types=1
+let g:go_highlight_fields=1
+let g:go_highlight_build_constraints=1
+let g:go_highlight_generate_tags=1
+let g:go_highlight_variable_declarations=0
+let g:go_highlight_variable_assignments=0
 let g:go_highlight_interfaces=1
 let g:go_highlight_methods=1
-let g:go_highlight_operators=1
 let g:go_highlight_structs=1
-let g:go_highlight_types=1
-let g:go_auto_sameids=1
-let g:go_fmt_command='goimports'
-let g:go_fmt_autosave=1
-let g:go_auto_type_info=1
-let g:go_list_type="quickfix"
-let g:go_addtags_transform="snakecase"
-let g:go_metalinter_autosave = 0
-let g:go_metalinter_command = "golangci-lint run --fast -exclude=vendor/... --enable-all=true --disable=gochecknoglobals"
+let g:go_auto_type_info=0
 
 " slimv
 let g:slimv_swank_cmd = "!ros -e '(ql:quickload :swank) (swank:create-server)' wait &"
