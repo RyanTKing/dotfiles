@@ -58,16 +58,23 @@ eval "$(rbenv init -)"
 # Golang setup
 # Go anywhere in gopath
 function _godir() {
-	basedir="$GOPATH/src"
-	if [ -z $1 ]; then
-		pushd "${basedir}"
-	else
-		if which bfs &> /dev/null; then
-			pushd $(bfs -type d -name "*${1}*" -f "$GOPATH/src" | head -n 1)
+	basedirs=("$HOME/Work" "$HOME/Projects" "$GOPATH/src")
+	for basedir in $basedirs; do
+		if [ -z $1 ]; then
+			pushd "${basedir}"
 		else
-			pushd $(find "$GOPATH/src" -type d -path "*${1}*" -print -quit)
+			if which bfs &> /dev/null; then
+				dir=$(bfs 2>/dev/null -maxdepth 3 -type d -name "${1}*" -f "${basedir}" | head -n 1)
+				if [ ! -z $dir ]; then
+					pushd $dir
+					unset dir
+					return
+				fi
+			else
+				pushd $(find "$GOPATH/src" -type d -path "*${1}*" -print -quit)
+			fi
 		fi
-	fi
+	done
 }
 
 # Function to `go get` from URLs copied from browser
