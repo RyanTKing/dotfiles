@@ -44,5 +44,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-unimpaired'
 Plug 'mattn/emmet-vim'
+Plug 'vim-scripts/dbext.vim'
 
 call plug#end()

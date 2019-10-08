@@ -24,11 +24,13 @@
 	rebase = true
 [fetch]
 	prune = true
-[includeIf "gitdir:~/go/src/git.cogolo.net/**/*"]
+[includeIf "gitdir:~/go/src/git.cogolo.net/"]
 	path = ~/.gitconfig_cogo
-[includeIf "gitdir:~/Work/**/*"]
+[includeIf "gitdir:~/Work/"]
 	path = ~/.gitconfig_cogo
-[url "ssh://git@github.com/ryantking"]
-    insteadOf = https://github.com/ryantking
 [url "ssh://git@git.cogolo.net"]
 	insteadOf = https://git.cogolo.net
+[url "ssh://git@github.com/ryantking"]
+	insteadOf = https://github.com/ryantking
+[url "ssh://git@github.com/cogolabs"]
+	insteadOf = https://github.com/cogolabs

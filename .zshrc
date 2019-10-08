@@ -58,20 +58,20 @@ eval "$(rbenv init -)"
 # Golang setup
 # Go anywhere in gopath
 function _godir() {
-	basedirs=("$HOME/Work" "$HOME/Projects" "$GOPATH/src")
-	for basedir in $basedirs; do
+	godirs=( "$HOME/Work" "$HOME/Projects" "$GOPATH/src" )
+	for basedir in "${godirs[@]}"; do
 		if [ -z $1 ]; then
 			pushd "${basedir}"
 		else
 			if which bfs &> /dev/null; then
-				dir=$(bfs 2>/dev/null -maxdepth 3 -type d -name "${1}*" -f "${basedir}" | head -n 1)
+				dir=$(bfs -maxdepth 3 -type d -name "*${1}*" -f $basedir | head -n 1)
 				if [ ! -z $dir ]; then
 					pushd $dir
 					unset dir
-					return
+					break
 				fi
 			else
-				pushd $(find "$GOPATH/src" -type d -path "*${1}*" -print -quit)
+				pushd $(find "$basedir" -type d -path "*${1}*" -print -quit)
 			fi
 		fi
 	done
@@ -108,12 +108,23 @@ function _gst() {
 	go test -run $suite . -testify.m $1
 }
 
+function _gpgreset() {
+	gpgconf --kill gpg-agent
+	gpgconf --launch gpg-agent
+	&>/dev/null gpg-connect-agent updatestartuptty /bye
+}
+
+alias gpgreset=_gpgreset
 alias gg=_gg
 alias godir=_godir
 alias gocover="go test -v -coverprofile=c.out && go tool cover -html=c.out"
 alias gst=_gst
 alias modon='export GO111MODULE=on'
 alias modoff='export GO111MODULE=auto'
+alias gitprune="git remote prune origin && git branch -vv | grep ': gone]' | awk '{print \$1}' | xargs git branch -D"
+
+# Kubewctl aliases
+[ -f ${HOME}/.kubectl_aliases ] && source ~/.kubectl_aliases
 
 # Cogo specific configs
 [ -f ${HOME}/.zshrc_cogo ] && source ${HOME}/.zshrc_cogo
