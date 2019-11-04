@@ -25,3 +25,6 @@ augroup end
 au! FileType fzf silent! tunmap <Esc>
 au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
+au BufNewFile,BufRead *.ts setlocal filetype=typescript expandtab tabstop=2 shiftwidth=2 softtabstop=2
+au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx expandtab tabstop=2 shiftwidth=2 softtabstop=2

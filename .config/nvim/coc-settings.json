@@ -20,5 +20,10 @@
 	"diagnostic.errorSign": "◆",
 	"diagnostic.warningSign": "◆",
 	"diagnostic.infoSign": "◆",
-	"diagnostic.hintSign": "◆"
+	"diagnostic.hintSign": "◆",
+	"coc.preferences.formatOnSaveFiletypes": [
+		"javascript", "javascriptreact",
+		"typescript", "typescriptreact",
+		"json", "graphql"
+	]
 }

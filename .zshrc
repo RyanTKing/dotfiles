@@ -64,14 +64,14 @@ function _godir() {
 			pushd "${basedir}"
 		else
 			if which bfs &> /dev/null; then
-				dir=$(bfs -maxdepth 3 -type d -name "*${1}*" -f $basedir | head -n 1)
+				dir=$(bfs -maxdepth 3 -type d -name "${1}*" -f $basedir | head -n 1)
 				if [ ! -z $dir ]; then
 					pushd $dir
 					unset dir
 					break
 				fi
 			else
-				pushd $(find "$basedir" -type d -path "*${1}*" -print -quit)
+				pushd $(find "$basedir" -type d -path "${1}*" -print -quit)
 			fi
 		fi
 	done
