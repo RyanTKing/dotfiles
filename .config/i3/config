@@ -2,20 +2,36 @@
 # i3 Config File
 #
 
-#* Variables *******************************************************************
+#* General ************************************************************************************************************
 set $home     /home/ryan
 set $font     roboto 14
 set $gin      12
 set $gout     16
 
-# Keybindings
-set $mod Mod1
-set $win Mod4
+floating_modifier $mod
+font pango:$font
+exec xset s off -dpms
+
+# Gaps
+gaps inner $gout
+gaps outer $gin
+
+# Mod kes
+set $win Mod1
+set $mod Mod4
 
 # Wallpaper
-set $wall $HOME/Pictures/Wallpaper/lightgrass.jpg
+set $wall $HOME/Pictures/Wallpaper/Evening\ School.jpg
 set $walltype --bg-fill
 set $wallprog feh
+
+# Workspace to Screens
+workspace 1 output DP-1
+workspace 2 output DP-1
+workspace 3 output DP-1
+workspace 4 output HDMI-1
+workspace 5 output HDMI-1
+workspace 6 output HDMI-1
 
 # Workspace Labels
 set $ws1 work
@@ -28,7 +44,7 @@ set $ws7 other
 set $ws8 other
 set $ws9 other
 
-# Colors
+#* Appearance *********************************************************************************************************
 set_from_resource $black       color0  #000000
 set_from_resource $darkgrey    color8  #000000
 set_from_resource $darkred     color1  #000000
@@ -46,52 +62,31 @@ set_from_resource $cyan        color14 #000000
 set_from_resource $darkwhite   color7  #000000
 set_from_resource $white       color15 #000000
 
-#* General *********************************************************************
-floating_modifier $mod
-font pango:$font
-focus_follows_mouse no
-exec xset s off -dpms
+# window settings
+new_window pixel
+new_float normal
+for_window [class="^.*"] border pixel 4
+for_window [urgent=latest] focus
 
-# Gaps
-gaps inner $gin
-gaps outer $gout
-
-# Window Appearance
 # class                 border      backgr  text    indicator  child_border
 client.focused          $darkblue   $black  $white  $black     $darkblue
 client.focused_inactive $black      $black  $white  $black     $black
 client.unfocused        $black      $black  $white  $black     $black
 client.urgent           $darkred    $black  $white  $black     $darkred
 
-new_window pixel
-for_window [class="^.*"] border pixel 2
-# for_window [class=".*"] title_format "<span font='Gohu GohuFont 11'> > %title</span>"
-
-#* Application Settings ********************************************************
-for_window [instance="__special__"] floating enable
-for_window [class="Qemu-*"] floating enable
-for_window [class="Lxappearance"] floating enable
-for_window [window_role="Preferences"] floating enable
-for_window [window_type="dialog"] floating enable
-for_window [window_type="menu"] floating enable
-for_window [title="Figure 1"] floating enable
-for_window [title="QEMU - TigerVNC"] floating enable
-
 # Autostarts
-exec --no-startup-id pulseaudio
-exec --no-startup-id dunst
-exec --no-startup-id xmodmap $home/.Xmodmap
+# exec --no-startup-id pulseaudio
+exec --no-startup-id wmctrl -c Plasma
 exec --no-startup-id xrdb $home/.Xresources
-exec --no-startup-id emacsd start
-exec_always --no-startup-id launch_compton
-exec_always --no-startup-id $wallprog $walltype $wall
-exec_always --no-startup-id $home/Projects/dotfiles/bin/launch_polybar
+exec --no-startup-id xmodmap $home/.Xmodmap
+exec --no-startup-id xcape
+exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 
-#* Keybindings *****************************************************************
+#* Keybindings ********************************************************************************************************
 bindsym $mod+q kill
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+Escape exec "i3-nagbar -t warning -m 'Are you sure you want to logout?' -b 'Yes' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Window Controls
 bindsym $mod+h     focus left
@@ -120,18 +115,8 @@ bindsym $mod+f          fullscreen toggle
 bindsym $win+s layout stacking
 bindsym $win+w layout tabbed
 bindsym $win+e layout toggle split
-
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space       focus mode_toggle
-
-# Media Controls
-bindsym $mod+Insert exec mpc toggle
-bindsym $mod+Home   exec mpc stop
-bindsym $mod+Delete exec mpc prev
-bindsym $mod+End    exec mpc next
-bindsym $mod+Pause  exec vol mute
-bindsym $mod+Next   exec vol down 5%
-bindsym $mod+Prior  exec vol up 5%
 
 # Resize Mode
 mode "Resize" {
@@ -148,7 +133,6 @@ mode "Resize" {
 	 bindsym Return mode "default"
 	 bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "Resize"
 
 # Gaps Adjustment Mode
@@ -163,7 +147,6 @@ mode "Gaps" {
      bindsym 5 gaps outer current set 0 bindsym Return mode "default"
      bindsym Escape mode "default"
 }
-
 bindsym $mod+g mode "Gaps"
 
 # Switch Workspaces
@@ -177,7 +160,7 @@ bindsym $mod+7 workspace 7$ws7
 bindsym $mod+8 workspace 8$ws8
 bindsym $mod+9 workspace 9$ws9
 
-# Move windows to different workspaces
+# # Move windows to different workspaces
 bindsym $mod+Shift+1 move container to workspace 1$ws1
 bindsym $mod+Shift+2 move container to workspace 2$ws2
 bindsym $mod+Shift+3 move container to workspace 3$ws3
@@ -188,23 +171,59 @@ bindsym $mod+Shift+7 move container to workspace 7$ws7
 bindsym $mod+Shift+8 move container to workspace 8$ws8
 bindsym $mod+Shift+9 move container to workspace 9$ws9
 
+# Fast Workspace Switch
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab workspace prev
 bindsym $win+q move scratchpad
 bindsym $win+a scratchpad show
 
-# Application Bindings
-bindsym $mod+Return exec --no-startup-id urxvt
-bindsym $mod+b exec --no-startup-id chromium
+#* Application Hotkeys *******************************************************************************************
+bindsym $mod+Return exec konsole
+bindsym $mod+b exec --no-startup-id firefox
 bindsym $mod+Shift+s exex --no-startup-id spotify
-bindsym $mod+Shift+e exec --no-startup-id emacsclient -c -s "$HOME/.emacs.d/server/server" -a emacs
-bindsym $mod+n exec --no-startup-id urxvt -e ranger
-bindsym $mod+Shift+v exec vlc
-bindsym $mod+M exec --no-startup-id urxvt -e ncmpcpp
+bindsym $mod+t exec --no-startup-id pkill compton
+bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -font "hack 10" -show combi'
 
-bindsym $mod+Shift+Return exec --no-startup-id urxvt -name __special__
-bindsym $mod+Shift+n exec --no-startup-id urxvt -name __special__ -e ranger
-bindsym $mod+Shift+M exec --no-startup-id urxvt -name __special__ -e ncmpcpp
-bindsym $mod+d exec --no-startup-id rofi -show run
+#* Window-Specific Settings *******************************************************************************************
+for_window [title="alsamixer"] floating enable border pixel 1
+for_window [class="Calamares"] floating enable border normal
+for_window [class="Clipgrab"] floating enable
+for_window [title="File Transfer*"] floating enable
+for_window [class="Galculator"] floating enable border pixel 1
+for_window [class="GParted"] floating enable border normal
+for_window [title="i3_help"] floating enable sticky enable border normal
+for_window [class="Lightdm-settings"] floating enable
+for_window [class="Lxappearance"] floating enable sticky enable border normal
+for_window [class="Manjaro-hello"] floating enable
+for_window [class="Manjaro Settings Manager"] floating enable border normal
+for_window [title="MuseScore: Play Panel"] floating enable
+for_window [class="Nitrogen"] floating enable sticky enable border normal
+for_window [class="Oblogout"] fullscreen enable
+for_window [class="octopi"] floating enable
+for_window [title="About Pale Moon"] floating enable
+for_window [class="Pamac-manager"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="qt5ct"] floating enable sticky enable border normal
+for_window [class="Qtconfig-qt4"] floating enable sticky enable border normal
+for_window [class="Simple-scan"] floating enable border normal
+for_window [class="(?i)System-config-printer.py"] floating enable border normal
+for_window [class="Skype"] floating enable border normal
+for_window [class="Timeset-gui"] floating enable border normal
+for_window [class="(?i)virtualbox"] floating enable border normal
+for_window [class="Xfburn"] floating enable
+for_window [class="yakuake"] floating enable
+for_window [class="plasmashell"] floating enable
+for_window [class="Plasma"] floating enable, border none
+for_window [title="plasma-desktop"] floating enable, border none
+for_window [title="win7"] floating enable, border none
+for_window [class="krunner"] floating enable, border none
+for_window [class="Kmix"] floating enable, border none
+for_window [class="Klipper"] floating enable, border none
+for_window [class="Plasmoidviewer"] floating enable, border none
+for_window [instance="__special__"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+for_window [title="Desktop — Plasma"] kill, floating enable, border none
 
-# End of [config]

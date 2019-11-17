@@ -53,15 +53,15 @@ if executable('rg')
 endif
 
 " coc.nvim
-let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-go']
-hi CocErrorSign ctermfg=01 ctermbg=18 guifg=#fb4934 guibg=#3c3836
-hi CocErrorHighlight ctermfg=01 cterm=underline gui=underline guifg=#fb4934
-hi CocWarningSign ctermfg=03 ctermbg=18 guifg=#fabd2f guibg=#3c3836
-hi CocWarningHighlight ctermfg=03 cterm=underline gui=underline guifg=#fabd2f
-hi CocInfoSign ctermfg=04 ctermbg=18 guifg=#83a598 guibg=#3c3836
-hi CocInfoHighlight ctermfg=04 cterm=underline gui=underline guifg=#83a598
-hi CocHintSign ctermfg=02 ctermbg=18 guifg=#b8bb26 guibg=#3c3836
-hi CocHintHighlight ctermfg=02 cterm=underline gui=underline guifg=#b8bb26
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-angular']
+hi CocErrorSign ctermfg=01 guifg=#BF616A guibg=#3B4252
+hi CocErrorHighlight ctermfg=01 cterm=underline gui=underline guifg=#BF616A
+hi CocWarningSign ctermfg=03 guifg=#EBCB8B
+hi CocWarningHighlight ctermfg=03 cterm=underline gui=underline
+hi CocInfoSign ctermfg=04 guifg=#ECEFF4 guibg=#3B4252
+hi CocInfoHighlight ctermfg=04 cterm=underline gui=underline guifg=#ECEFF4
+hi CocHintSign ctermfg=02 guifg=#B48EAD guibg=#3B4252
+hi CocHintHighlight ctermfg=02 cterm=underline gui=underline guifg=#B48EAD
 
 " UltiSnips
 let g:UltiSnipsEditSplit="vertical"

@@ -23,10 +23,7 @@ set colorcolumn=120
 if has('termgui')
 	set termguicolors
 endif
-if filereadable(expand("~/.vimrc_background"))
-	let base16colorspace=256
-	source ~/.vimrc_background
-endif
+colorscheme nord
 
 " Folds
 set foldmethod=indent
@@ -59,9 +56,9 @@ runtime macros/justify.vim
 
 " Highlights
 highlight EndOfBuffer guifg=bg guibg=NONE
-highlight Search guifg=#282a2e
-highlight IncSearch guifg=#282a2e
-highlight Child guifg=#fb4934 guibg=NONE cterm=bold gui=bold
+highlight Search guifg=#2E3440
+highlight IncSearch guifg=#2E3440
+highlight Child guifg=#BF616A guibg=NONE cterm=bold gui=bold
 highlight Sneak guifg=black guibg=orange
 
 " Autocmds

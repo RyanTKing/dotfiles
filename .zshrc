@@ -132,10 +132,6 @@ alias gitprune="git remote prune origin && git branch -vv | grep ': gone]' | awk
 # Travis
 [ -f ${HOME}/.travis/travis.sh ] && source ${HOME}/.travis/travis.sh
 
-# Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$("$BASE16_SHELL/profile_helper.sh")"
-
 # Setup GPG
 export PINENTRY_USER_DATA="USE_CURSES=0"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
@@ -148,5 +144,5 @@ if [ -z "$TMUX" ]; then
 	tmux
 fi
 
-
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+

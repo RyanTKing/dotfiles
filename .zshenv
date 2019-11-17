@@ -6,9 +6,10 @@ export EDITOR="nvim"
 export VISUAL="code"
 export ALTERNATE_EDITOR="vim"
 export GOPATH="$HOME/go"
+export GOBIN="$GOPATH/bin"
 export GOPROXY=https://goproxy.io,direct
 export GOPRIVATE=*.cogolo.net
-# export npm_config_prefix="${HOME}/.node_modules"
+export npm_config_prefix="${HOME}/.node_modules"
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion" ] && . "/usr/local/opt/nvm/etc/bash_completion"  # This loads nvm bash_completion
