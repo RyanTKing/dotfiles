@@ -28,9 +28,12 @@
 		"typescriptreact", "javascriptreact",
 		"typescript.tsx"
 	],
+	"prettier.singleQuote": true,
+	"prettier.printWidth": 120,
 	"coc.preferences.formatOnSaveFiletypes": [
-		"javascript", "javascriptreact",
-		"typescript", "typescriptreact",
-		"json", "graphql"
+		"html", "css", "json", "Markdown",
+		"javascript", "typescript",
+		"typescriptreact", "javascriptreact",
+		"typescript.tsx"
 	]
 }

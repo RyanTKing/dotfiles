@@ -53,7 +53,7 @@ if executable('rg')
 endif
 
 " coc.nvim
-let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-angular']
+let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-angular', 'coc-go']
 hi CocErrorSign ctermfg=01 guifg=#BF616A guibg=#3B4252
 hi CocErrorHighlight ctermfg=01 cterm=underline gui=underline guifg=#BF616A
 hi CocWarningSign ctermfg=03 guifg=#EBCB8B

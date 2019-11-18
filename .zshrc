@@ -122,6 +122,9 @@ alias gst=_gst
 alias modon='export GO111MODULE=on'
 alias modoff='export GO111MODULE=auto'
 alias gitprune="git remote prune origin && git branch -vv | grep ': gone]' | awk '{print \$1}' | xargs git branch -D"
+alias t="go test"
+alias tc="go test -cover"
+alias trc="go test -race -cover"
 
 # Kubewctl aliases
 [ -f ${HOME}/.kubectl_aliases ] && source ~/.kubectl_aliases
