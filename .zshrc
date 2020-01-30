@@ -92,20 +92,13 @@ function _gg() {
     done
 }
 
-# Function to run pacakge in suite
-function _gst() {
-	for file in $(find . -type f -name \*_test.go); do
-		suite=$(grep -oP '(?<=func ).*(?=\(t)' $file)
-		if [ ! -z $suite ]; then
-			break
-		fi
-	done
-	if [ -z $suite ]; then
-		echo "no test suite found"
-		return
+# Set go module vendor
+function _goven() {
+	if [[ ${1} == "on" ]]; then
+		export GOFLAGS="-mod=vendor"
+	else
+		export GOFLAGS=""
 	fi
-
-	go test -run $suite . -testify.m $1
 }
 
 function _gpgreset() {
@@ -119,12 +112,14 @@ alias gg=_gg
 alias godir=_godir
 alias gocover="go test -v -coverprofile=c.out && go tool cover -html=c.out"
 alias gst=_gst
-alias modon='export GO111MODULE=on'
-alias modoff='export GO111MODULE=auto'
+alias goven=_goven
 alias gitprune="git remote prune origin && git branch -vv | grep ': gone]' | awk '{print \$1}' | xargs git branch -D"
 alias t="go test"
+alias tv="go test -v"
 alias tc="go test -cover"
+alias tvc="go test -v -cover"
 alias trc="go test -race -cover"
+alias tvrc="go test -v -race -cover"
 
 # Kubewctl aliases
 [ -f ${HOME}/.kubectl_aliases ] && source ~/.kubectl_aliases

@@ -8,15 +8,20 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'airblade/vim-gitgutter'
+Plug 'blueyed/vim-diminactive'
 
 " Tools
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
 Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'yuttie/comfortable-motion.vim'
+Plug 'brooth/far.vim'
 
 " Autocomplete
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
@@ -26,6 +31,9 @@ Plug 'honza/vim-snippets'
 " General Text Editing
 Plug 'gcmt/wildfire.vim'
 Plug 'easymotion/vim-easymotion'
+Plug 'rhysd/vim-grammarous', { 'for': 'markdown' }
+Plug 'reedes/vim-wordy'
+Plug 'reedes/vim-lexical'
 
 " Languages
 Plug 'justinmk/vim-syntax-extra'
@@ -33,9 +41,10 @@ Plug 'fatih/vim-go'
 Plug 'jodosha/vim-godebug'
 Plug 'bakpakin/ats2.vim'
 Plug 'lervag/vimtex'
-Plug 'kovisoft/slimv'
 Plug 'jparise/vim-graphql'
 Plug 'plasticboy/vim-markdown'
+Plug 'leafgarland/typescript-vim'
+Plug 'herringtondarkholme/yats.vim'
 
 " Code Editing
 Plug 'raimondi/delimitmate'

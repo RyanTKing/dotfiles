@@ -14,13 +14,19 @@
 		"efm": {
 			"command": "efm-langserver",
 			"args": [],
-			"filetypes": ["vim"]
+			"filetypes": ["vim", "eruby", "markdown"]
 		}
 	},
 	"diagnostic.errorSign": "◆",
 	"diagnostic.warningSign": "◆",
 	"diagnostic.infoSign": "◆",
 	"diagnostic.hintSign": "◆",
+  "go.goplsOptions": {
+    "buildFlags": ["-tags=integration"],
+    "env": {
+      "GOFLAGS": "-tags=integration"
+    }
+  },
 	"suggest.echodocSupport": true,
 	"suggest.maxCompleteItemCount": 20,
 	"eslint.filetypes": [

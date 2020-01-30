@@ -52,6 +52,9 @@ if executable('rg')
 	command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 endif
 
+" Ferret
+let g:FerretMap=0
+
 " coc.nvim
 let g:coc_global_extensions = ['coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier', 'coc-angular', 'coc-go']
 hi CocErrorSign ctermfg=01 guifg=#BF616A guibg=#3B4252
@@ -83,6 +86,10 @@ let g:tagbar_sort = 0
 let g:tagbar_compact = 1
 
 " vim-go
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_def_mapping_enabled = 0
+
 let g:go_code_completion_enabled = 0
 let g:go_test_show_name = 1
 let g:go_fmt_autosave=1

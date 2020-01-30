@@ -2,6 +2,7 @@
 filetype plugin indent on
 set encoding=utf-8
 set mouse=a
+
 set number
 set relativenumber
 set cursorline
@@ -18,6 +19,7 @@ set lazyredraw
 set hidden
 set inccommand=nosplit
 set colorcolumn=120
+set cmdheight=2
 
 " Color scheme
 if has('termgui')
