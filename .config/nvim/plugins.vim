@@ -9,7 +9,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
-Plug 'blueyed/vim-diminactive'
+Plug 'yuttie/comfortable-motion.vim'
 
 " Tools
 Plug 'scrooloose/nerdtree'
@@ -20,7 +20,6 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-eunuch'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'yuttie/comfortable-motion.vim'
 Plug 'brooth/far.vim'
 
 " Autocomplete
@@ -34,6 +33,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'rhysd/vim-grammarous', { 'for': 'markdown' }
 Plug 'reedes/vim-wordy'
 Plug 'reedes/vim-lexical'
+Plug 'kamykn/spelunker.vim'
 
 " Languages
 Plug 'justinmk/vim-syntax-extra'
@@ -45,6 +45,7 @@ Plug 'jparise/vim-graphql'
 Plug 'plasticboy/vim-markdown'
 Plug 'leafgarland/typescript-vim'
 Plug 'herringtondarkholme/yats.vim'
+Plug 'rust-lang/rust.vim'
 
 " Code Editing
 Plug 'raimondi/delimitmate'

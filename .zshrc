@@ -24,6 +24,7 @@ setopt no_global_rcs
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' insert-tab pending
 set -o vi
+source ${HOME}/.cargo/env
 
 # General Aliases
 alias reload!='. ~/.zshrc' # Reload the zsh config

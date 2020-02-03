@@ -115,6 +115,9 @@ let g:go_highlight_methods=1
 let g:go_highlight_structs=1
 let g:go_auto_type_info=0
 
+" rust.vim
+let g:rustfmt_autosave = 1
+
 " slimv
 let g:slimv_swank_cmd = "!ros -e '(ql:quickload :swank) (swank:create-server)' wait &"
 let g:slimv_lisp = 'ros run'
