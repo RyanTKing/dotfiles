@@ -9,7 +9,10 @@ fi
 # Zsh Variables
 export DEFAULT_USER=`whoami`
 export LSCOLORS="exfxcxdxbxegedabagacad"
+# export LS_COLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
+# export LS_COLORS='no=00;37:fi=00:di=00;33:ln=04;36:pi=40;33:so=01;35:bd=40;33;01:'
+# export CICOLOR=1
 
 # Zsh Options
 setopt autolist
@@ -23,12 +26,15 @@ setopt extendedglob
 setopt no_global_rcs
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' insert-tab pending
+zstyle ':completion:*' list-colors 'exfxcxdxbxegedabagacad'
+# zstyle ':completion:*' list-colors 'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 set -o vi
 source ${HOME}/.cargo/env
 
 # General Aliases
 alias reload!='. ~/.zshrc' # Reload the zsh config
-if which ls_extended > /dev/null; then alias ls=ls_extended; fi
+alias ls="exa -lhB --git"
 
 if [[ `uname` == 'Linux' ]]; then
 	alias open='xdg-open'
@@ -48,6 +54,9 @@ else
 	source "/usr/share/fzf/key-bindings.zsh"
 	source "/usr/share/fzf/completion.zsh"
 fi
+
+# jump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # Startup pyenv
 eval "$(pyenv init -)"
@@ -121,6 +130,7 @@ alias tc="go test -cover"
 alias tvc="go test -v -cover"
 alias trc="go test -race -cover"
 alias tvrc="go test -v -race -cover"
+alias gopls="GOFLAGS=\"-tags=integration\" gopls"
 
 # Kubewctl aliases
 [ -f ${HOME}/.kubectl_aliases ] && source ~/.kubectl_aliases
