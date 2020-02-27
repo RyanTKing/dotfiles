@@ -22,6 +22,8 @@
 	"diagnostic.infoSign": "◆",
 	"diagnostic.hintSign": "◆",
   "go.goplsOptions": {
+    "staticcheck": true,
+    "completeUnimported": true,
     "buildFlags": ["-tags=integration"],
     "env": {
       "GOFLAGS": "-tags=integration"

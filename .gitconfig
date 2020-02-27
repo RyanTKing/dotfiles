@@ -34,3 +34,8 @@
 	insteadOf = https://github.com/ryantking
 [url "ssh://git@github.com/cogolabs"]
 	insteadOf = https://github.com/cogolabs
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

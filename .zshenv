@@ -6,6 +6,7 @@ export EDITOR="nvim"
 export VISUAL="code"
 export ALTERNATE_EDITOR="vim"
 export GOPATH="$HOME/go"
+export GOROOT="/usr/local/opt/go/libexec"
 export GOBIN="$GOPATH/bin"
 export GOPROXY=https://goproxy.io,direct
 export GOPRIVATE=*.cogolo.net
