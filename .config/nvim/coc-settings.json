@@ -31,11 +31,6 @@
   },
 	"suggest.echodocSupport": true,
 	"suggest.maxCompleteItemCount": 20,
-	"eslint.filetypes": [
-		"javascript", "typescript",
-		"typescriptreact", "javascriptreact",
-		"typescript.tsx"
-	],
 	"prettier.singleQuote": true,
 	"prettier.printWidth": 120,
 	"coc.preferences.formatOnSaveFiletypes": [

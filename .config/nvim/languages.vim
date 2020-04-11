@@ -26,3 +26,4 @@ au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx expandtab tabstop=2
 au BufNewFile,BufRead *.json setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 au BufNewFile,BufRead *.html setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
 au BufNewFile,BufRead *.scss setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+

@@ -1,0 +1,29 @@
+set nu rnu
+set easymotion
+set surround
+
+" Use ctrl-[hjkl] to select the active split!
+noremap <silent> <C-k> <C-w>k<CR>
+noremap <silent> <C-j> <C-w>j<CR>
+noremap <silent> <C-h> <C-w>h<CR>
+noremap <silent> <C-l> <C-w>l<CR>
+
+" Easy navigation
+noremap gj G
+noremap gk gg
+noremap gh 0
+noremap gl $
+
+" Easy highlighting
+noremap Gj <Esc>VG
+noremap Gk <Esc>Vgg
+noremap Gh <Esc> v0
+noremap Gl <Esc>v$
+
+" Better visual mode navigation
+vnoremap <a-;> O
+vnoremap ; <Esc>
+noremap  <Space> <Nop>
+vnoremap <Space> <Esc>
+nnoremap <A-i> vi
+nnoremap <A-a> va

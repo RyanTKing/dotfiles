@@ -19,26 +19,26 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 
 " Tmuxline
 let g:airline#extensions#tmuxline#enabled = 1
-let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
-let g:tmuxline_preset = {
-		\ 'a': ['#S'],
-		\ 'b': [
-			\ '#(/bin/bash $HOME/bin/kubes_status context white)',
-			\ '#(/bin/bash $HOME/bin/kubes_status namespace white)',
-			\],
-		\'cwin' : ['#I', '#W'],
-		\'win'  : ['#I', '#W'],
-		\ 'y': ['%l:%M %p', '%a, %B %d, %Y'],
-		\ 'z': '#h',
-		\ 'options': {
-			\ 'status-justify': 'left',
-		\}
-\}
+" let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
+" let g:tmuxline_preset = {
+" 		\ 'a': ['#S'],
+" 		\ 'b': [
+" 			\ '#(/bin/bash $HOME/bin/kubes_status context white)',
+" 			\ '#(/bin/bash $HOME/bin/kubes_status namespace white)',
+" 			\],
+" 		\'cwin' : ['#I', '#W'],
+" 		\'win'  : ['#I', '#W'],
+" 		\ 'y': ['%l:%M %p', '%a, %B %d, %Y'],
+" 		\ 'z': '#h',
+" 		\ 'options': {
+" 			\ 'status-justify': 'left',
+" 		\}
+" \}
 
-if has('macunix')
-	let g:tmuxline_preset.x = '#(/bin/bash $HOME/.tmux/plugins/tmux-spotify/scripts/spotify_status.sh) '.
-				\'#(/bin/bash $HOME/.tmux/plugins/tmux-spotify/scripts/spotify_track.sh)'
-endif
+" if has('macunix')
+" 	let g:tmuxline_preset.x = '#(/bin/bash $HOME/.tmux/plugins/tmux-spotify/scripts/spotify_status.sh) '.
+" 				\'#(/bin/bash $HOME/.tmux/plugins/tmux-spotify/scripts/spotify_track.sh)'
+" endif
 
 " DelimitMate
 let delimitMate_expand_cr = 1
@@ -133,4 +133,3 @@ call tcomment#type#Define('c', '// %s')
 
 " vimtex
 let g:vimtex_compiler_progname = 'nvr'
-
