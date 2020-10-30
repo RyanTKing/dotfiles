@@ -19,26 +19,26 @@ let g:airline#extensions#tabline#left_alt_sep = ''
 
 " Tmuxline
 let g:airline#extensions#tmuxline#enabled = 1
-" let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
-" let g:tmuxline_preset = {
-" 		\ 'a': ['#S'],
-" 		\ 'b': [
-" 			\ '#(/bin/bash $HOME/bin/kubes_status context white)',
-" 			\ '#(/bin/bash $HOME/bin/kubes_status namespace white)',
-" 			\],
-" 		\'cwin' : ['#I', '#W'],
-" 		\'win'  : ['#I', '#W'],
-" 		\ 'y': ['%l:%M %p', '%a, %B %d, %Y'],
-" 		\ 'z': '#h',
-" 		\ 'options': {
-" 			\ 'status-justify': 'left',
-" 		\}
-" \}
+let airline#extensions#tmuxline#snapshot_file = "~/.tmux-status.conf"
+let g:tmuxline_preset = {
+		\ 'a': ['#S'],
+		\ 'b': [
+			\ '#(/bin/bash $HOME/bin/kubes_status context white)',
+			\ '#(/bin/bash $HOME/bin/kubes_status namespace white)',
+			\],
+		\'cwin' : ['#I', '#W'],
+		\'win'  : ['#I', '#W'],
+		\ 'y': ['%l:%M %p', '%a, %B %d, %Y'],
+		\ 'z': '#h',
+		\ 'options': {
+			\ 'status-justify': 'left',
+		\}
+\}
 
-" if has('macunix')
-" 	let g:tmuxline_preset.x = '#(/bin/bash $HOME/.tmux/plugins/tmux-spotify/scripts/spotify_status.sh) '.
-" 				\'#(/bin/bash $HOME/.tmux/plugins/tmux-spotify/scripts/spotify_track.sh)'
-" endif
+if has('macunix')
+	let g:tmuxline_preset.x = '#(/bin/bash $HOME/.tmux/plugins/tmux-spotify/scripts/spotify_status.sh) '.
+				\'#(/bin/bash $HOME/.tmux/plugins/tmux-spotify/scripts/spotify_track.sh)'
+endif
 
 " DelimitMate
 let delimitMate_expand_cr = 1
@@ -86,9 +86,11 @@ let g:tagbar_sort = 0
 let g:tagbar_compact = 1
 
 " vim-go
+let g:go_gopls_enabled = 1
+let g:go_gopls_options = ['-remote=auto']
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
-let g:go_def_mapping_enabled = 0
+let g:go_referrers_mode = 'gopls'
 
 let g:go_code_completion_enabled = 0
 let g:go_test_show_name = 1

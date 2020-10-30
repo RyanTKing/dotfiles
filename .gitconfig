@@ -1,10 +1,12 @@
 [user]
 	name = Ryan King
-	email = hello@ryanking.com
-	signingkey = 0xFD3894645D8BE1A4
+	email = ryan.taylor.king@gmail.com
+	signingkey = 0xD718BA353C298BB2
 [core]
 	editor = nvim
 	excludesfile = ~/.gitignore_global
+	quotePath = false
+	commitGraph = true
 [include]
 	path = ~/.gitconfig.local
 [color]
@@ -39,3 +41,5 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+[gc]
+	writeCommitGraph = true

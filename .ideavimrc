@@ -1,6 +1,7 @@
 set nu rnu
 set easymotion
 set surround
+set ideajoin
 
 " Use ctrl-[hjkl] to select the active split!
 noremap <silent> <C-k> <C-w>k<CR>

@@ -13,6 +13,7 @@ export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 # export LS_COLORS='no=00;37:fi=00:di=00;33:ln=04;36:pi=40;33:so=01;35:bd=40;33;01:'
 # export CICOLOR=1
+test -r "~/.dir_colors" && eval $(dircolors ~/.dir_colors)
 
 # Zsh Options
 setopt autolist
@@ -21,9 +22,9 @@ setopt autonamedirs
 setopt histignoredups
 setopt listtypes
 setopt nolistbeep
-setopt complete_aliases
 setopt extendedglob
 setopt no_global_rcs
+unsetopt complete_aliases
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' insert-tab pending
 zstyle ':completion:*' list-colors 'exfxcxdxbxegedabagacad'
@@ -46,14 +47,21 @@ else
 	alias copy='xclip -selection clipboard'
 fi
 
+function iterm2_print_user_vars() {
+  iterm2_set_user_var kubecontext $(kubectl config current-context)
+}
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
 # Fzf
-if [[ `uname` == 'Darwin' ]]; then
-	source "/usr/local/opt/fzf/shell/key-bindings.zsh"
-	source "/usr/local/opt/fzf/shell/completion.zsh"
-else
-	source "/usr/share/fzf/key-bindings.zsh"
-	source "/usr/share/fzf/completion.zsh"
-fi
+: -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# if [[ `uname` == 'Darwin' ]]; then
+# 	source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+# 	source "/usr/local/opt/fzf/shell/completion.zsh"
+# else
+#	source "/usr/share/fzf/key-bindings.zsh"
+#	source "/usr/share/fzf/completion.zsh"
+#fi
 
 # jump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
@@ -64,6 +72,11 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -
 
 # Startup rbenv
 eval "$(rbenv init -)"
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Golang setup
 # Go anywhere in gopath
@@ -130,7 +143,6 @@ alias tc="go test -cover"
 alias tvc="go test -v -cover"
 alias trc="go test -race -cover"
 alias tvrc="go test -v -race -cover"
-alias gopls="GOFLAGS=\"-tags=integration\" gopls"
 
 # Kubewctl aliases
 [ -f ${HOME}/.kubectl_aliases ] && source ~/.kubectl_aliases
@@ -149,9 +161,8 @@ gpgconf --launch gpg-agent
 
 # Startup tmux
 alias tmux='tmux -u'
-if [ -z "$TMUX" ]; then
+if [[ -z "$TMUX" && $TERM_PROGRAM != "iTerm.app" && $TERMINAL_EMULATOR != "JetBrains-JediTerm" ]]; then
 	tmux
 fi
 
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
