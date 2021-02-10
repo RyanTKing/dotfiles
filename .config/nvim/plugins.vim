@@ -22,7 +22,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'christoomey/vim-tmux-navigator'
 
 " Autocomplete
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 

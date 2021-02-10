@@ -28,3 +28,7 @@ noremap  <Space> <Nop>
 vnoremap <Space> <Esc>
 nnoremap <A-i> vi
 nnoremap <A-a> va
+
+" Quiet the bell
+set visualbell
+set noerrorbells

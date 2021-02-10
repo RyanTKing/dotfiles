@@ -1,22 +1,5 @@
 {
-  "languageserver": {
-    "bash": {
-      "command": "bash-language-server",
-      "args": ["start"],
-      "filetypes": ["sh"],
-      "ignoredRootPaths": ["~"]
-    },
-    "dockerfile": {
-      "command": "docker-langserver",
-      "filetypes": ["dockerfile"],
-      "args": ["--stdio"]
-    },
-    "efm": {
-      "command": "efm-langserver",
-      "args": [],
-      "filetypes": ["vim", "eruby", "markdown"]
-    }
-  },
+  "languageserver": {},
   "diagnostic.errorSign": "◆",
   "diagnostic.warningSign": "◆",
   "diagnostic.infoSign": "◆",
@@ -26,9 +9,6 @@
     "completeUnimported": true
   },
   "go.goplsArgs": ["-remote=auto"],
-  "go.goplsEnv": {
-    "GOFLAGS": "-tags=integration"
-  },
   "suggest.echodocSupport": true,
   "suggest.maxCompleteItemCount": 20,
   "prettier.singleQuote": true,
@@ -42,6 +22,7 @@
     "typescript",
     "typescriptreact",
     "javascriptreact",
-    "typescript.tsx"
+    "typescript.tsx",
+    "go"
   ]
 }

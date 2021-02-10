@@ -9,7 +9,10 @@ export GOPATH="$HOME/go"
 export GOROOT="/usr/local/opt/go/libexec"
 export GOBIN="$GOPATH/bin"
 export GOPROXY=https://goproxy.io,direct
-export GOPRIVATE=*.cogolo.net
+# export GOPRIVATE=github.com/solo-io,github.com/ryantking
+# export GOSUMDB=gosum.io+ce6e7565+AY5qEHUk/qmHc5btzW45JVoENfazw8LielDsaI+lEbq6
+export SSLKEYLOGFILE=/Users/rking/syskeylog.log
+export GM_LICENSE=eyJleHAiOjI0NzY4MjY2MTcsImlhdCI6MTYxMjkxMzAxNywiayI6ImMwR3o4QSIsImx0IjoidHJpYWwiLCJwcm9kdWN0IjoiZ2xvby1tZXNoIn0.Po_DtmE9plrb1mQOj7jA3zehhWHpZmLI9ixJW4VN9Ho
 
 # FZF Variables
 FD_OPTIONS="--follow --hidden --exclude .git"
@@ -42,7 +45,8 @@ PATH="/usr/local/bin:$PATH"
 [ -d "${GLOBAL_YARNBIN}" ]				&& PATH="${GLOBAL_YARNBIN}:${PATH}"
 [ -d "${ROSBIN}" ]						&& PATH="${ROSBIN}:${PATH}"
 [ -d "${TEXBIN}" ]						&& PATH="${TEXBIN}:${PATH}"
-[ -d "${FLEETBIN}" ]					&& PATH="${FLEETBIN}:${PATH}"
+[ -d "${KREW_ROOT:-$HOME/.krew}/bin" ]	&& PATH="${KREW_ROOT:-$HOME/.krew}/bin:${PATH}"
+[ -d "${HOME}/.gloo-mesh/bin" ] 		&& PATH="${HOME}/.gloo-mesh/bin:${PATH}"
 
 # Clean PATH
 typeset -a paths result

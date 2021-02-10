@@ -26,16 +26,14 @@
 	rebase = true
 [fetch]
 	prune = true
-[includeIf "gitdir:~/go/src/git.cogolo.net/"]
-	path = ~/.gitconfig_cogo
 [includeIf "gitdir:~/Work/"]
-	path = ~/.gitconfig_cogo
-[url "ssh://git@git.cogolo.net"]
-	insteadOf = https://git.cogolo.net
+	path = ~/.gitconfig_work
 [url "ssh://git@github.com/ryantking"]
 	insteadOf = https://github.com/ryantking
 [url "ssh://git@github.com/cogolabs"]
 	insteadOf = https://github.com/cogolabs
+[url "ssh://git@github.com/solo-io"]
+	insteadOf = https://github.com/solo-io
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

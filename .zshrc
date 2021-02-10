@@ -54,14 +54,14 @@ function iterm2_print_user_vars() {
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Fzf
-: -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-# if [[ `uname` == 'Darwin' ]]; then
-# 	source "/usr/local/opt/fzf/shell/key-bindings.zsh"
-# 	source "/usr/local/opt/fzf/shell/completion.zsh"
-# else
-#	source "/usr/share/fzf/key-bindings.zsh"
-#	source "/usr/share/fzf/completion.zsh"
-#fi
+# : -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+if [[ `uname` == 'Darwin' ]]; then
+	source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+	source "/usr/local/opt/fzf/shell/completion.zsh"
+else
+	source "/usr/share/fzf/key-bindings.zsh"
+	source "/usr/share/fzf/completion.zsh"
+fi
 
 # jump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
@@ -147,11 +147,8 @@ alias tvrc="go test -v -race -cover"
 # Kubewctl aliases
 [ -f ${HOME}/.kubectl_aliases ] && source ~/.kubectl_aliases
 
-# Cogo specific configs
-[ -f ${HOME}/.zshrc_cogo ] && source ${HOME}/.zshrc_cogo
-
-# Travis
-[ -f ${HOME}/.travis/travis.sh ] && source ${HOME}/.travis/travis.sh
+# Private configuration
+[ -f ${HOME}/.zshrc_private ] && source ${HOME}/.zshrc_private
 
 # Setup GPG
 export PINENTRY_USER_DATA="USE_CURSES=0"
@@ -159,9 +156,14 @@ export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
 gpgconf --launch gpg-agent
 &>/dev/null gpg-connect-agent updatestartuptty /bye
 
+# Google Cloud
+export CLOUDSDK_PYTHON="/usr/local/opt/python@3.8/libexec/bin/python"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
 # Startup tmux
 alias tmux='tmux -u'
-if [[ -z "$TMUX" && $TERM_PROGRAM != "iTerm.app" && $TERMINAL_EMULATOR != "JetBrains-JediTerm" ]]; then
+if [[ -z "$TMUX" && $TERMINAL_EMULATOR != "JetBrains-JediTerm" ]]; then
 	tmux
 fi
 
