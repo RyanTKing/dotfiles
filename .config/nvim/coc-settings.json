@@ -22,7 +22,6 @@
     "typescript",
     "typescriptreact",
     "javascriptreact",
-    "typescript.tsx",
-    "go"
+    "typescript.tsx"
   ]
 }
